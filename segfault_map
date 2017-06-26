@@ -1,0 +1,54 @@
+255
+0 45 45
+2 16 7
+##start
+start 5 5
+0 5 5
+##end
+ectoplasme 9 5
+#commentaire
+3 16 3
+8 25 5
+chaussette qui puent  00000000 8 8
+la chatte a ta grand mere 8 8
+0 6 6
+cervicale 88 88
+CANCER 4 4
+frites aux nutella 22 22
+saucichat 4 4
+pluie 44 44
+0 6 6
+##start
+0 6 6
+##start
+4 16 5
+##start
+start 8 8
+5 9 3
+6 1 5
+7 4 8
+22 4 4
+10 0 0
+11 5 5
+12 5 5
+14 8 8
+13 5 5
+15 5 5
+16 5 5
+17 5 5
+30 5 5
+31 1 1
+32 4 4
+33 6 6
+start-0
+0-chaussette qui puent  00000000
+chaussette qui puent  00000000-5
+5-ectoplasme
+start-CANCER
+CANCER-frites aux nutella
+frites aux nutella-la chatte a ta grand mere
+la chatte a ta grand mere-pluie
+pluie-ectoplasme
+saucichat-start
+saucichat-cervicale
+cervicale-ectoplasme

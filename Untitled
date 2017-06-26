@@ -1,0 +1,46 @@
+
+
+
+
+
+
+ t_list *lst
+
+ 	lst = 0xF543513;
+	lst = NULL;
+
+ 	lst = (t_list*)malloc(sizeof(tlist));
+	lst->content = NULL;
+	lst->next = NULL;
+
+	lst->next = (t_list*)malloc(sizeof(tlist));
+
+	str = "hello"
+
+	lst->content = malloc(sizeof(char) * strlen(str));
+
+	memcpy(lst->content, str);
+
+	hello\0
+
+	lst->content_size = fd;
+
+	ft_strlen((char*)lst->content);
+
+	typedef struct s_gnl
+	{
+		char *str;
+		int fd;
+	}t_gnl;
+
+	t_gnl *bite;
+
+	bite = malloc();
+
+	bite->content =
+	bite->fd = fd;
+
+	lst->content = bite;
+
+	lst->content->fd == 5;
+	lst->content->str == "pouet";
