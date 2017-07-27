@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:40:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/27 14:39:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 int		ants_in_path(t_dna *dna, t_ants *lst)
 {
 	t_node *tmp;
+	int i;
 
-	while (lst)
+	i = 0;
+	while (i < dna->nb_ants)
 	{
-		if (lst->pos)
-		{
-			tmp = (t_node*)lst->pos;
-			if (!is_end(dna, tmp))
-				return (1);
-		}
+		if (!lst->pos)
+			return (1);
 		lst = lst->next;
+		i++;
 	}
 	return (0);
 }
@@ -45,7 +44,6 @@ void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 {
 	int		i;
 	t_ants	*tmp;
-
 	i = 0;
 	while (i < dna->path->nb_chld)
 	{
@@ -61,7 +59,7 @@ void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 	}
 }
 
-t_ants	*create_lst_ants(int nb)
+t_ants	*create_lst_ants(t_dna *dna, int nb)
 {
 	int			i;
 	t_ants		*lst;
@@ -74,6 +72,9 @@ t_ants	*create_lst_ants(int nb)
 	lst->pos = NULL;
 	lst->id = 0;
 	lst->active = 1;
+	// lst->pos = dna->path;
+	//printf("TEST > %s\n", dna->start_node->room_name);
+	// lst->pos = dna->start_node;
 	tmp = lst;
 	while (i < nb)
 	{
@@ -84,6 +85,7 @@ t_ants	*create_lst_ants(int nb)
 		tmp->id = i;
 		tmp->pos = NULL;
 		tmp->active = 1;
+		// tmp->pos = dna->path;
 		i++;
 	}
 	return (lst);

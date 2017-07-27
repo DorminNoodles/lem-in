@@ -6,23 +6,37 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/08 10:40:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/06/27 19:08:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-void		free_split(char **tab, int nb)
+int			redundancy_link(t_dna *dna, char *str)
 {
-	int i;
+	char	*s1;
+	char	*s2;
+	t_link	*lst_link;
 
-	i = 0;
-	while (i < nb)
+	lst_link = dna->link_lst;
+	s1 = get_room_name(str, FROM);
+	s2 = get_room_name(str, TO);
+	while (lst_link)
 	{
-		ft_memdel((void**)&tab[i]);
-		i++;
+		if (!ft_strcmp(lst_link->from, s1) || !ft_strcmp(lst_link->from, s2))
+		{
+			if (!ft_strcmp(lst_link->to, s1) || !ft_strcmp(lst_link->to, s2))
+			{
+				ft_memdel((void**)&s1);
+				ft_memdel((void**)&s2);
+				return (1);
+			}
+		}
+		lst_link = lst_link->next;
 	}
-	ft_memdel((void**)&tab);
+	ft_memdel((void**)&s1);
+	ft_memdel((void**)&s2);
+	return (0);
 }
 
 void		add_roomlst(t_dna *dna, t_room *room)

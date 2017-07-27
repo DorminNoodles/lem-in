@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:36:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/27 14:37:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,13 @@ int		main(int argc, char **argv)
 	{
 		while (!(dna.path = create_raw_path(&dna, NULL, NULL)))
 		{
+			// printf("SEGFAULT\n");
 			if (dna.node_limits < 30)
 				dna.node_limits++;
 			else
 				break ;
 		}
+		// printf("SEGFAULT\n");
 		if (!dna.nb_path)
 			error("error : no path\n");
 		clean_useless_path(&dna);

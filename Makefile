@@ -1,5 +1,5 @@
 NAME = lem-in
-CC = clang
+CC = gcc -g
 SRC =	main.c					\
 		ants.c					\
 		parsing.c				\
@@ -11,7 +11,9 @@ SRC =	main.c					\
 		free.c					\
 		is.c					\
 		error.c					\
+		precheck.c				\
 		link.c					\
+		integrity.c				\
 		chld.c					\
 		init.c					\
 		free_pars.c				\

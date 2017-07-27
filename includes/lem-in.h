@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:43:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/27 11:18:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define FROM 1
 #define TO 2
 
-// #define malloc(X) my_malloc( X, __FILE__, __LINE__, __FUNCTION__)
+#define POUET   "test\n pouet2"
 
 typedef struct s_room
 {
@@ -129,26 +129,15 @@ void		display(t_ants *lst);
 void		dispatch_ants(t_dna *dna, int *stk);
 void		push_ants(t_dna *dna, int *stk, t_ants *lst_ants);
 void		drop_in_best(t_dna *dna, int *stk);
-t_ants		*create_lst_ants(int nb);
+t_ants		*create_lst_ants(t_dna *dna, int nb);
 void		move_ants(t_dna *dna);
 void		free_one_node(t_node **n);
 void		free_lst_ants(t_ants *lst_ants);
 int			ants_in_path(t_dna *dna, t_ants *lst);
 void		ants_displace(t_dna *dna, t_ants *lst);
 int			is_room_name(t_dna *dna, char *str);
-// int			coord_integrity(char *a, char *b);
-// // t_list		*start_precheck(t_list *data);
-// t_room		*newroom();
-// int			split_length(char **split);
-//
-// /* volatile */
-//
-// // t_list		*end_precheck(t_list *data);
-// void		add_in_tab();
-// t_node		*set_cur_path(t_dna *dna, char *name, t_node *parent);
-// void		debug_path(t_node *cp);
-// void		sort_node_by_score(t_dna *dna);
-
-
-
+int			redundancy_link(t_dna *dna, char *str);
+int			check_coord(char *str);
+void		add_node_lst(t_dna *dna, t_node *node);
+int			is_start(t_dna *dna, t_node *cp);
 #endif
