@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 14:47:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 21:12:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,10 @@ int			raw_path_check_end(t_dna *dna, t_node *cp)
 	return (0);
 }
 
-void	node_is_start(t_dna *dna, t_node *cp)
+void	get_start_node(t_dna *dna, t_node *cp)
 {
-	if (is_start(dna, cp))
-	{
-		printf("NODE IS START > %p\n", cp);
+	if (!dna->start_node && is_start(dna, cp))
 		dna->start_node = cp;
-	}
 }
 
 t_node		*create_raw_path(t_dna *dna, char *name, t_node *parent)
@@ -104,8 +101,7 @@ t_node		*create_raw_path(t_dna *dna, char *name, t_node *parent)
 
 	i = -1;
 	cp = set_cur_path(dna, name, parent);
-	if (!dna->start_node)
-		node_is_start(dna, cp);
+	get_start_node(dna, cp);
 	if (raw_path_check_end(dna, cp))
 		return (cp);
 	// printf("SEGV\n");

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 18:40:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 21:11:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	drop_in_best(t_dna *dna, int *stk)
 	i = 0;
 	while (i < dna->path->nb_chld)
 	{
+		// printf("ECTO child[%d]  :  %p\n", i, dna->path->next[i]);
+		if (dna->path->next[i])
+			printf("ACTIVE child[%d]  :  %d\n", i, dna->path->next[i]->active);
 		if (dna->path->next[i] && dna->path->next[i]->active)
 		{
 			if (cost_of_path(dna, stk, i) < score || score == -1)
@@ -68,6 +71,7 @@ int		main(int argc, char **argv)
 			else
 				break ;
 		}
+		display_path_debug(&dna);
 		// printf("SEGFAULT\n");
 		// printf("dna ->path %s \n", dna.path->room_name);
 		// printf("dna ->path %d \n", dna.path->next[2]->nb_chld);
