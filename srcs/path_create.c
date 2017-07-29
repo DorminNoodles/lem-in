@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/27 14:31:51 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 14:47:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ int			path_length(t_dna *dna, t_node *cp)
 
 	i = 0;
 
-	// printf(">>> %s\n", cp->room_name);
-	// printf("SEGFuck1\n");
-	// printf(">> %s\n", dna->start->name);
 	while (cp->room_name && ft_strcmp(cp->room_name, dna->start->name))
 	{
 		// printf("SEGFuck2\n");
@@ -89,6 +86,15 @@ int			raw_path_check_end(t_dna *dna, t_node *cp)
 	return (0);
 }
 
+void	node_is_start(t_dna *dna, t_node *cp)
+{
+	if (is_start(dna, cp))
+	{
+		printf("NODE IS START > %p\n", cp);
+		dna->start_node = cp;
+	}
+}
+
 t_node		*create_raw_path(t_dna *dna, char *name, t_node *parent)
 {
 	// printf("CREATE_RAW_PATH\n");
@@ -98,6 +104,8 @@ t_node		*create_raw_path(t_dna *dna, char *name, t_node *parent)
 
 	i = -1;
 	cp = set_cur_path(dna, name, parent);
+	if (!dna->start_node)
+		node_is_start(dna, cp);
 	if (raw_path_check_end(dna, cp))
 		return (cp);
 	// printf("SEGV\n");

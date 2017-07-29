@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/27 14:39:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 19:23:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,38 @@ void	dispatch_ants(t_dna *dna, int *stk)
 
 void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 {
+	printf("ENTER PUSH ANTS\n");
 	int		i;
 	t_ants	*tmp;
+
 	i = 0;
+
 	while (i < dna->path->nb_chld)
 	{
+		tmp = lst_ants;
 		if (stk[i])
 		{
-			tmp = lst_ants;
-			while (tmp->pos)
+			printf("STK => %d  child : %d\n", stk[i], i);
+			// printf("bordel => %s\n", tmp->pos->room_name);
+			printf("child[%d]  :  %p\n", i, dna->path->next[i]);
+			while (tmp && ft_strcmp(tmp->pos->room_name, dna->start->name))
+			{
 				tmp = tmp->next;
-			tmp->pos = (void*)dna->path->next[i];
+			}
+			if (tmp)
+				tmp->pos = dna->path->next[i];
+				printf("POUET\n");
+
+				// printf("TMP_>POS : %s\n", dna->path->next[i]->room_name);
+			// tmp = lst_ants;
+			// while (tmp)
+			// {
+			// 	tmp = tmp->next;
+			//
+			// 	// printf("SEGFuck : %d \n", tmp->next->id);
+			// 	// tmp = tmp->next;
+			// }
+			// // tmp->pos = (void*)dna->path->next[i];
 			stk[i]--;
 		}
 		i++;
@@ -69,12 +90,10 @@ t_ants	*create_lst_ants(t_dna *dna, int nb)
 	if (!(lst = (t_ants*)ft_memalloc(sizeof(t_ants))))
 		error("error : malloc\n");
 	lst->next = NULL;
-	lst->pos = NULL;
+	lst->pos = dna->start_node;
 	lst->id = 0;
 	lst->active = 1;
-	// lst->pos = dna->path;
-	//printf("TEST > %s\n", dna->start_node->room_name);
-	// lst->pos = dna->start_node;
+
 	tmp = lst;
 	while (i < nb)
 	{
@@ -83,7 +102,7 @@ t_ants	*create_lst_ants(t_dna *dna, int nb)
 		tmp = tmp->next;
 		tmp->next = NULL;
 		tmp->id = i;
-		tmp->pos = NULL;
+		tmp->pos = dna->start_node;
 		tmp->active = 1;
 		// tmp->pos = dna->path;
 		i++;

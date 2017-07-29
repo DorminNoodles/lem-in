@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/27 11:18:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 18:52:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int			check_path(t_dna *dna, t_node *node);
 void		cp_init(t_node *cp, t_node *parent);
 void		dna_free(t_dna *dna);
 int			cost_of_path(t_dna *dna, int *stk, int nb);
-void		display(t_ants *lst);
+void		display(t_dna *dna, t_ants *lst);
 void		dispatch_ants(t_dna *dna, int *stk);
 void		push_ants(t_dna *dna, int *stk, t_ants *lst_ants);
 void		drop_in_best(t_dna *dna, int *stk);

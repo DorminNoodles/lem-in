@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/27 11:26:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 15:21:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,16 @@ void	move_ants(t_dna *dna)
 		error("error : malloc\n");
 	dispatch_ants(dna, stk);
 
+
 	lst_ants = create_lst_ants(dna, dna->nb_ants);
 	push_ants(dna, stk, lst_ants);
-	display(lst_ants);
+	display(dna, lst_ants);
 	while (ants_in_path(dna, lst_ants))
 	{
+		printf("666\n");
 		ants_displace(dna, lst_ants);
 		push_ants(dna, stk, lst_ants);
-		display(lst_ants);
+		display(dna, lst_ants);
 	}
 	if (stk)
 		ft_memdel((void**)&stk);

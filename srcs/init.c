@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/26 14:04:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/29 14:46:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	dna_init(t_dna *dna)
 	dna->node_lst = NULL;
 	dna->tmp_node_lst = NULL;
 	dna->node_limits = 7;
+	dna->start_node = NULL;
 }
 
 void	cp_init(t_node *cp, t_node *parent)
