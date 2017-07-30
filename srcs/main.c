@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 21:11:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/30 18:36:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	drop_in_best(t_dna *dna, int *stk)
 
 int		main(int argc, char **argv)
 {
-	// printf("BORDEL DE MERDE\n");
 	t_dna dna;
 
 	dna_init(&dna);
@@ -71,23 +70,22 @@ int		main(int argc, char **argv)
 			else
 				break ;
 		}
-		display_path_debug(&dna);
-		// printf("SEGFAULT\n");
-		// printf("dna ->path %s \n", dna.path->room_name);
-		// printf("dna ->path %d \n", dna.path->next[2]->nb_chld);
-		// printf("dna ->path %s \n", dna.path->next[2]->room_name);
 
 		if (!dna.nb_path)
 			error("error : no path\n");
 		clean_useless_path(&dna);
+		display_path_debug(&dna);
 
 		dna.start_node = dna.path;
+
+		printf("nb_child => %d\n", dna.path->nb_chld);
+		printf(">> %s\n", dna.path->next[0]->room_name);
 
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);
 
-		move_ants(&dna);
-		dna_free(&dna);
+		// move_ants(&dna);
+		// dna_free(&dna);
 	}
 	else
 		ft_putstr("ERROR\n");

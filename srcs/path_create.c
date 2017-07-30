@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 21:12:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/30 18:36:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ t_node		*set_cur_path(t_dna *dna, char *name, t_node *parent)
 		ft_strcpy(cp->room_name, dna->start->name);
 	}
 	cp->nb_chld = cnt_lnk(dna, cp->room_name);
-	cp->next = set_child(cp);
+	if (is_end(dna, cp))
+		cp->nb_chld = 0;
+	else
+		cp->next = set_child(cp);
 	return (cp);
 }
 
