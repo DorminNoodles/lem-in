@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:37:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/30 20:41:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/01 14:18:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,29 @@ void	display_path_debug(t_dna *dna)
 	t_node *tmp;
 
 	i = 0;
-	printf("FUCK > %d\n", dna->nb_path);
-	while (i < dna->nb_path)
+	printf("NB_PATH > %d\n", dna->nb_path);
+
+	printf("Room Start %s\n\n", dna->path->room_name);
+
+	tmp = dna->path->next[0];
+	while (tmp)
 	{
-		printf("\n\n");
-		tmp = dna->path;
-		while (tmp)
-		{
-			printf("Cur Node -> %s\n", tmp->room_name);
-			tmp = next_node_path(tmp);
-		}
-		i++;
+		printf("Room %s\n", tmp->room_name);
+		printf("Num %d\n", tmp->num_path);
+		tmp = next_node_path(tmp);
 	}
+	printf("\n");
+	tmp = dna->path->next[1];
+	while (tmp)
+	{
+		printf("Room %s\n", tmp->room_name);
+		printf("Num %d\n", tmp->num_path);
+		printf("Child num path %d\n", tmp->next[0]->num_path);
+		printf("Child num path %p\n", tmp->next[0]);
+		printf("Child num path %d\n", tmp->next[1]->num_path);
+		printf("Child num path %p\n", tmp->next[1]);
+		tmp = next_node_path(tmp);
+	}
+	printf("test %p\n", tmp);
+	printf("\n\n");
 }

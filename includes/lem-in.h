@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 21:05:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/01 15:08:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_line
 typedef struct s_node
 {
 	int				score;
-	int				nb_chld;
+	int				nb_lnk;
 	int				num_path;
 	int				active;
 	int				ant;

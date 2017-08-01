@@ -31,7 +31,7 @@ void	cp_init(t_node *cp, t_node *parent)
 {
 	cp->parent = parent;
 	cp->score = -1;
-	cp->nb_chld = 0;
+	cp->nb_lnk = 0;
 	cp->next = NULL;
 	cp->room_name = NULL;
 	cp->num_path = 0;

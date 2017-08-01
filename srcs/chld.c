@@ -21,7 +21,7 @@ char		**get_chlds_name(t_dna *dna, const t_node *p)
 	tab = NULL;
 	tmp = dna->link_lst;
 	i = 0;
-	if (!(tab = (char**)malloc(sizeof(char*) * (p->nb_chld + 1))))
+	if (!(tab = (char**)malloc(sizeof(char*) * (p->nb_lnk + 1))))
 		error("error : malloc\n");
 	while (tmp)
 	{
@@ -62,7 +62,7 @@ t_node		**set_child(t_node *cp)
 	int		size;
 	t_node	**next;
 
-	size = cp->nb_chld;
+	size = cp->nb_lnk;
 	if (!(next = (t_node**)malloc(sizeof(t_node*) * size)))
 		error("error : malloc\n");
 	return (next);
@@ -85,7 +85,7 @@ t_node		*best_chld(t_dna *dna, t_node *node)
 
 	i = 0;
 	best = NULL;
-	while (i < node->nb_chld)
+	while (i < node->nb_lnk)
 	{
 		if (!best && node->next[i] && !already_use(dna))
 			best = node->next[i];

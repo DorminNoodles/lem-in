@@ -48,7 +48,7 @@ void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 
 	i = 0;
 
-	while (i < dna->path->nb_chld)
+	while (i < dna->path->nb_lnk)
 	{
 		tmp = lst_ants;
 		if (stk[i])

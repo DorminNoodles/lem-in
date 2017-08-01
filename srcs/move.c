@@ -19,7 +19,7 @@ void	move_ants(t_dna *dna)
 	t_ants	*lst_ants;
 
 	move = 1;
-	if (!(stk = (int*)ft_memalloc(sizeof(int) * dna->path->nb_chld)))
+	if (!(stk = (int*)ft_memalloc(sizeof(int) * dna->path->nb_lnk)))
 		error("error : malloc\n");
 	dispatch_ants(dna, stk);
 

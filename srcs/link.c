@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/09 11:55:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/01 15:18:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		cnt_lnk(t_dna *dna, const char *name)
 
 	i = 0;
 	tmp = dna->link_lst;
+
 	while (tmp)
 	{
 		if (tmp->from && !ft_strcmp(tmp->from, name))

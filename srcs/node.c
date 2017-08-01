@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/30 17:53:14 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/01 15:10:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		sort_node_by_score(t_dna *dna)
 
 	i = 0;
 	clean_null_path(dna);
-	while (i < dna->path->nb_chld - 1)
+	while (i < dna->path->nb_lnk - 1)
 	{
 		if (dna->path->next[i])
 		{
@@ -45,7 +45,7 @@ t_node		*next_node_path(t_node *node)
 	int i;
 
 	i = 0;
-	while (i < node->nb_chld)
+	while (i < node->nb_lnk)
 	{
 		if (node->next[i])
 		{

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/30 18:36:09 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/01 17:26:14 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	drop_in_best(t_dna *dna, int *stk)
 	score = -1;
 	best = 0;
 	i = 0;
-	while (i < dna->path->nb_chld)
+	while (i < dna->path->nb_lnk)
 	{
 		// printf("ECTO child[%d]  :  %p\n", i, dna->path->next[i]);
 		if (dna->path->next[i])
@@ -62,24 +62,32 @@ int		main(int argc, char **argv)
 		error("usage: ./lem-in input_file\n");
 	if (parsing(&dna, argv[1]))
 	{
-		while (!(dna.path = create_raw_path(&dna, NULL, NULL)))
-		{
-			printf("BORDEL DE MERDE\n");
-			if (dna.node_limits < 30)
-				dna.node_limits++;
-			else
-				break ;
-		}
+		// t_link *fuck = dna.link_lst;
+		// while (fuck)
+		// {
+		// 	printf("lnk => %s-%s\n", fuck->from, fuck->to);
+		// 	fuck = fuck->next;
+		// }
+		// while (!(dna.path = create_raw_path(&dna, NULL, NULL)))
+		// {
+		// 	printf("BORDEL DE MERDE\n");
+		// 	if (dna.node_limits < 30)
+		// 		dna.node_limits++;
+		// 	else
+		// 		break ;
+		// }
+		//
+		// if (!dna.nb_path)
+		// 	error("error : no path\n");
+		// clean_useless_path(&dna);
+		// display_path_debug(&dna);
+		//
+		// dna.start_node = dna.path;
+		//
+		// printf("nb_child => %d\n", dna.path->nb_lnk);
+		// printf(">> %s\n", dna.path->next[0]->room_name);
 
-		if (!dna.nb_path)
-			error("error : no path\n");
-		clean_useless_path(&dna);
-		display_path_debug(&dna);
-
-		dna.start_node = dna.path;
-
-		printf("nb_child => %d\n", dna.path->nb_chld);
-		printf(">> %s\n", dna.path->next[0]->room_name);
+		dna.path = create_raw_path(&dna, dna.start->name, NULL);
 
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);
