@@ -25,12 +25,12 @@ char		**get_chlds_name(t_dna *dna, const t_node *p)
 		error("error : malloc\n");
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->from, p->room_name))
+		if (!ft_strcmp(tmp->from, p->name))
 		{
 			tab[i] = tmp->to;
 			i++;
 		}
-		if (!ft_strcmp(tmp->to, p->room_name))
+		if (!ft_strcmp(tmp->to, p->name))
 		{
 			tab[i] = tmp->from;
 			i++;
@@ -47,7 +47,7 @@ int			chld_exist(t_dna *dna, t_node *path)
 	int length;
 
 	i = 0;
-	length = cnt_lnk(dna, path->room_name);
+	length = cnt_lnk(dna, path->name);
 	while (i < length)
 	{
 		if (path->next[i])

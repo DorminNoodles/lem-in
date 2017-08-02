@@ -19,8 +19,8 @@ int			redundancy_link(t_dna *dna, char *str)
 	t_link	*lst_link;
 
 	lst_link = dna->link_lst;
-	s1 = get_room_name(str, FROM);
-	s2 = get_room_name(str, TO);
+	s1 = get_name(str, FROM);
+	s2 = get_name(str, TO);
 	while (lst_link)
 	{
 		if (!ft_strcmp(lst_link->from, s1) || !ft_strcmp(lst_link->from, s2))

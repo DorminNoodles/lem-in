@@ -25,7 +25,7 @@ t_link	*new_link(void)
 	return (lk);
 }
 
-char	*get_room_name(char *str, int flag)
+char	*get_name(char *str, int flag)
 {
 	char **split;
 	char *tmp;
@@ -56,8 +56,8 @@ void	add_link(t_dna *dna, char *str)
 	t_link *tmp;
 
 	new = new_link();
-	new->from = get_room_name(str, FROM);
-	new->to = get_room_name(str, TO);
+	new->from = get_name(str, FROM);
+	new->to = get_name(str, TO);
 	if (new->to[ft_strlen(new->to) - 1] == 13)
 		new->to[ft_strlen(new->to) - 1] = 0;
 	if (dna->link_lst)

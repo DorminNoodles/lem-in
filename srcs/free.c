@@ -22,7 +22,7 @@ void	free_lst_ants(t_ants *lst_ants)
 void	free_one_node(t_node **n)
 {
 	ft_memdel((void**)&(*n)->next);
-	ft_memdel((void**)&(*n)->room_name);
+	ft_memdel((void**)&(*n)->name);
 	ft_memdel((void**)n);
 }
 
@@ -30,7 +30,7 @@ void	free_node(t_node *node)
 {
 	if (node->joint)
 		free_node(node->joint);
-	free(node->room_name);
+	free(node->name);
 	free(node->next);
 	free(node);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 14:46:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 15:04:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	cp_init(t_node *cp, t_node *parent)
 	cp->score = -1;
 	cp->nb_lnk = 0;
 	cp->next = NULL;
-	cp->room_name = NULL;
+	cp->name = NULL;
 	cp->num_path = 0;
 	cp->active = 0;
 	cp->joint = NULL;

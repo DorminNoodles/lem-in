@@ -26,7 +26,7 @@ int		is_name_link(t_dna *dna, char *str)
 	return (0);
 }
 
-int		is_room_name(t_dna *dna, char *str)
+int		is_name(t_dna *dna, char *str)
 {
 	t_room	*tmp;
 

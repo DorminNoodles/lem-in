@@ -23,7 +23,7 @@ void		display(t_dna *dna, t_ants *lst)
 	{
 		printf("lst->id = %d\n", lst->id);
 		if (lst->pos)
-			printf("pos : %s\n", lst->pos->room_name);
+			printf("pos : %s\n", lst->pos->name);
 		// if (lst->pos && lst->active)
 		// {
 		// 	tmp = (t_node*)lst->pos;
@@ -31,7 +31,7 @@ void		display(t_dna *dna, t_ants *lst)
 		// 	ft_putstr(((itoa = ft_itoa(lst->id))));
 		// 	free(itoa);
 		// 	ft_putstr("-");
-		// 	ft_putstr((char*)tmp->room_name);
+		// 	ft_putstr((char*)tmp->name);
 		// 	ft_putstr(" ");
 		// 	if (is_end(dna, tmp))
 		// 	{
@@ -53,12 +53,12 @@ void	display_path_debug(t_dna *dna)
 	i = 0;
 	printf("NB_PATH > %d\n", dna->nb_path);
 
-	printf("Room Start %s\n\n", dna->path->room_name);
+	printf("Room Start %s\n\n", dna->path->name);
 
 	tmp = dna->path->next[0];
 	while (tmp)
 	{
-		printf("Room %s\n", tmp->room_name);
+		printf("Room %s\n", tmp->name);
 		printf("Num %d\n", tmp->num_path);
 		tmp = next_node_path(tmp);
 	}
@@ -66,7 +66,7 @@ void	display_path_debug(t_dna *dna)
 	tmp = dna->path->next[1];
 	while (tmp)
 	{
-		printf("Room %s\n", tmp->room_name);
+		printf("Room %s\n", tmp->name);
 		printf("Num %d\n", tmp->num_path);
 		printf("Child num path %d\n", tmp->next[0]->num_path);
 		printf("Child num path %p\n", tmp->next[0]);

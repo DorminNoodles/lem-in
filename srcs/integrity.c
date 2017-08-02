@@ -18,8 +18,8 @@ int		check_link_str(t_dna *dna, char *str)
 
 	if (!ft_strchr(str, '-') || !(split = ft_strsplit(str, '-')))
 		return (0);
-	if (!split[0] || !split[1] || !is_room_name(dna, split[0]) ||
-	!is_room_name(dna, split[1]))
+	if (!split[0] || !split[1] || !is_name(dna, split[0]) ||
+	!is_name(dna, split[1]))
 	{
 		free_split(split, 0);
 		return (0);
@@ -35,8 +35,8 @@ int		link_integrity(t_dna *dna, char *str)
 
 	if (!check_link_str(dna, str))
 		return (0);
-	s1 = get_room_name(str, FROM);
-	s2 = get_room_name(str, TO);
+	s1 = get_name(str, FROM);
+	s2 = get_name(str, TO);
 	if (!ft_strcmp(s1, s2))
 	{
 		ft_memdel((void**)&s1);

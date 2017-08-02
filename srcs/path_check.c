@@ -14,7 +14,7 @@
 
 int		is_end(t_dna *dna, t_node *cp)
 {
-	if (!ft_strcmp(cp->room_name, dna->end->name))
+	if (!ft_strcmp(cp->name, dna->end->name))
 		return (1);
 	return (0);
 }
@@ -22,7 +22,7 @@ int		is_end(t_dna *dna, t_node *cp)
 int		is_start(t_dna *dna, t_node *cp)
 {
 	// printf("Node -> %p\n", cp);
-	if (!ft_strcmp(cp->room_name, dna->start->name))
+	if (!ft_strcmp(cp->name, dna->start->name))
 		return (1);
 	return (0);
 }
@@ -35,7 +35,7 @@ int		repeat_room(t_node *cp)
 	tmp = cp->parent;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->room_name, cp->room_name))
+		if (!ft_strcmp(tmp->name, cp->name))
 			return (1);
 		tmp = tmp->parent;
 	}

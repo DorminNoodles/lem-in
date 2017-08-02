@@ -52,7 +52,7 @@ int		compare_room(t_dna *dna, t_node *node)
 	tmp = dna->node_lst;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->room_name, node->room_name) && tmp->active)
+		if (!ft_strcmp(tmp->name, node->name) && tmp->active)
 			return (1);
 		tmp = tmp->joint;
 	}

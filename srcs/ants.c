@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 19:23:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 15:43:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	dispatch_ants(t_dna *dna, int *stk)
 	ants = dna->nb_ants;
 	while (ants)
 	{
-		drop_in_best(dna, stk);
+		// drop_in_best(dna, stk);
 		ants--;
 	}
 }
@@ -54,17 +54,17 @@ void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 		if (stk[i])
 		{
 			printf("STK => %d  child : %d\n", stk[i], i);
-			// printf("bordel => %s\n", tmp->pos->room_name);
-			printf("child[%d]  :  %p\n", i, dna->path->next[i]);
-			while (tmp && ft_strcmp(tmp->pos->room_name, dna->start->name))
+			// printf("bordel => %s\n", tmp->pos->name);
+			// printf("child[%d]  :  %p\n", i, dna->path->next[i]);
+			while (tmp && ft_strcmp(tmp->pos->name, dna->start->name))
 			{
 				tmp = tmp->next;
 			}
-			if (tmp)
-				tmp->pos = dna->path->next[i];
+			// if (tmp)
+			// 	tmp->pos = dna->path->next[i];
 				printf("POUET\n");
 
-				// printf("TMP_>POS : %s\n", dna->path->next[i]->room_name);
+				// printf("TMP_>POS : %s\n", dna->path->next[i]->name);
 			// tmp = lst_ants;
 			// while (tmp)
 			// {
