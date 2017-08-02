@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 17:21:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 15:04:09 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ void	dna_init(t_dna *dna)
 	dna->node_lst = NULL;
 	dna->tmp_node_lst = NULL;
 	dna->node_limits = 7;
+	dna->start_node = NULL;
 }
 
 void	cp_init(t_node *cp, t_node *parent)
 {
 	cp->parent = parent;
 	cp->score = -1;
-	cp->nb_chld = 0;
+	cp->nb_lnk = 0;
 	cp->next = NULL;
-	cp->room_name = NULL;
+	cp->name = NULL;
 	cp->num_path = 0;
 	cp->active = 0;
 	cp->joint = NULL;

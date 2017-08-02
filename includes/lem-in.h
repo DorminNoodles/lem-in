@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:43:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 15:40:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define FROM 1
 #define TO 2
 
-// #define malloc(X) my_malloc( X, __FILE__, __LINE__, __FUNCTION__)
+#define POUET   "test\n pouet2"
 
 typedef struct s_room
 {
@@ -51,14 +51,14 @@ typedef struct s_line
 typedef struct s_node
 {
 	int				score;
-	int				nb_chld;
+	int				nb_lnk;
 	int				num_path;
 	int				active;
 	int				ant;
-	char			*room_name;
+	char			*name;
 	struct s_node	*parent;
-	struct s_node	**next;
-	struct s_node	*joint;
+	struct s_node	**lnk;
+	struct s_node	*next;
 }t_node;
 
 typedef struct s_ants
@@ -84,6 +84,7 @@ typedef struct s_dna
 	t_node	*tmp_node_lst;
 	t_node	*path;
 	t_list	*path_done;
+	t_node	*tree;
 }t_dna;
 
 int			parsing(t_dna *dna, char *filename);
@@ -105,7 +106,7 @@ int			check_edge_integrity(t_dna *dna);
 int			is_link(char *str);
 t_list		*precheck(t_list *data);
 char		*check_name(t_list *data);
-char		*get_room_name(char *str, int flag);
+char		*get_name(char *str, int flag);
 void		add_roomlst(t_dna *dna, t_room *room);
 int			only_blank(char *str);
 void		free_room_lst(t_room **lst);
@@ -125,30 +126,22 @@ int			check_path(t_dna *dna, t_node *node);
 void		cp_init(t_node *cp, t_node *parent);
 void		dna_free(t_dna *dna);
 int			cost_of_path(t_dna *dna, int *stk, int nb);
-void		display(t_ants *lst);
+void		display(t_dna *dna, t_ants *lst);
 void		dispatch_ants(t_dna *dna, int *stk);
 void		push_ants(t_dna *dna, int *stk, t_ants *lst_ants);
-void		drop_in_best(t_dna *dna, int *stk);
-t_ants		*create_lst_ants(int nb);
+// void		drop_in_best(t_dna *dna, int *stk);
+t_ants		*create_lst_ants(t_dna *dna, int nb);
 void		move_ants(t_dna *dna);
 void		free_one_node(t_node **n);
 void		free_lst_ants(t_ants *lst_ants);
 int			ants_in_path(t_dna *dna, t_ants *lst);
 void		ants_displace(t_dna *dna, t_ants *lst);
-int			is_room_name(t_dna *dna, char *str);
-// int			coord_integrity(char *a, char *b);
-// // t_list		*start_precheck(t_list *data);
-// t_room		*newroom();
-// int			split_length(char **split);
-//
-// /* volatile */
-//
-// // t_list		*end_precheck(t_list *data);
-// void		add_in_tab();
-// t_node		*set_cur_path(t_dna *dna, char *name, t_node *parent);
-// void		debug_path(t_node *cp);
-// void		sort_node_by_score(t_dna *dna);
-
-
-
+int			is_name(t_dna *dna, char *str);
+int			redundancy_link(t_dna *dna, char *str);
+int			check_coord(char *str);
+void		add_node_lst(t_dna *dna, t_node *node);
+int			is_start(t_dna *dna, t_node *cp);
+void		display_path_debug(t_dna *dna);
+t_node		*create_tree(t_dna *dna);
+t_node		*create_node_lst(t_dna *dna);
 #endif

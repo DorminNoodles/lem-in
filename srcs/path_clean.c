@@ -17,7 +17,7 @@ void	clean_null_path(t_dna *dna)
 	int i;
 
 	i = 0;
-	while (i < dna->path->nb_chld - 1)
+	while (i < dna->path->nb_lnk - 1)
 	{
 		if (!dna->path->next[i])
 		{
@@ -52,7 +52,7 @@ int		compare_room(t_dna *dna, t_node *node)
 	tmp = dna->node_lst;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->room_name, node->room_name) && tmp->active)
+		if (!ft_strcmp(tmp->name, node->name) && tmp->active)
 			return (1);
 		tmp = tmp->joint;
 	}
@@ -78,7 +78,7 @@ void	clean_useless_path(t_dna *dna)
 	nb_valid = 1;
 	invalid = 0;
 	sort_node_by_score(dna);
-	while (i < dna->path->nb_chld)
+	while (i < dna->path->nb_lnk)
 	{
 		if (dna->path->next[i])
 		{

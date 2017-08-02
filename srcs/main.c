@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:36:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 15:44:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,32 @@ int		stk_is_empty(int *stk, int nb)
 	return (1);
 }
 
-void	drop_in_best(t_dna *dna, int *stk)
-{
-	int	i;
-	int	score;
-	int best;
-
-	score = -1;
-	best = 0;
-	i = 0;
-	while (i < dna->path->nb_chld)
-	{
-		if (dna->path->next[i] && dna->path->next[i]->active)
-		{
-			if (cost_of_path(dna, stk, i) < score || score == -1)
-			{
-				score = cost_of_path(dna, stk, i);
-				best = i;
-			}
-		}
-		i++;
-	}
-	stk[best]++;
-}
+// void	drop_in_best(t_dna *dna, int *stk)
+// {
+// 	int	i;
+// 	int	score;
+// 	int best;
+//
+// 	score = -1;
+// 	best = 0;
+// 	i = 0;
+// 	while (i < dna->path->nb_lnk)
+// 	{
+// 		// printf("ECTO child[%d]  :  %p\n", i, dna->path->next[i]);
+// 		if (dna->path->next[i])
+// 			printf("ACTIVE child[%d]  :  %d\n", i, dna->path->next[i]->active);
+// 		if (dna->path->next[i] && dna->path->next[i]->active)
+// 		{
+// 			if (cost_of_path(dna, stk, i) < score || score == -1)
+// 			{
+// 				score = cost_of_path(dna, stk, i);
+// 				best = i;
+// 			}
+// 		}
+// 		i++;
+// 	}
+// 	stk[best]++;
+// }
 
 int		main(int argc, char **argv)
 {
@@ -59,18 +62,50 @@ int		main(int argc, char **argv)
 		error("usage: ./lem-in input_file\n");
 	if (parsing(&dna, argv[1]))
 	{
-		while (!(dna.path = create_raw_path(&dna, NULL, NULL)))
+		// t_link *fuck = dna.link_lst;
+		// while (fuck)
+		// {
+		// 	printf("lnk => %s-%s\n", fuck->from, fuck->to);
+		// 	fuck = fuck->next;
+		// }
+		// while (!(dna.path = create_raw_path(&dna, NULL, NULL)))
+		// {
+		// 	printf("BORDEL DE MERDE\n");
+		// 	if (dna.node_limits < 30)
+		// 		dna.node_limits++;
+		// 	else
+		// 		break ;
+		// }
+		//
+		// if (!dna.nb_path)
+		// 	error("error : no path\n");
+		// clean_useless_path(&dna);
+		// display_path_debug(&dna);
+		//
+		// dna.start_node = dna.path;
+		//
+		// printf("nb_child => %d\n", dna.path->nb_lnk);
+		// printf(">> %s\n", dna.path->next[0]->name);
+
+		// dna.path = create_raw_path(&dna, dna.start->name, NULL);
+			// printf("test => %s\n", dna->start->name);
+		// if (!(dna.tree = create_tree(&dna)))
+		// 	error("error : create tree failed\n");
+		if (!(dna.node_lst = create_node_lst(&dna)))
+			error("error : create tree failed\n");
+
+		while (dna.node_lst)
 		{
-			if (dna.node_limits < 30)
-				dna.node_limits++;
-			else
-				break ;
+			printf("ROOM > %s\n", dna.node_lst->name);
+			// printf("ROOM > %s\n", dna.node_lst->next->);
+			dna.node_lst = dna.node_lst->next;
 		}
-		if (!dna.nb_path)
-			error("error : no path\n");
-		clean_useless_path(&dna);
-		move_ants(&dna);
-		dna_free(&dna);
+
+		// printf("Start_node : %p\n", dna.start_node);
+		// printf("Start_node(path) : %p\n", dna.path);
+
+		// move_ants(&dna);
+		// dna_free(&dna);
 	}
 	else
 		ft_putstr("ERROR\n");

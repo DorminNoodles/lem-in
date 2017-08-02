@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:30:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/26 18:35:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/06/28 11:38:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	free_lst_ants(t_ants *lst_ants)
 
 void	free_one_node(t_node **n)
 {
-	ft_memdel((void**)&(*n)->room_name);
+	ft_memdel((void**)&(*n)->next);
+	ft_memdel((void**)&(*n)->name);
 	ft_memdel((void**)n);
 }
 
@@ -29,7 +30,7 @@ void	free_node(t_node *node)
 {
 	if (node->joint)
 		free_node(node->joint);
-	free(node->room_name);
+	free(node->name);
 	free(node->next);
 	free(node);
 }
@@ -54,4 +55,17 @@ void	dna_free(t_dna *dna)
 		free_link_lst(dna->link_lst);
 		dna->link_lst = NULL;
 	}
+}
+
+void	free_split(char **tab, int nb)
+{
+	int i;
+
+	i = 0;
+	while (i < nb)
+	{
+		ft_memdel((void**)&tab[i]);
+		i++;
+	}
+	ft_memdel((void**)&tab);
 }

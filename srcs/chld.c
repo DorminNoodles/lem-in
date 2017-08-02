@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/09 11:30:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/30 17:50:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ char		**get_chlds_name(t_dna *dna, const t_node *p)
 	tab = NULL;
 	tmp = dna->link_lst;
 	i = 0;
-	if (!(tab = (char**)malloc(sizeof(char*) * (p->nb_chld + 1))))
+	if (!(tab = (char**)malloc(sizeof(char*) * (p->nb_lnk + 1))))
 		error("error : malloc\n");
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->from, p->room_name))
+		if (!ft_strcmp(tmp->from, p->name))
 		{
 			tab[i] = tmp->to;
 			i++;
 		}
-		if (!ft_strcmp(tmp->to, p->room_name))
+		if (!ft_strcmp(tmp->to, p->name))
 		{
 			tab[i] = tmp->from;
 			i++;
@@ -47,7 +47,7 @@ int			chld_exist(t_dna *dna, t_node *path)
 	int length;
 
 	i = 0;
-	length = cnt_lnk(dna, path->room_name);
+	length = cnt_lnk(dna, path->name);
 	while (i < length)
 	{
 		if (path->next[i])
@@ -62,7 +62,7 @@ t_node		**set_child(t_node *cp)
 	int		size;
 	t_node	**next;
 
-	size = cp->nb_chld;
+	size = cp->nb_lnk;
 	if (!(next = (t_node**)malloc(sizeof(t_node*) * size)))
 		error("error : malloc\n");
 	return (next);
@@ -85,7 +85,7 @@ t_node		*best_chld(t_dna *dna, t_node *node)
 
 	i = 0;
 	best = NULL;
-	while (i < node->nb_chld)
+	while (i < node->nb_lnk)
 	{
 		if (!best && node->next[i] && !already_use(dna))
 			best = node->next[i];

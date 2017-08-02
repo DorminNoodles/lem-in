@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:36:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/06 16:36:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/07/27 14:13:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int		is_end(t_dna *dna, t_node *cp)
 {
-	if (!ft_strcmp(cp->room_name, dna->end->name))
+	if (!ft_strcmp(cp->name, dna->end->name))
 		return (1);
 	return (0);
 }
 
 int		is_start(t_dna *dna, t_node *cp)
 {
-	if (!ft_strcmp(cp->room_name, dna->start->name))
+	// printf("Node -> %p\n", cp);
+	if (!ft_strcmp(cp->name, dna->start->name))
 		return (1);
 	return (0);
 }
@@ -30,13 +31,15 @@ int		repeat_room(t_node *cp)
 {
 	t_node *tmp;
 
+	// printf("SEGFAULT1\n");
 	tmp = cp->parent;
 	while (tmp)
 	{
-		if (!ft_strcmp(tmp->room_name, cp->room_name))
+		if (!ft_strcmp(tmp->name, cp->name))
 			return (1);
 		tmp = tmp->parent;
 	}
+	// printf("SEGFAULT2\n");
 	return (0);
 }
 
