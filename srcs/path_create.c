@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 15:37:27 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 22:34:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,28 @@ void	get_start_node(t_dna *dna, t_node *cp)
 // 	return (NULL);
 // }
 
+t_node		*get_next_node(t_dna *dna, t_node *node, int nb)
+{
+	int i;
+	// t_node	*node;
+	char	*name;
+	t_node	*lst;
+
+	i = 0;
+	name = get_next_lnk(dna, node->name, nb);
+
+	lst = dna->node_lst;
+
+	while (lst)
+	{
+		if (!ft_strcmp(name, lst->name))
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
+}
+
+
 char		*get_next_lnk(t_dna *dna, char *name, int nb)
 {
 	t_link *lst;
@@ -214,22 +236,33 @@ t_node		*create_node_lst(t_dna *dna)
 
 	while (lst)
 	{
-
-		tmp = (t_node*)ft_memalloc(sizeof(t_node));
-		tmp->name = lst->name;
-
 		if (node_lst)
 		{
-			node_lst->next = tmp;
-			node_lst = node_lst->next;
+			tmp->next = (t_node*)ft_memalloc(sizeof(t_node));
+			tmp = tmp->next;
 		}
 		else
-			node_lst = tmp;
+		{
+			node_lst = (t_node*)ft_memalloc(sizeof(t_node));
+			tmp = node_lst;
 
+		}
+		tmp->name = lst->name;
+		// tmp = (t_node*)ft_memalloc(sizeof(t_node));
+		// node_init(tmp, NULL);
+		// tmp->name = lst->name;
+		// //
+		// if (node_lst)
+		// {
+		// 	printf("debug %s\n", lst->name);
+		// 	node_lst->next = tmp;
+		// 	node_lst = node_lst->next;
+		// }
+		// else
+		// 	node_lst = tmp;
+		// printf("ta mere %s\n", lst->name);
 		lst = lst->next;
 	}
-
-
 
 	return (node_lst);
 }
@@ -237,13 +270,35 @@ t_node		*create_node_lst(t_dna *dna)
 t_node		*create_tree(t_dna *dna)
 {
 	t_node *tree;
+	t_node *lst;
+	int i;
+
+	i = 0;
+	lst = dna->node_lst;
 
 
-	tree = (t_node*)ft_memalloc(sizeof(t_node*));
-	tree->name = dna->start->name;
+	printf(">> %s\n", dna->node_lst->name);
+	printf(">> %s\n", get_next_lnk(dna, dna->node_lst->name, 0));
+	printf(">> %s\n", get_next_lnk(dna, dna->node_lst->name, 20));
 
-	// printf("test => %s\n", dna->start->name);
-	tree->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * cnt_lnk(dna, tree->name));
+	printf("Test > %d\n", cnt_lnk(dna, lst->name));
+
+	while (lst)
+	{
+		i = 0;
+		lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * cnt_lnk(dna, lst->name));
+
+		while (i < cnt_lnk(dna, lst->name))
+		{
+			lst->lnk[i] = get_next_node(dna, lst, i);
+			printf("parent> %s child> %s\n", lst->name, get_next_node(dna, lst, i)->name);
+			// get_next_lnk(dna, dna->node_lst->name, i);
+			i++;
+		}
+		lst = lst->next;
+		printf("\n");
+	}
+
 
 	// while ()
 	// {

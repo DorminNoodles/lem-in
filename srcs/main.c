@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 15:44:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 22:34:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ int		main(int argc, char **argv)
 
 		// dna.path = create_raw_path(&dna, dna.start->name, NULL);
 			// printf("test => %s\n", dna->start->name);
-		// if (!(dna.tree = create_tree(&dna)))
-		// 	error("error : create tree failed\n");
 		if (!(dna.node_lst = create_node_lst(&dna)))
+			error("error : create tree failed\n");
+
+		if (!(dna.tree = create_tree(&dna)))
 			error("error : create tree failed\n");
 
 		while (dna.node_lst)

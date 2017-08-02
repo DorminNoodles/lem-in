@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 15:40:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/02 22:07:42 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,7 @@ int			is_start(t_dna *dna, t_node *cp);
 void		display_path_debug(t_dna *dna);
 t_node		*create_tree(t_dna *dna);
 t_node		*create_node_lst(t_dna *dna);
+void		node_init(t_node *node, t_node *parent);
+t_node		*get_next_node(t_dna *dna, t_node *node, int nb);
+char		*get_next_lnk(t_dna *dna, char *name, int nb);
 #endif
