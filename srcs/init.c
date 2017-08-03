@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 19:03:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/03 11:42:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	node_init(t_node *node, t_node *parent)
 {
 
 	node->next = NULL;
+	node->score = -1;
 	// cp->parent = parent;
 	// cp->score = -1;
 	// cp->nb_lnk = 0;

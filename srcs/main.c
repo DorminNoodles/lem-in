@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/03 02:31:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/03 23:28:20 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,15 @@ int		main(int argc, char **argv)
 		error("usage: ./lem-in input_file\n");
 	if (parsing(&dna, argv[1]))
 	{
+		t_link *pouet;
+
+		pouet = dna.link_lst;
+		while (pouet)
+		{
+			printf("linkou => %s   => %s\n", pouet->from, pouet->to);
+			printf("next => %p\n", pouet->next);
+			pouet = pouet->next;
+		}
 		// t_link *fuck = dna.link_lst;
 		// while (fuck)
 		// {
@@ -97,7 +106,22 @@ int		main(int argc, char **argv)
 
 		create_tree(&dna);
 
-		create_path(&dna);
+		printf("BORDEL >>> %d\n", cnt_lnk(&dna, dna.end_node->name));
+
+		printf("HERE\n");
+		cnt_lnk(&dna, "end");
+		printf("END\n");
+
+		while (dna.link_lst)
+		{
+			printf("chevre\n");
+			dna.link_lst = dna.link_lst->next;
+		}
+
+		//Y A QU UN SEUL PUTAIN DE LNK !!!!!
+
+
+		create_path(&dna, dna.end_node, 0);
 
 		while (dna.node_lst)
 		{

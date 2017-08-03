@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/03 02:39:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/03 13:17:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -247,6 +247,7 @@ t_node		*create_node_lst(t_dna *dna)
 			tmp = node_lst;
 
 		}
+		node_init(tmp, NULL);
 		tmp->name = lst->name;
 		is_end(dna, tmp);
 		if (is_end(dna, tmp))
@@ -315,12 +316,39 @@ void	create_tree(t_dna *dna)
 	//
 }
 
-void	create_path(t_dna *dna)
+void	create_path(t_dna *dna, t_node *node, int score)
 {
+	int i;
 
-	printf("debug child of %s \n", dna->end_node->name);
-	printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[0]->name));
-	printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[1]->name));
+	printf(">%s    ", node->name);
+	// printf("Nb : %d\n", node->nb_lnk);
+	// printf("Score : %d\n", node->score);
 
+	i = 0;
+	// printf("debug child of %s \n", dna->end_node->name);
+	// printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[0]->name));
+	// printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[1]->name));
+
+	if (node->score > score || node->score == -1)
+		node->score = score;
+	else
+	{
+		printf("false");
+		printf("\n");
+		return;
+	}
+
+	if (is_start(dna, node))
+	{
+		printf("good \n");
+		return;
+	}
+
+	printf("NB FUCK LINK %d\n", node->nb_lnk);
+	while (i < node->nb_lnk)
+	{
+		create_path(dna, node->lnk[i], score + 1);
+		i++;
+	}
 
 }
