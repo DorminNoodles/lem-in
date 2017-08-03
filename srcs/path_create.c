@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 22:34:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/03 02:39:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,11 @@ t_node		*create_node_lst(t_dna *dna)
 
 		}
 		tmp->name = lst->name;
+		is_end(dna, tmp);
+		if (is_end(dna, tmp))
+			dna->end_node = tmp;
+
+		tmp->nb_lnk = cnt_lnk(dna, tmp->name);
 		// tmp = (t_node*)ft_memalloc(sizeof(t_node));
 		// node_init(tmp, NULL);
 		// tmp->name = lst->name;
@@ -267,7 +272,7 @@ t_node		*create_node_lst(t_dna *dna)
 	return (node_lst);
 }
 
-t_node		*create_tree(t_dna *dna)
+void	create_tree(t_dna *dna)
 {
 	t_node *tree;
 	t_node *lst;
@@ -286,7 +291,7 @@ t_node		*create_tree(t_dna *dna)
 	while (lst)
 	{
 		i = 0;
-		lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * cnt_lnk(dna, lst->name));
+		lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * lst->nb_lnk);
 
 		while (i < cnt_lnk(dna, lst->name))
 		{
@@ -308,7 +313,14 @@ t_node		*create_tree(t_dna *dna)
 	// }
 	//
 	//
+}
+
+void	create_path(t_dna *dna)
+{
+
+	printf("debug child of %s \n", dna->end_node->name);
+	printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[0]->name));
+	printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[1]->name));
 
 
-	return (tree);
 }
