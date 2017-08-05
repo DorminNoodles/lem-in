@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/03 23:29:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/04 23:07:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,17 @@ int		pars_link(t_dna *dna, t_list *data)
 
 	while (data)
 	{
+		printf("PARS_LINK\n");
 		tmp = (char*)data->content;
 		if (!is_com(tmp) && !is_order(tmp))
 		{
 			if (!link_integrity(dna, tmp))
+			{
+				ft_putstr("Warning : in link \"");
+				ft_putstr(tmp);
+				ft_putstr("\"\n");
 				return (-1);
+			}
 			add_link(dna, tmp);
 		}
 		data = data->next;
