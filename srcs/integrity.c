@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 17:01:40 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/04 21:05:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:43:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ int		check_link_str(t_dna *dna, char *str)
 	if (!ft_strchr(str, '-') || !(split = ft_strsplit(str, '-')))
 		return (0);
 
-	// printf(" fuck fuck strcmp %d\n", ft_strcmp("0000", "0000"));
-	// printf("SALOPERIE %d  %s\n", is_name(dna, split[1]), split[1]);
 	if (!split[0] || !split[1] || !is_name(dna, split[0]) ||
 	!is_name(dna, split[1]))
 	{

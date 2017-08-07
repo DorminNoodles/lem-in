@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/04 23:07:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:44:51 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		pars_link(t_dna *dna, t_list *data)
 
 	while (data)
 	{
-		printf("PARS_LINK\n");
+		// printf("PARS_LINK\n");
 		tmp = (char*)data->content;
 		if (!is_com(tmp) && !is_order(tmp))
 		{
@@ -103,12 +103,12 @@ int		cnt_lnk(t_dna *dna, const char *name)
 	i = 0;
 	tmp = dna->link_lst;
 
-	printf("NAME >> %s\n", name);
+	// printf("NAME >> %s\n", name);
 
 
 	while (tmp)
 	{
-		printf("bite\n");
+		// printf("bite\n");
 		if (tmp->from && !ft_strcmp(tmp->from, name))
 			i++;
 		if (tmp->to && !ft_strcmp(tmp->to, name))

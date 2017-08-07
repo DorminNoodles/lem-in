@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/03 23:28:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 16:42:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int		main(int argc, char **argv)
 		pouet = dna.link_lst;
 		while (pouet)
 		{
-			printf("linkou => %s   => %s\n", pouet->from, pouet->to);
-			printf("next => %p\n", pouet->next);
+			// printf("linkou => %s   => %s\n", pouet->from, pouet->to);
+			// printf("next => %p\n", pouet->next);
 			pouet = pouet->next;
 		}
 		// t_link *fuck = dna.link_lst;
@@ -106,29 +106,36 @@ int		main(int argc, char **argv)
 
 		create_tree(&dna);
 
-		printf("BORDEL >>> %d\n", cnt_lnk(&dna, dna.end_node->name));
 
-		printf("HERE\n");
 		cnt_lnk(&dna, "end");
-		printf("END\n");
-
-		while (dna.link_lst)
-		{
-			printf("chevre\n");
-			dna.link_lst = dna.link_lst->next;
-		}
 
 		//Y A QU UN SEUL PUTAIN DE LNK !!!!!
 
 
-		create_path(&dna, dna.end_node, 0);
 
-		while (dna.node_lst)
+		t_node *tmp = dna.node_lst;
+
+		while (tmp)
 		{
-			printf("ROOM > %s\n", dna.node_lst->name);
-			// printf("ROOM > %s\n", dna.node_lst->next->);
-			dna.node_lst = dna.node_lst->next;
+			int v = 0;
+			printf("ROOM > %s\n", tmp->name);
+			// printf("NB_LNK > %d\n", tmp->nb_lnk);
+
+			while (v < tmp->nb_lnk)
+			{
+				printf("	child -> %s\n", tmp->lnk[v]->name);
+				v++;
+			}
+
+			printf("\n\n");
+			tmp = tmp->next;
 		}
+
+		// printf("LNK NB %d\n", dna.end_node->nb_lnk);
+
+		// printf("LINK_LST => %p\n", dna.link_lst);
+
+		create_node_score(&dna, dna.end_node, 0);
 
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);

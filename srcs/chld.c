@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/30 17:50:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:32:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int			chld_exist(t_dna *dna, t_node *path)
 	length = cnt_lnk(dna, path->name);
 	while (i < length)
 	{
-		if (path->next[i])
+		if (path->lnk[i])
 			return (1);
 		i++;
 	}
@@ -87,12 +87,12 @@ t_node		*best_chld(t_dna *dna, t_node *node)
 	best = NULL;
 	while (i < node->nb_lnk)
 	{
-		if (!best && node->next[i] && !already_use(dna))
-			best = node->next[i];
-		else if (best && node->next[i] && best->score > node->next[i]->score)
+		if (!best && node->lnk[i] && !already_use(dna))
+			best = node->lnk[i];
+		else if (best && node->lnk[i] && best->score > node->lnk[i]->score)
 		{
 			if (!already_use(dna))
-				best = node->next[i];
+				best = node->lnk[i];
 		}
 		i++;
 	}

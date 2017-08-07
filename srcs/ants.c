@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/02 15:43:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:44:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	dispatch_ants(t_dna *dna, int *stk)
 
 void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 {
-	printf("ENTER PUSH ANTS\n");
 	int		i;
 	t_ants	*tmp;
 
@@ -53,24 +52,18 @@ void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
 		tmp = lst_ants;
 		if (stk[i])
 		{
-			printf("STK => %d  child : %d\n", stk[i], i);
-			// printf("bordel => %s\n", tmp->pos->name);
-			// printf("child[%d]  :  %p\n", i, dna->path->next[i]);
 			while (tmp && ft_strcmp(tmp->pos->name, dna->start->name))
 			{
 				tmp = tmp->next;
 			}
 			// if (tmp)
 			// 	tmp->pos = dna->path->next[i];
-				printf("POUET\n");
 
-				// printf("TMP_>POS : %s\n", dna->path->next[i]->name);
 			// tmp = lst_ants;
 			// while (tmp)
 			// {
 			// 	tmp = tmp->next;
 			//
-			// 	// printf("SEGFuck : %d \n", tmp->next->id);
 			// 	// tmp = tmp->next;
 			// }
 			// // tmp->pos = (void*)dna->path->next[i];

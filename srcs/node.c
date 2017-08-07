@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/01 15:10:40 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:37:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ void		sort_node_by_score(t_dna *dna)
 	clean_null_path(dna);
 	while (i < dna->path->nb_lnk - 1)
 	{
-		if (dna->path->next[i])
+		if (dna->path->lnk[i])
 		{
-			if (dna->path->next[i + 1])
+			if (dna->path->lnk[i + 1])
 			{
-				if (dna->path->next[i + 1]->score < dna->path->next[i]->score)
+				if (dna->path->lnk[i + 1]->score < dna->path->lnk[i]->score)
 				{
-					tmp = dna->path->next[i];
-					dna->path->next[i] = dna->path->next[i + 1];
-					dna->path->next[i + 1] = tmp;
+					tmp = dna->path->lnk[i];
+					dna->path->lnk[i] = dna->path->lnk[i + 1];
+					dna->path->lnk[i + 1] = tmp;
 					i -= 2;
 				}
 			}
@@ -47,10 +47,10 @@ t_node		*next_node_path(t_node *node)
 	i = 0;
 	while (i < node->nb_lnk)
 	{
-		if (node->next[i])
+		if (node->lnk[i])
 		{
-			if (node->next[i]->num_path == node->num_path)
-				return (node->next[i]);
+			if (node->lnk[i]->num_path == node->num_path)
+				return (node->lnk[i]);
 		}
 		i++;
 	}
@@ -79,8 +79,8 @@ void		add_node_lst(t_dna *dna, t_node *node)
 	}
 	else
 	{
-		while (dna->tmp_node_lst->joint)
-			dna->tmp_node_lst = dna->tmp_node_lst->joint;
-		dna->tmp_node_lst->joint = node;
+		while (dna->tmp_node_lst->next)
+			dna->tmp_node_lst = dna->tmp_node_lst->next;
+		dna->tmp_node_lst->next = node;
 	}
 }

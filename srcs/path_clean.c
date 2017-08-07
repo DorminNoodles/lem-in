@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:33:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/08 13:56:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:33:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	clean_null_path(t_dna *dna)
 	i = 0;
 	while (i < dna->path->nb_lnk - 1)
 	{
-		if (!dna->path->next[i])
+		if (!dna->path->lnk[i])
 		{
-			if (dna->path->next[i + 1])
+			if (dna->path->lnk[i + 1])
 			{
-				dna->path->next[i] = dna->path->next[i + 1];
-				dna->path->next[i + 1] = NULL;
+				dna->path->lnk[i] = dna->path->lnk[i + 1];
+				dna->path->lnk[i + 1] = NULL;
 				i--;
 			}
 		}
@@ -54,7 +54,7 @@ int		compare_room(t_dna *dna, t_node *node)
 	{
 		if (!ft_strcmp(tmp->name, node->name) && tmp->active)
 			return (1);
-		tmp = tmp->joint;
+		tmp = tmp->next;
 	}
 	return (0);
 }
@@ -80,12 +80,12 @@ void	clean_useless_path(t_dna *dna)
 	sort_node_by_score(dna);
 	while (i < dna->path->nb_lnk)
 	{
-		if (dna->path->next[i])
+		if (dna->path->lnk[i])
 		{
-			if (check_path(dna, dna->path->next[i]))
-				activate_path(dna, dna->path->next[i]);
+			if (check_path(dna, dna->path->lnk[i]))
+				activate_path(dna, dna->path->lnk[i]);
 			else
-				clean_path(dna, dna->path->next[i]);
+				clean_path(dna, dna->path->lnk[i]);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/03 13:17:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 18:19:44 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,24 +147,26 @@ void	get_start_node(t_dna *dna, t_node *cp)
 t_node		*get_next_node(t_dna *dna, t_node *node, int nb)
 {
 	int i;
-	// t_node	*node;
 	char	*name;
 	t_node	*lst;
 
+	// printf("FUCK\n");
+
 	i = 0;
 	name = get_next_lnk(dna, node->name, nb);
-
+	if (!name)
+		return (NULL);
+	// printf("name %p\n", name);
 	lst = dna->node_lst;
-
 	while (lst)
 	{
+		// printf ("name -> %s\n", name);
 		if (!ft_strcmp(name, lst->name))
 			return (lst);
 		lst = lst->next;
 	}
 	return (NULL);
 }
-
 
 char		*get_next_lnk(t_dna *dna, char *name, int nb)
 {
@@ -173,7 +175,6 @@ char		*get_next_lnk(t_dna *dna, char *name, int nb)
 
 	i = 0;
 	lst = dna->link_lst;
-
 	while (lst)
 	{
 		if (!ft_strcmp(lst->to, name))
@@ -282,13 +283,6 @@ void	create_tree(t_dna *dna)
 	i = 0;
 	lst = dna->node_lst;
 
-
-	printf(">> %s\n", dna->node_lst->name);
-	printf(">> %s\n", get_next_lnk(dna, dna->node_lst->name, 0));
-	printf(">> %s\n", get_next_lnk(dna, dna->node_lst->name, 20));
-
-	printf("Test > %d\n", cnt_lnk(dna, lst->name));
-
 	while (lst)
 	{
 		i = 0;
@@ -297,58 +291,65 @@ void	create_tree(t_dna *dna)
 		while (i < cnt_lnk(dna, lst->name))
 		{
 			lst->lnk[i] = get_next_node(dna, lst, i);
-			printf("parent> %s child> %s\n", lst->name, get_next_node(dna, lst, i)->name);
-			// get_next_lnk(dna, dna->node_lst->name, i);
 			i++;
 		}
 		lst = lst->next;
-		printf("\n");
 	}
-
-
-	// while ()
-	// {
-	//
-	//
-	//
-	// }
-	//
-	//
 }
 
-void	create_path(t_dna *dna, t_node *node, int score)
+void	create_node_score(t_dna *dna, t_node *node, int score)
 {
 	int i;
+	t_node *lnk;
 
-	printf(">%s    ", node->name);
-	// printf("Nb : %d\n", node->nb_lnk);
-	// printf("Score : %d\n", node->score);
-
+	printf("ta mere\n");
 	i = 0;
-	// printf("debug child of %s \n", dna->end_node->name);
-	// printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[0]->name));
-	// printf("child is %d \n", cnt_lnk(dna, dna->end_node->lnk[1]->name));
 
-	if (node->score > score || node->score == -1)
-		node->score = score;
-	else
-	{
-		printf("false");
-		printf("\n");
-		return;
-	}
+	//printf("lst -> %p\n", dna->link_lst);
 
-	if (is_start(dna, node))
-	{
-		printf("good \n");
-		return;
-	}
+	// lnk = get_next_node(dna, node, i);
+	// printf("LNK => %p\n", lnk);
+	// lnk = get_next_node(dna, node, i+1);
+	// printf("LNK => %p\n", lnk);
+	// lnk = get_next_node(dna, node, i+2);
+	// printf("LNK => %p\n", lnk);
+	// lnk = get_next_node(dna, node, i+3);
+	// printf("LNK => %p\n", lnk);
 
-	printf("NB FUCK LINK %d\n", node->nb_lnk);
-	while (i < node->nb_lnk)
+
+	while ((lnk = get_next_node(dna, node, i)))
 	{
-		create_path(dna, node->lnk[i], score + 1);
+
+		// printf("Fuck\n");
+		printf("LNK => %s\n", lnk->name);
 		i++;
 	}
 
+	// printf(">> %s\n", dna->end_node->name);
+	// while ((lnk = get_next_node(dna, node->name, i)))
+	// {
+	// 	// printf("lnk => %s\n", lnk->name);
+	// 	i++;
+	// }
+
+	// lnk = get_next_node(dna, node, i);
+	// printf(">> %s\n", lnk->name);
+	// lnk = get_next_node(dna, node, i+1);
+	// printf(">> %s\n", lnk->name);
+
+
+	// if (lnk)
+	// 	printf("lnk exist\n");
+	// else
+	// 	printf("NOoooo\n");
+
+
+	// get_next_node(dna, node, i);
+
+	// while ((lnk = get_next_node(dna, node, i)))
+	// {
+	// 	// printf ("> %s\n", lnk->name);
+	// 	i++;
+	// }
+	printf("create_node_score END\n");
 }

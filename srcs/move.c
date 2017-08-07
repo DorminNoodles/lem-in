@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/07/29 20:51:03 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:44:47 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	move_ants(t_dna *dna)
 	display(dna, lst_ants);
 	while (ants_in_path(dna, lst_ants))
 	{
-		printf("666\n");
 		ants_displace(dna, lst_ants);
 		push_ants(dna, stk, lst_ants);
 		display(dna, lst_ants);

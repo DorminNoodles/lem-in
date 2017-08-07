@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:30:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/06/28 11:38:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/07 09:30:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	free_one_node(t_node **n)
 
 void	free_node(t_node *node)
 {
-	if (node->joint)
-		free_node(node->joint);
+	if (node->next)
+		free_node(node->next);
 	free(node->name);
-	free(node->next);
+	// free(node->next);
 	free(node);
 }
 
