@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 18:19:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/09 18:46:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,8 @@ t_node		*create_node_lst(t_dna *dna)
 		is_end(dna, tmp);
 		if (is_end(dna, tmp))
 			dna->end_node = tmp;
+		if (is_start(dna, tmp))
+			dna->start_node = tmp;
 
 		tmp->nb_lnk = cnt_lnk(dna, tmp->name);
 		// tmp = (t_node*)ft_memalloc(sizeof(t_node));
@@ -286,7 +288,8 @@ void	create_tree(t_dna *dna)
 	while (lst)
 	{
 		i = 0;
-		lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * lst->nb_lnk);
+		if (!(lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * lst->nb_lnk)))
+			error("error : malloc\n");
 
 		while (i < cnt_lnk(dna, lst->name))
 		{
@@ -299,57 +302,168 @@ void	create_tree(t_dna *dna)
 
 void	create_node_score(t_dna *dna, t_node *node, int score)
 {
-	int i;
-	t_node *lnk;
+	int		i;
+	t_node	*lnk;
 
-	printf("ta mere\n");
+	// printf("\n\n");
+	// printf("START   %s\n", node->name);
+	// debug_display_all(dna);
 	i = 0;
 
-	//printf("lst -> %p\n", dna->link_lst);
+	lnk = NULL;
 
-	// lnk = get_next_node(dna, node, i);
-	// printf("LNK => %p\n", lnk);
-	// lnk = get_next_node(dna, node, i+1);
-	// printf("LNK => %p\n", lnk);
-	// lnk = get_next_node(dna, node, i+2);
-	// printf("LNK => %p\n", lnk);
-	// lnk = get_next_node(dna, node, i+3);
-	// printf("LNK => %p\n", lnk);
+	if (score > 25)
+		return;
 
+	if (is_start(dna, node))
+	{
+		node->score = score;
+		return;
+	}
+	if (score > node->score && node->score != -1)
+		return;
+	else
+	{
+		node->active = 1;
+		node->score = score;
+	}
 
 	while ((lnk = get_next_node(dna, node, i)))
 	{
+		// printf("root : %s     open : %s\n", node->name, lnk->name);
 
-		// printf("Fuck\n");
-		printf("LNK => %s\n", lnk->name);
+		create_node_score(dna, lnk, score + 1);
 		i++;
 	}
 
-	// printf(">> %s\n", dna->end_node->name);
-	// while ((lnk = get_next_node(dna, node->name, i)))
-	// {
-	// 	// printf("lnk => %s\n", lnk->name);
-	// 	i++;
-	// }
-
+	printf("\n\n");
 	// lnk = get_next_node(dna, node, i);
 	// printf(">> %s\n", lnk->name);
 	// lnk = get_next_node(dna, node, i+1);
 	// printf(">> %s\n", lnk->name);
+	printf("create_node_score END\n\n");
+}
+
+t_node		*next_node_path(t_node *node)
+{
+	int i;
+	t_node	*tmp;
+
+	i = 0;
+	tmp = NULL;
+	while (i < node->nb_lnk)
+	{
+		if (node->lnk[i]->num_path == -1 && node->lnk[i]->active)
+		{
+			if (!tmp || tmp->score > node->lnk[i]->score)
+				tmp = node->lnk[i];
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+t_node		*next_node_path_new(t_node *node, int num_path)
+{
+	int i;
+
+	i = 0;
+	while (i < node->nb_lnk)
+	{
+		if (node->lnk[i]->num_path == num_path)
+			return (node->lnk[i]);
+		i++;
+	}
+	return (NULL);
+}
+
+t_node		*next_shortest_node(t_node *node)
+{
+	int i;
+	t_node	*tmp;
+
+	i = 0;
+	tmp = NULL;
+
+	while (i < node->nb_lnk)
+	{
+		if (node->lnk[i]->num_path == -1 && node->lnk[i]->active)
+		{
+			if (!tmp || tmp->score > node->lnk[i]->score)
+				tmp = node->lnk[i];
+		}
+		i++;
+	}
+	return (tmp);
+}
+
+// int		pathfinding(t_dna *dna, int nb)
+// {
+// 	// return (0);
+// 	t_node	*node;
+//
+// 	node = dna->start_node;
+//
+// 	while (node && !is_end(dna, node))
+// 	{
+// 		printf("name node : %s\n", node->name);
+// 		node = next_node_path(node);
+//
+// 		printf("node => %p\n", node);
+// 		// if (node)
+// 		// 	node->num_path = nb;
+// 	}
+// 	if (!node || !is_end(dna, node))
+// 		return (0);
+// 	else
+// 		return (1);
+// }
+
+int		start_with_end(t_dna *dna)
+{
+	int i;
+
+	i = 0;
+	while (i < dna->start_node->nb_lnk)
+	{
+		if (is_end(dna, dna->start_node->lnk[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		pathfinding(t_dna *dna, int num)
+{
+	t_node	*node;
+	int		length;
+
+	length = 0;
+	node = dna->start_node;
+
+	// node = next_node_path(node);
+
+	// printf("Hello -> %s score-> %d\n", node->name, node->score);
 
 
-	// if (lnk)
-	// 	printf("lnk exist\n");
-	// else
-	// 	printf("NOoooo\n");
+	while (!is_end(dna, node))
+	{
+		printf("while\n");
+		// printf("cur node -> %s score=%d     next_node -> %s score=%d\n", node->name, node->score,  next_node_path(node)->name, next_node_path(node)->score);
 
+		printf("node before => %s  num_path=> %d\n\n", node->name, node->num_path);
 
-	// get_next_node(dna, node, i);
+		node = next_shortest_node(node);
+		printf("node %p\n", node);
+		if (!node)
+			return  (0);
+		printf("node after %s, %d\n", node->name, node->active);
 
-	// while ((lnk = get_next_node(dna, node, i)))
-	// {
-	// 	// printf ("> %s\n", lnk->name);
-	// 	i++;
-	// }
-	printf("create_node_score END\n");
+		printf("node after %s, active => %d, num_path => %d\n", node->name, node->active, node->num_path);
+		// node->num_path = num;
+		is_end(dna, node) ? 0 : (node->num_path = num);
+		is_end(dna, node) ? 0 : (node->active = 0);
+		printf("node after => %s\n", node->name);
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 09:37:31 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/08 16:02:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,22 @@ void		sort_node_by_score(t_dna *dna)
 	}
 }
 
-t_node		*next_node_path(t_node *node)
-{
-	int i;
-
-	i = 0;
-	while (i < node->nb_lnk)
-	{
-		if (node->lnk[i])
-		{
-			if (node->lnk[i]->num_path == node->num_path)
-				return (node->lnk[i]);
-		}
-		i++;
-	}
-	return (NULL);
-}
+// t_node		*next_node_path(t_node *node)
+// {
+// 	int i;
+//
+// 	i = 0;
+// 	while (i < node->nb_lnk)
+// 	{
+// 		if (node->lnk[i])
+// 		{
+// 			if (node->lnk[i]->num_path == node->num_path)
+// 				return (node->lnk[i]);
+// 		}
+// 		i++;
+// 	}
+// 	return (NULL);
+// }
 
 int			cnt_node_length(t_node *cp)
 {

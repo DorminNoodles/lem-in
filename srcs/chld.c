@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 09:32:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/08 15:57:01 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,24 @@ int			already_use(t_dna *dna)
 	return (0);
 }
 
+t_node		*best_node(t_node *node)
+{
+	int		i;
+	t_node	*tmp;
+
+	i = 0;
+	tmp = NULL;
+
+	while (i < node->nb_lnk)
+	{
+		if (!tmp || tmp->score > node->lnk[i]->score)
+			tmp = node->lnk[i];
+		i++;
+	}
+	return (tmp);
+}
+
+//OBSOLETE
 t_node		*best_chld(t_dna *dna, t_node *node)
 {
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 09:44:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/09 11:40:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,17 @@ t_ants	*create_lst_ants(t_dna *dna, int nb)
 	return (lst);
 }
 
-void	ants_displace(t_dna *dna, t_ants *lst)
-{
-	while (lst)
-	{
-		if ((t_node*)lst->pos)
-		{
-			if (!is_end(dna, (t_node*)lst->pos))
-				lst->pos = next_node_path((t_node*)lst->pos);
-			else
-				lst->active = 0;
-		}
-		lst = lst->next;
-	}
-}
+// void	ants_displace(t_dna *dna, t_ants *lst)
+// {
+// 	while (lst)
+// 	{
+// 		if ((t_node*)lst->pos)
+// 		{
+// 			if (!is_end(dna, (t_node*)lst->pos))
+// 				lst->pos = next_node_path((t_node*)lst->pos);
+// 			else
+// 				lst->active = 0;
+// 		}
+// 		lst = lst->next;
+// 	}
+// }

@@ -21,7 +21,8 @@ SRC =	main.c					\
 		path_check.c			\
 		path_clean.c			\
 		path_create.c			\
-		node.c
+		node.c					\
+		debug.c
 
 INC = -I includes -I libft/includes
 SRCS = $(addprefix srcs/, $(SRC))

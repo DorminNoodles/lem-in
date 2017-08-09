@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 15:37:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/09 16:58:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void		move_ants(t_dna *dna);
 void		free_one_node(t_node **n);
 void		free_lst_ants(t_ants *lst_ants);
 int			ants_in_path(t_dna *dna, t_ants *lst);
-void		ants_displace(t_dna *dna, t_ants *lst);
+// void		ants_displace(t_dna *dna, t_ants *lst);
 int			is_name(t_dna *dna, char *str);
 int			redundancy_link(t_dna *dna, char *str);
 int			check_coord(char *str);
@@ -148,4 +148,10 @@ void		node_init(t_node *node, t_node *parent);
 t_node		*get_next_node(t_dna *dna, t_node *node, int nb);
 char		*get_next_lnk(t_dna *dna, char *name, int nb);
 void		create_node_score(t_dna *dna, t_node *node, int score);
+t_node		*best_node(t_node *node);
+int			pathfinding(t_dna *dna, int num);
+t_node		*next_node_path_new(t_node *node, int num_path);
+void		debug_display_path(t_dna *dna, int num);
+void		debug_display_all(t_dna *dna);
+int			start_with_end(t_dna *dna);
 #endif

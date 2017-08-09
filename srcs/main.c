@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 16:42:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/09 18:26:35 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,11 +131,67 @@ int		main(int argc, char **argv)
 			tmp = tmp->next;
 		}
 
-		// printf("LNK NB %d\n", dna.end_node->nb_lnk);
-
 		// printf("LINK_LST => %p\n", dna.link_lst);
 
 		create_node_score(&dna, dna.end_node, 0);
+		// debug_display_all(&dna);
+
+		int ret = 0;
+
+		// ret = pathfinding(&dna, 0);
+		// printf("      RET = %d\n", ret);
+		// ret = pathfinding(&dna, 1);
+		// printf("      RET = %d\n", ret);
+		// ret = pathfinding(&dna, 2);
+		// printf("      RET = %d\n", ret);
+		// ret = pathfinding(&dna, 3);
+		// printf("      RET = %d\n", ret);
+
+		//IF START-END or END-START move all in end
+
+		if (start_with_end(&dna))
+		{
+			printf("Soon\n");
+			return (0);
+		}
+
+
+		int i = 0;
+		while (pathfinding(&dna, i))
+		{
+			printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
+			i++;
+		}
+
+		if (!i)
+		{
+			printf("A pas de chemin connard\n");
+			return (0);
+		}
+
+		// ret = pathfinding(&dna, 3);
+		// printf("      RET = %d\n", ret);
+		// printf("%p\n", dna.start_node);
+
+		// t_node *monky = best_node(dna.start_node);
+
+		// printf("nb_lnk %d\n", dna.start_node->nb_lnk);
+
+		// printf("best test %s\n", best_node(dna.start_node)->name);
+
+		// debug_display_path(&dna, 0);
+
+
+		// pathfinding(&dna, 1);
+		// while (pathfinding(&dna, i))
+		// {
+		// 	i++;
+		// 	printf("FIND path\n");
+		// }
+		debug_display_all(&dna);
+
+		printf("\n\n    fichtre \n\n");
+
 
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);
