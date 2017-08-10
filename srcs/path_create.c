@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/09 18:46:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/10 18:16:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,12 +307,12 @@ void	create_node_score(t_dna *dna, t_node *node, int score)
 
 	// printf("\n\n");
 	// printf("START   %s\n", node->name);
-	// debug_display_all(dna);
+	debug_display_all(dna);
 	i = 0;
 
 	lnk = NULL;
 
-	if (score > 25)
+	if (score > 5)
 		return;
 
 	if (is_start(dna, node))
@@ -336,13 +336,78 @@ void	create_node_score(t_dna *dna, t_node *node, int score)
 		i++;
 	}
 
-	printf("\n\n");
+	// printf("\n\n");
 	// lnk = get_next_node(dna, node, i);
 	// printf(">> %s\n", lnk->name);
 	// lnk = get_next_node(dna, node, i+1);
 	// printf(">> %s\n", lnk->name);
-	printf("create_node_score END\n\n");
+	// printf("create_node_score END\n\n");
 }
+
+int		get_all_lnk(t_dna *dna, t_node **next_lnk)
+{
+	t_node	*tmp[32000];
+	int i;
+	int cnt_nod;
+
+	i = 0;
+	cnt_nod = 0;
+	ft_bzero(tmp, 32000);
+	while (next_lnk[i])
+	{
+		int j = 0;
+
+		while ((tmp[cnt_nod] = get_next_node(dna, next_lnk[i], j)))
+		{
+			printf("PAPA \"%s\" Node next => %s\n", next_lnk[i]->name,  tmp[cnt_nod]->name);
+			j++;
+			cnt_nod++;
+		}
+		// printf("fuck j i = %d   %s\n", i, next_lnk[i]->name);
+		i++;
+	}
+	i = -1;
+	ft_bzero(next_lnk, 32000);
+	while (tmp[++i])
+		next_lnk[i] = tmp[i];
+
+	return (cnt_nod);
+}
+
+void	create_node_score_2(t_dna *dna)
+{
+	t_node	*next_lnk[32000];
+	int i;
+
+	i = 0;
+	ft_bzero(next_lnk, 32000);
+	next_lnk[0] = dna->end_node;
+
+	while (i < 10)
+	{
+		int ret = 0;
+		ret = get_all_lnk(dna, next_lnk);
+
+		printf("RET = %d\n", ret);
+		int g = 0;
+		while (g < ret)
+		{
+			printf("next_lnk ta mere => %s\n", next_lnk[g]->name);
+			g++;
+		}
+		printf("\n");
+		//
+		// int j = 0;
+		// while (j < ret)
+		// {
+		// 	printf("LNK => %s\n", next_lnk[j]->name);
+		// 	j++;
+		// }
+		i++;
+	}
+}
+
+
 
 t_node		*next_node_path(t_node *node)
 {

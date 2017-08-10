@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/09 18:26:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/10 18:15:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,13 @@ int		main(int argc, char **argv)
 
 		// printf("LINK_LST => %p\n", dna.link_lst);
 
-		create_node_score(&dna, dna.end_node, 0);
+
+		printf("end parsing\n");
+
+		create_node_score_2(&dna);
 		// debug_display_all(&dna);
 
-		int ret = 0;
+		// int ret = 0;
 
 		// ret = pathfinding(&dna, 0);
 		// printf("      RET = %d\n", ret);
@@ -149,25 +152,25 @@ int		main(int argc, char **argv)
 
 		//IF START-END or END-START move all in end
 
-		if (start_with_end(&dna))
-		{
-			printf("Soon\n");
-			return (0);
-		}
+		// if (start_with_end(&dna))
+		// {
+		// 	printf("Soon\n");
+		// 	return (0);
+		// }
 
 
-		int i = 0;
-		while (pathfinding(&dna, i))
-		{
-			printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
-			i++;
-		}
-
-		if (!i)
-		{
-			printf("A pas de chemin connard\n");
-			return (0);
-		}
+		// int i = 0;
+		// while (pathfinding(&dna, i))
+		// {
+		// 	printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
+		// 	i++;
+		// }
+		//
+		// if (!i)
+		// {
+		// 	printf("A pas de chemin connard\n");
+		// 	return (0);
+		// }
 
 		// ret = pathfinding(&dna, 3);
 		// printf("      RET = %d\n", ret);
@@ -188,9 +191,11 @@ int		main(int argc, char **argv)
 		// 	i++;
 		// 	printf("FIND path\n");
 		// }
-		debug_display_all(&dna);
-
-		printf("\n\n    fichtre \n\n");
+		// debug_display_all(&dna);
+		//
+		// printf("\n\n    fichtre \n\n");
+		//
+		// debug_display_path_2(&dna, 1);
 
 
 		// printf("Start_node : %p\n", dna.start_node);

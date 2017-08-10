@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/09 16:58:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/10 17:01:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,4 +154,6 @@ t_node		*next_node_path_new(t_node *node, int num_path);
 void		debug_display_path(t_dna *dna, int num);
 void		debug_display_all(t_dna *dna);
 int			start_with_end(t_dna *dna);
+void		debug_display_path_2(t_dna *dna, int num);
+void		create_node_score_2(t_dna *dna);
 #endif

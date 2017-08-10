@@ -1,5 +1,5 @@
 NAME = lem-in
-CC = gcc -g
+CC = gcc
 SRC =	main.c					\
 		ants.c					\
 		parsing.c				\
