@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/04 23:03:44 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/13 17:20:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ int			redundancy_link(t_dna *dna, char *str)
 	}
 	ft_memdel((void**)&s1);
 	ft_memdel((void**)&s2);
+	return (0);
+}
+
+int			redundancy_link_2(t_dna *dna, char *from, char *to)
+{
+	t_link	*lst_link;
+
+	lst_link = dna->link_lst;
+	while (lst_link)
+	{
+		if (!ft_strcmp(lst_link->from, from) || !ft_strcmp(lst_link->from, to))
+		{
+			if (!ft_strcmp(lst_link->to, from) || !ft_strcmp(lst_link->to, to))
+				return (1);
+		}
+		lst_link = lst_link->next;
+	}
 	return (0);
 }
 
