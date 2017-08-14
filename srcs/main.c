@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/13 18:20:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/14 16:50:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		main(int argc, char **argv)
 		printf("end parsing\n");
 
 		create_node_score_2(&dna);
-		debug_display_all(&dna);
+		// debug_display_all(&dna);
 
 		// int ret = 0;
 
@@ -94,18 +94,29 @@ int		main(int argc, char **argv)
 
 		//IF START-END or END-START move all in end
 
-		// if (start_with_end(&dna))
-		// {
-		// 	printf("Soon\n");
-		// 	return (0);
-		// }
+		if (start_with_end(&dna))
+		{
+			printf("Soon\n");
+			return (0);
+		}
 
+		debug_display_all(&dna);
+
+
+		printf("                               nb_path == %d\n", dna.nb_path);
 
 		int i = 0;
-		while (pathfinding(&dna, i))
+		while (i < dna.start_node->nb_lnk)
 		{
-			printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
+			printf("\nCALL PATHFINDING\n");
+			if (pathfinding(&dna, dna.nb_path))
+				dna.nb_path++;
+			// printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
 			i++;
+		}
+		if (i == 0)
+		{
+			error("error : no path\n");
 		}
 
 
