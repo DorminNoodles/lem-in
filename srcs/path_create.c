@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/14 16:57:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/14 17:27:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -484,8 +484,10 @@ t_node		*next_node_path_new(t_node *node, int num_path)
 	i = 0;
 	while (i < node->nb_lnk)
 	{
-		if (node->lnk[i]->num_path == num_path)
+		if (node->lnk[i]->num_path == num_path && node->lnk[i]->score < node->score)
+		{
 			return (node->lnk[i]);
+		}
 		i++;
 	}
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/14 16:50:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/14 17:23:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ int		main(int argc, char **argv)
 		// 	printf("A pas de chemin connard\n");
 		// 	return (0);
 		// }
-		debug_display_all(&dna);
+		// debug_display_all(&dna);
 
-		// debug_display_path(&dna, 0);
+		debug_display_path(&dna, 0);
 		// ret = pathfinding(&dna, 3);
 		// printf("      RET = %d\n", ret);
 		// printf("%p\n", dna.start_node);
