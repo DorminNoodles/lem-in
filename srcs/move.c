@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 13:03:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/17 15:31:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,17 @@
 // 	free_lst_ants(lst_ants);
 // }
 
-void	stk_drop(t_dna *dna)
+void	stk_drop(t_dna *dna, int *stk)
 {
 	int	score;
 	int	best;
 	int	i;
 
-	score = 0;
-	best = INT_MAX;
-	i = 0;
+	score = dna->start_node->lnk[0]->score;
+	best = 0;
+	i = 1;
+
+	printf("            SCORE : %d\n", score);
 
 	//tester dans chaque chemin si le total est plus ou moins grand
 	//avec a chaque fois un score de +1 si le chemin est deja utilise
@@ -67,6 +69,7 @@ void	stk_drop(t_dna *dna)
 	//plus petit ou egale au score du chemin avec le plus grand score
 	//(surement le premier ?)
 
+
 	while (i < dna->nb_path && i < 100)
 	{
 		if (dna->start_node->lnk[i]->num_path != -1)
@@ -81,14 +84,9 @@ void	stk_drop(t_dna *dna)
 				score = dna->start_node->lnk[i]->score;
 
 			}
-
-
-
-
 		}
 		i++;
 	}
-
 
 }
 
@@ -100,7 +98,8 @@ void	dispatch_ants(t_dna *dna, int *stk)
 	ants = dna->nb_ants;
 	while (ants)
 	{
-		drop_in_best(dna, stk);
+		stk_drop(dna, stk);
+		// drop_in_best(dna, stk);
 		ants--;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 11:49:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/17 15:22:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ int		main(int argc, char **argv)
 			debug_display_path(&dna, f);
 			f++;
 		}
+
+		move_ants(&dna);
 		// ret = pathfinding(&dna, 3);
 		// printf("      RET = %d\n", ret);
 		// printf("%p\n", dna.start_node);
