@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/14 17:27:18 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/17 10:44:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -441,7 +441,7 @@ void	create_node_score_2(t_dna *dna)
 		int k = 0;
 		while (next_lnk[k])
 		{
-			printf("                 pikmin %s\n", next_lnk[k]->name);
+			// printf("                 pikmin %s\n", next_lnk[k]->name);
 			k++;
 		}
 

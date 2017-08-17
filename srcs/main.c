@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/14 17:23:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/17 11:49:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ int		stk_is_empty(int *stk, int nb)
 // 	stk[best]++;
 // }
 
+void	create_lst_ants(t_dna *dna)
+{
+	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
+		error("error : Malloc failed\n");
+}
+
 int		main(int argc, char **argv)
 {
 	t_dna dna;
@@ -67,6 +73,7 @@ int		main(int argc, char **argv)
 		error("usage: ./lem-in input_file\n");
 	if (parsing(&dna, argv[1]))
 	{
+		create_lst_ants(&dna);
 
 		if (!(dna.node_lst = create_node_lst(&dna)))
 			error("error : create tree failed\n");
@@ -127,7 +134,12 @@ int		main(int argc, char **argv)
 		// }
 		// debug_display_all(&dna);
 
-		debug_display_path(&dna, 0);
+		int f = 0;
+		while (f < dna.nb_path)
+		{
+			debug_display_path(&dna, f);
+			f++;
+		}
 		// ret = pathfinding(&dna, 3);
 		// printf("      RET = %d\n", ret);
 		// printf("%p\n", dna.start_node);

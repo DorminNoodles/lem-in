@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/14 12:14:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/17 11:48:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_dna
 	t_node	*path;
 	t_list	*path_done;
 	t_node	*tree;
+	t_ants	*lst_ants;
 }t_dna;
 
 int			parsing(t_dna *dna, char *filename);
@@ -130,7 +131,6 @@ void		display(t_dna *dna, t_ants *lst);
 void		dispatch_ants(t_dna *dna, int *stk);
 void		push_ants(t_dna *dna, int *stk, t_ants *lst_ants);
 // void		drop_in_best(t_dna *dna, int *stk);
-t_ants		*create_lst_ants(t_dna *dna, int nb);
 void		move_ants(t_dna *dna);
 void		free_one_node(t_node **n);
 void		free_lst_ants(t_ants *lst_ants);
@@ -158,4 +158,5 @@ void		debug_display_path_2(t_dna *dna, int num);
 void		create_node_score_2(t_dna *dna);
 int			redundancy_link_2(t_dna *dna, char *from, char *to);
 int			get_all_lnk_2(t_dna *dna, t_node **next_lnk);
+void		create_lst_ants(t_dna *dna);
 #endif
