@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 10:44:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/18 13:53:54 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,11 +481,15 @@ t_node		*next_node_path_new(t_node *node, int num_path)
 {
 	int i;
 
+	printf("NEXT NODE PATH NEW NAME >> %s score>%d  num_path> %d\n", node->name, node->score, node->num_path);
+
 	i = 0;
 	while (i < node->nb_lnk)
 	{
+		printf(" %s child -> %s  score>> %d  num_path> %d\n", node->name, node->lnk[i]->name, node->lnk[i]->score, node->lnk[i]->num_path);
 		if (node->lnk[i]->num_path == num_path && node->lnk[i]->score < node->score)
 		{
+			printf("ta mere\n");
 			return (node->lnk[i]);
 		}
 		i++;

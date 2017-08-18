@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 15:22:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/18 14:13:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,36 @@ int		main(int argc, char **argv)
 			f++;
 		}
 
-		move_ants(&dna);
+		t_node *k;
+
+		k = dna.end_node;
+
+		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[2]->name, k->lnk[2]->num_path);
+		//
+		k = k->lnk[1];
+		printf("--------------------\n");
+		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
+
+		k = k->lnk[0];
+		printf("--------------------\n");
+		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[2]->name, k->lnk[2]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[3]->name, k->lnk[3]->num_path);
+
+
+		k = k->lnk[3];
+		printf("--------------------\n");
+		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
+		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
+		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[2]->name, k->lnk[2]->num_path, k->lnk[2]->score);
+		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[3]->name, k->lnk[3]->num_path, k->lnk[3]->score);
+		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[4]->name, k->lnk[4]->num_path, k->lnk[4]->score);
+
+
+		// move_ants(&dna);
 		// ret = pathfinding(&dna, 3);
 		// printf("      RET = %d\n", ret);
 		// printf("%p\n", dna.start_node);
