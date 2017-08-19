@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/18 14:13:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/19 18:48:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,18 +113,26 @@ int		main(int argc, char **argv)
 		printf("                               nb_path == %d\n", dna.nb_path);
 
 		int i = 0;
-		while (i < dna.start_node->nb_lnk)
-		{
-			printf("\nCALL PATHFINDING\n");
-			if (pathfinding(&dna, dna.nb_path))
-				dna.nb_path++;
-			// printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
-			i++;
-		}
-		if (i == 0)
-		{
-			error("error : no path\n");
-		}
+		// while (i < dna.start_node->nb_lnk)
+		// {
+		// 	printf("\nCALL PATHFINDING\n");
+		// 	if (pathfinding(&dna, dna.nb_path))
+		// 		dna.nb_path++;
+		// 	// printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
+		// 	i++;
+		// }
+		//
+
+		int retamere = 0;
+
+		// pathfinding(&dna, 0);
+		printf("pathfinding ret %d\n", pathfinding(&dna, 0));
+		printf("pathfinding ret %d\n", pathfinding(&dna, 1));
+
+		// if (i == 0)
+		// {
+		// 	error("error : no path\n");
+		// }
 
 
 		// if (!i)
@@ -134,40 +142,48 @@ int		main(int argc, char **argv)
 		// }
 		// debug_display_all(&dna);
 
-		int f = 0;
-		while (f < dna.nb_path)
-		{
-			debug_display_path(&dna, f);
-			f++;
-		}
+		// int f = 0;
+		// while (f < dna.nb_path)
+		// {
+		// 	debug_display_path(&dna, f);
+		// 	f++;
+		// }
 
-		t_node *k;
-
-		k = dna.end_node;
-
-		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[2]->name, k->lnk[2]->num_path);
+		// f = 0;
+		// while (f < dna.nb_path)
+		// {
+		// 	printf("FUUUUUUUUUUUUUUUUUUU\n");
+		// 	debug_display_path_reverse(&dna, f);
+		// 	f++;
+		// }
+		// debug_display_path_reverse(&dna, 0);
+		// printf("\n");
+		// debug_display_path_reverse(&dna, 1);
 		//
-		k = k->lnk[1];
-		printf("--------------------\n");
-		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
+		// debug_display_all(&dna);
+		//
+		// f = 0;
+		// t_node *kafe = dna.node_lst;
+		//
+		//
+		// while (kafe)
+		// {
+		// 	if (kafe->num_path == 2)
+		// 		printf(">>>>> %s   num_path %d   score %d\n", kafe->name, kafe->num_path, kafe->score);
+		//
+		// 	if (!ft_strcmp(kafe->name, "61"))
+		// 	{
+		// 		printf("TA MERE >> %s  score %d \n", kafe->lnk[0]->name, kafe->lnk[0]->score);
+		// 		printf("TA MERE >> %s  score %d   np %d\n", kafe->lnk[1]->name, kafe->lnk[1]->score, kafe->lnk[1]->num_path);
+		// 		printf("TA MERE >> %s  score %d \n", kafe->lnk[2]->name, kafe->lnk[2]->score);
+		// 	}
+		//
+		// 	kafe = kafe->next;
+		// }
 
-		k = k->lnk[0];
-		printf("--------------------\n");
-		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[2]->name, k->lnk[2]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[3]->name, k->lnk[3]->num_path);
+		debug_display_path_reverse(dna);
 
 
-		k = k->lnk[3];
-		printf("--------------------\n");
-		printf("                         ton nom : %s  num : %d\n", k->lnk[0]->name, k->lnk[0]->num_path);
-		printf("                         ton nom : %s  num : %d\n", k->lnk[1]->name, k->lnk[1]->num_path);
-		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[2]->name, k->lnk[2]->num_path, k->lnk[2]->score);
-		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[3]->name, k->lnk[3]->num_path, k->lnk[3]->score);
-		printf("                         ton nom : %s  num : %d  score : %d\n", k->lnk[4]->name, k->lnk[4]->num_path, k->lnk[4]->score);
 
 
 		// move_ants(&dna);
@@ -180,8 +196,6 @@ int		main(int argc, char **argv)
 		// printf("nb_lnk %d\n", dna.start_node->nb_lnk);
 
 		// printf("best test %s\n", best_node(dna.start_node)->name);
-
-
 
 		// pathfinding(&dna, 1);
 		// while (pathfinding(&dna, i))

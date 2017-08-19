@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 11:48:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/19 14:10:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,4 +159,5 @@ void		create_node_score_2(t_dna *dna);
 int			redundancy_link_2(t_dna *dna, char *from, char *to);
 int			get_all_lnk_2(t_dna *dna, t_node **next_lnk);
 void		create_lst_ants(t_dna *dna);
+void		debug_display_path_reverse(t_dna *dna, int num);
 #endif

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/18 13:53:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/19 19:05:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -481,15 +481,15 @@ t_node		*next_node_path_new(t_node *node, int num_path)
 {
 	int i;
 
-	printf("NEXT NODE PATH NEW NAME >> %s score>%d  num_path> %d\n", node->name, node->score, node->num_path);
+	// printf("NEXT NODE PATH NEW NAME >> %s score>%d  num_path> %d\n", node->name, node->score, node->num_path);
 
 	i = 0;
 	while (i < node->nb_lnk)
 	{
-		printf(" %s child -> %s  score>> %d  num_path> %d\n", node->name, node->lnk[i]->name, node->lnk[i]->score, node->lnk[i]->num_path);
+		// printf(" %s child -> %s  score>> %d  num_path> %d\n", node->name, node->lnk[i]->name, node->lnk[i]->score, node->lnk[i]->num_path);
 		if (node->lnk[i]->num_path == num_path && node->lnk[i]->score < node->score)
 		{
-			printf("ta mere\n");
+			// printf("ta mere\n");
 			return (node->lnk[i]);
 		}
 		i++;
@@ -505,30 +505,21 @@ t_node		*next_shortest_node(t_node *node)
 	i = 0;
 	tmp = NULL;
 
-	printf("NSN in => %s\n", node->name);
+	// printf("NSN in => %s\n", node->name);
 	//ne pas envoyer start bordel de merde il ne devrait meme pas avoir de score !
 
 
 	while (i < node->nb_lnk)
 	{
-		// if (!ft_strcmp(node->lnk[i]->name, "12"))
-		// {
-		// 	printf(">>>> %s\n", node->lnk[i]->name);
-		// 	printf(">>>> %d\n", node->lnk[i]->num_path);
-		// 	printf(">>>> %d\n", node->lnk[i]->score - 1);
-		// 	printf(">>>> %d\n", node->score);
-		// }
-		printf(">>>> %s\n", node->lnk[i]->name);
-
-		if (node->lnk[i]->num_path == - 1 &&
+		if (node->lnk[i]->num_path == -1 &&
 			node->lnk[i]->score == node->score - 1)
 		{
 			return (node->lnk[i]);
 		}
 		i++;
 	}
-	printf("NSN out == %p\n", node);
-	printf("NSN out == %s\n", node->name);
+	// printf("NSN out == %p\n", node);
+	// printf("NSN out == %s\n", node->name);
 	return (tmp);
 }
 
@@ -575,7 +566,7 @@ int		pathfinding(t_dna *dna, int num)
 
 	length = 0;
 	node = dna->start_node->lnk[num];
-	printf("ENTER pathfinding node == %s\n", node->name);
+	// printf("ENTER pathfinding node == %s\n", node->name);
 
 	if (!node->score)
 		return (0);
@@ -586,19 +577,11 @@ int		pathfinding(t_dna *dna, int num)
 	// printf("SEGV1\n");
 	while (!is_end(dna, node))
 	{
-		// printf("node name %s\n", node->name);
-		// printf("HIGHWAY\n");
-		// printf("node name %s\n", node->name);
+
 		node = next_shortest_node(node);
-		// printf("NEXT->NODE %s\n", node->name);
-		// printf("SEGV1_2\n");
 		if (!node)
 			return  (0);
-		printf("NSN out => %s\n\n", node->name);
-		// printf("node after %s, %d\n", node->name, node->active);
 
-		// printf("node after %s, active => %d, num_path => %d\n", node->name, node->active, node->num_path);
-		// node->num_path = num;
 		is_end(dna, node) ? 0 : (node->num_path = num);
 		is_end(dna, node) ? 0 : (node->active = 0);
 	}
