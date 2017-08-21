@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/17 11:48:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/21 17:04:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,30 @@ int		ants_in_path(t_dna *dna, t_ants *lst)
 
 
 
-void	push_ants(t_dna *dna, int *stk, t_ants *lst_ants)
+void	push_ants(t_dna *dna, int *stk)
 {
 	int		i;
+	int		j;
 	t_ants	*tmp;
 
 	i = 0;
-
-	while (i < dna->path->nb_lnk)
+	j = 0;
+	while (i < dna->start_node->nb_lnk)
 	{
-		tmp = lst_ants;
-		if (stk[i])
+		if (dna->start_node->lnk[i]->active)
 		{
-			while (tmp && ft_strcmp(tmp->pos->name, dna->start->name))
-			{
-				tmp = tmp->next;
-			}
-			// if (tmp)
-			// 	tmp->pos = dna->path->next[i];
-
-			// tmp = lst_ants;
-			// while (tmp)
-			// {
-			// 	tmp = tmp->next;
-			//
-			// 	// tmp = tmp->next;
-			// }
-			// // tmp->pos = (void*)dna->path->next[i];
+			j = 0;
 			stk[i]--;
+			while (j < dna->nb_ants && !is_start(dna, dna->lst_ants[j].pos))
+				j++;
+			dna->lst_ants[j].pos = dna->start_node->lnk[i];
+			// printf("YOUHOU\n");
 		}
+
 		i++;
 	}
+
+
 }
 
 // t_ants	*create_lst_ants(t_dna *dna, int nb)

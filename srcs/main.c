@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/19 18:48:48 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/21 17:48:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,29 @@ int		stk_is_empty(int *stk, int nb)
 
 void	create_lst_ants(t_dna *dna)
 {
+	int i;
+
+	i = 0;
 	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
 		error("error : Malloc failed\n");
+	init_lst_ants(dna);
+
+
+
+	// while (i < dna->nb_ants)
+	// {
+	// 	if(!(dna->lst_ants[i] = ft_memalloc(sizeof(t_ants))))
+	// 		error("error : Malloc failed\n");
+	// }
 }
 
 int		main(int argc, char **argv)
 {
 	t_dna dna;
 	int ret;
+	int i;
 
+	i = 0;
 	ret = 0;
 
 	// sleep(10);
@@ -112,7 +126,6 @@ int		main(int argc, char **argv)
 
 		printf("                               nb_path == %d\n", dna.nb_path);
 
-		int i = 0;
 		// while (i < dna.start_node->nb_lnk)
 		// {
 		// 	printf("\nCALL PATHFINDING\n");
@@ -124,72 +137,37 @@ int		main(int argc, char **argv)
 		//
 
 		int retamere = 0;
+		while (i < dna.start_node->nb_lnk)
+		{
+			if (pathfinding(&dna, i))
+			{
+				dna.nb_path++;
+				dna.start_node->lnk[i]->active = 1;
+			}
+			i++;
+		}
 
-		// pathfinding(&dna, 0);
-		printf("pathfinding ret %d\n", pathfinding(&dna, 0));
-		printf("pathfinding ret %d\n", pathfinding(&dna, 1));
+		// debug_display_path(&dna, 0);
+		// debug_display_path(&dna, 1);
+		// debug_display_path(&dna, 2);
+		// debug_display_path(&dna, 3);
+		// debug_display_path(&dna, 4);
 
-		// if (i == 0)
-		// {
-		// 	error("error : no path\n");
-		// }
-
-
-		// if (!i)
-		// {
-		// 	printf("A pas de chemin connard\n");
-		// 	return (0);
-		// }
-		// debug_display_all(&dna);
-
-		// int f = 0;
-		// while (f < dna.nb_path)
-		// {
-		// 	debug_display_path(&dna, f);
-		// 	f++;
-		// }
-
-		// f = 0;
-		// while (f < dna.nb_path)
-		// {
-		// 	printf("FUUUUUUUUUUUUUUUUUUU\n");
-		// 	debug_display_path_reverse(&dna, f);
-		// 	f++;
-		// }
-		// debug_display_path_reverse(&dna, 0);
-		// printf("\n");
-		// debug_display_path_reverse(&dna, 1);
-		//
-		// debug_display_all(&dna);
-		//
-		// f = 0;
-		// t_node *kafe = dna.node_lst;
-		//
-		//
-		// while (kafe)
-		// {
-		// 	if (kafe->num_path == 2)
-		// 		printf(">>>>> %s   num_path %d   score %d\n", kafe->name, kafe->num_path, kafe->score);
-		//
-		// 	if (!ft_strcmp(kafe->name, "61"))
-		// 	{
-		// 		printf("TA MERE >> %s  score %d \n", kafe->lnk[0]->name, kafe->lnk[0]->score);
-		// 		printf("TA MERE >> %s  score %d   np %d\n", kafe->lnk[1]->name, kafe->lnk[1]->score, kafe->lnk[1]->num_path);
-		// 		printf("TA MERE >> %s  score %d \n", kafe->lnk[2]->name, kafe->lnk[2]->score);
-		// 	}
-		//
-		// 	kafe = kafe->next;
-		// }
-
-		debug_display_path_reverse(dna);
+		i = 0;
+		while (i < dna.start_node->nb_lnk)
+		{
+			// printf("ta mere\n");
+			if (dna.start_node->lnk[i]->active)
+				debug_display_path(&dna, i);
+			i++;
+		}
 
 
+		printf("SEGV\n");
+		move_ants(&dna);
 
 
-		// move_ants(&dna);
-		// ret = pathfinding(&dna, 3);
-		// printf("      RET = %d\n", ret);
-		// printf("%p\n", dna.start_node);
+		// printf("Mais !  >>> %d\n", dna.lst_ants[5].id);
 
 		// t_node *monky = best_node(dna.start_node);
 

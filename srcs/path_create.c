@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/19 19:05:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/21 17:50:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -577,7 +577,7 @@ int		pathfinding(t_dna *dna, int num)
 	// printf("SEGV1\n");
 	while (!is_end(dna, node))
 	{
-
+		printf("Node name > %s\n", node->name);
 		node = next_shortest_node(node);
 		if (!node)
 			return  (0);
