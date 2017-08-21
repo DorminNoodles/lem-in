@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/21 17:04:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 01:27:26 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	push_ants(t_dna *dna, int *stk)
 			while (j < dna->nb_ants && !is_start(dna, dna->lst_ants[j].pos))
 				j++;
 			dna->lst_ants[j].pos = dna->start_node->lnk[i];
+			dna->lst_ants[j].active = 1;
 			// printf("YOUHOU\n");
 		}
 

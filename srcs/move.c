@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/21 17:50:14 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 01:43:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	stk_drop(t_dna *dna, int *stk)
 	score = 2147483647;
 	tmp = 0;
 
+	printf("SEGV2\n");
 	//je met la fourmi dans le premier chemin dispo
 
 	// while (i < dna->start_node->nb_lnk)
@@ -166,6 +167,7 @@ void	move_ants(t_dna *dna)
 
 	i = 0;
 
+	printf("SEGV\n");
 	while (i < dna->nb_ants)
 	{
 		dna->lst_ants[i].pos = dna->start_node;
@@ -176,6 +178,8 @@ void	move_ants(t_dna *dna)
 
 	dispatch_ants(dna, stk);
 
+
+
 	while (!all_in_end(dna))
 	{
 		push_ants(dna, stk);
@@ -183,15 +187,27 @@ void	move_ants(t_dna *dna)
 		int p = 0;
 		while (p < dna->nb_ants)
 		{
-			printf("ANTS de ta mere %s\n", dna->lst_ants[p].pos->name);
-			if (!is_end(dna, dna->lst_ants[p].pos) && !is_start(dna, dna->lst_ants[p].pos))
+			// printf("ANTS de ta mere %s\n", dna->lst_ants[p].pos->name);
+			if (!is_start(dna, dna->lst_ants[p].pos))
 			{
-				dna->lst_ants[p].pos = next_node_path_new(dna->lst_ants[p].pos, dna->lst_ants[p].pos->num_path);
+				if (!is_end(dna, dna->lst_ants[p].pos))
+				{
+					dna->lst_ants[p].pos = next_node_path_new(dna->lst_ants[p].pos, dna->lst_ants[p].pos->num_path);
+
+					if (!dna->lst_ants[p].pos)
+					{
+						dna->lst_ants[p].pos = dna->end_node;
+					}
+				}
+				else
+					dna->lst_ants[p].active = 0;
 			}
+			// display(dna);
 			p++;
 		}
-		printf("END END END END\n");
+		// printf("END END END END\n");
 		// sleep(1);
+
 
 	}
 
