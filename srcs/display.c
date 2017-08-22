@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:37:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 01:40:37 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 17:59:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@ void		display(t_dna *dna)
 
 	while (i < dna->nb_ants)
 	{
+		if (dna->lst_ants[i].active)
+		{
+			ft_putchar('L');
+			itoa = ft_itoa(dna->lst_ants[i].id + 1);
+			ft_putstr(itoa);
+			ft_memdel((void**)&itoa);
+			ft_putchar('-');
+			ft_putstr(dna->lst_ants[i].pos->name);
+			ft_putchar(' ');
+		}
 		// printf("fchier\n");
 		// if (dna->lst_ants[i].active)
 		// {
@@ -31,7 +41,7 @@ void		display(t_dna *dna)
 		i++;
 	}
 
-
+	// printf("\n");
 
 	ft_putstr("\n");
 }

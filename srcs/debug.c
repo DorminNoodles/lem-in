@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 14:32:28 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/21 17:38:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 18:09:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ void	debug_display_path_2(t_dna *dna, int num)
 	printf(">> %s\n", fichtre->name);
 	while (fichtre)
 	{
-		printf("Pute\n");
 		display_all_child(fichtre);
 		fichtre = next_node_path_by_num(fichtre, num);
 		if (fichtre)

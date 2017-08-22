@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/13 17:20:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 19:30:47 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int			parsing(t_dna *dna, char *filename)
 {
 	t_list	*data;
 	t_list	*tmp_data;
+	t_list	*tmp_display;
 
 	if (!(data = open_file(filename)))
 		error("error : echec open file\n");
@@ -114,7 +115,20 @@ int			parsing(t_dna *dna, char *filename)
 	tmp_data = tmp_data->next;
 	if (!(tmp_data = room(dna, tmp_data)))
 		error("error : room\n");
-	pars_link(dna, tmp_data);
+	if(!(tmp_data = pars_link(dna, tmp_data)))
+		error("error : link\n");
+	// printf("HERE >>>>>  %s\n", *tmp_data);
+
+	tmp_display = data;
+
+	printf("SEGV\n");
+	// printf(">>>>>>>>>>>>>>>>>%s\n", (char*)tmp_data->content);
+	while (tmp_display && tmp_display->content != tmp_data->content)
+	{
+		printf("%s\n", (char*)tmp_display->content);
+		tmp_display = tmp_display->next;
+	}
+	ft_putchar('\n');
 	free_data(data);
 	if (dna->link_lst)
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 01:43:58 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 18:08:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,80 +51,27 @@ void	stk_drop(t_dna *dna, int *stk)
 	i = 0;
 	score = 2147483647;
 	tmp = 0;
-
-	printf("SEGV2\n");
-	//je met la fourmi dans le premier chemin dispo
-
-	// while (i < dna->start_node->nb_lnk)
-	// {
-	// 	if (dna->start_node->lnk[i]->active)
-	// 	{
-	// 		score = dna->start_node->lnk[i]->score + stk[i];
-	// 		best = i;
-	// 	}
-	// 	i++;
-	// }
-
-
-	// printf("            SCORE : %d\n", score);
-
 // printf("SCORE FIRST ==> %d\n", score);
 // printf("TMP FIRST ==> %d\n", tmp);
-best = 0;
+	best = 0;
 
-// printf("Ants START\n");
-while (i < dna->start_node->nb_lnk)
-{
-	if (dna->start_node->lnk[i]->active)
+	// printf("Ants START\n");
+	while (i < dna->start_node->nb_lnk)
 	{
-		tmp = dna->start_node->lnk[i]->score + stk[i];
-		printf ("TMP === %d\n", tmp);
-
-		if (tmp < score)
+		if (dna->start_node->lnk[i]->active)
 		{
-			score = tmp;
-			best = i;
+			tmp = dna->start_node->lnk[i]->score + stk[i];
+			// printf ("TMP === %d\n", tmp);
+			if (tmp < score)
+			{
+				score = tmp;
+				best = i;
+			}
 		}
+		i++;
 	}
-	i++;
-}
 
-stk[best]++;
-
-
-
-i = 0;
-// printf("\n\n\n\n");
-while (i < dna->start_node->nb_lnk)
-{
-	printf("Stk -> %d\n", stk[i]);
-	i++;
-}
-
-
-printf("\n\n\n\n");
-
-
-
-
-	//
-	// while (i < dna->nb_path && i < 100)
-	// {
-	// 	if (dna->start_node->lnk[i]->num_path != -1)
-	// 	{
-	// 		if (stk[i])
-	// 		{
-	// 			// score = dna->start_node->lnk[i]->score;
-	// 			score = stk[i] + 1;
-	// 		}
-	// 		else
-	// 		{
-	// 			score = dna->start_node->lnk[i]->score;
-	//
-	// 		}
-	// 	}
-	// 	i++;
-	// }
+	stk[best]++;
 }
 
 void	dispatch_ants(t_dna *dna, int *stk)
@@ -153,7 +100,6 @@ int		all_in_end(t_dna *dna)
 		i++;
 	}
 
-
 	return (1);
 }
 
@@ -163,11 +109,9 @@ void	move_ants(t_dna *dna)
 	int		i;
 	int		stk[100];
 	t_node	*tmp;
-	// int		*stk;
 
 	i = 0;
 
-	printf("SEGV\n");
 	while (i < dna->nb_ants)
 	{
 		dna->lst_ants[i].pos = dna->start_node;
@@ -179,39 +123,32 @@ void	move_ants(t_dna *dna)
 	dispatch_ants(dna, stk);
 
 
-
 	while (!all_in_end(dna))
 	{
 		push_ants(dna, stk);
 
-		int p = 0;
-		while (p < dna->nb_ants)
+		i = 0;
+		while (i < dna->nb_ants)
 		{
-			// printf("ANTS de ta mere %s\n", dna->lst_ants[p].pos->name);
-			if (!is_start(dna, dna->lst_ants[p].pos))
+			if (!is_start(dna, dna->lst_ants[i].pos))
 			{
-				if (!is_end(dna, dna->lst_ants[p].pos))
+				if (!is_end(dna, dna->lst_ants[i].pos))
 				{
-					dna->lst_ants[p].pos = next_node_path_new(dna->lst_ants[p].pos, dna->lst_ants[p].pos->num_path);
+					dna->lst_ants[i].pos = next_node_path_new(dna->lst_ants[i].pos, dna->lst_ants[i].pos->num_path);
 
-					if (!dna->lst_ants[p].pos)
+					if (!dna->lst_ants[i].pos)
 					{
-						dna->lst_ants[p].pos = dna->end_node;
+						dna->lst_ants[i].pos = dna->end_node;
 					}
 				}
-				else
-					dna->lst_ants[p].active = 0;
+					else
+					dna->lst_ants[i].active = 0;
 			}
-			// display(dna);
-			p++;
+			i++;
 		}
-		// printf("END END END END\n");
+
+		display(dna);
 		// sleep(1);
-
-
 	}
-
-
-
 
 }

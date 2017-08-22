@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 01:35:19 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 19:06:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void		add_roomlst(t_dna *dna, t_room *room);
 int			only_blank(char *str);
 void		free_room_lst(t_room **lst);
 void		free_link_lst(t_link *lst);
-int			pars_link(t_dna *dna, t_list *data);
+t_list		*pars_link(t_dna *dna, t_list *data);
 void		clean_useless_path(t_dna *dna);
 t_node		*best_chld(t_dna *dna, t_node *node);
 t_node		*next_node_path(t_node *node);
@@ -161,4 +161,5 @@ int			get_all_lnk_2(t_dna *dna, t_node **next_lnk);
 void		create_lst_ants(t_dna *dna);
 void		debug_display_path_reverse(t_dna *dna, int num);
 void		init_lst_ants(t_dna *dna);
+void		start_to_end(t_dna *dna);
 #endif

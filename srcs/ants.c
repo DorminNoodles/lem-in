@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 01:27:26 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 16:13:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int		ants_in_path(t_dna *dna, t_ants *lst)
 	return (0);
 }
 
-
-
 void	push_ants(t_dna *dna, int *stk)
 {
 	int		i;
@@ -40,20 +38,27 @@ void	push_ants(t_dna *dna, int *stk)
 	j = 0;
 	while (i < dna->start_node->nb_lnk)
 	{
+		// printf("HA !\n");
 		if (dna->start_node->lnk[i]->active)
 		{
+			// printf("nb_lnk == %d\n", dna->start_node->nb_lnk);
 			j = 0;
 			stk[i]--;
-			while (j < dna->nb_ants && !is_start(dna, dna->lst_ants[j].pos))
+			while (j < dna->nb_ants)
+			{
+				if (is_start(dna, dna->lst_ants[j].pos))
+				{
+					dna->lst_ants[j].pos = dna->start_node->lnk[i];
+					dna->lst_ants[j].active = 1;
+					break;
+				}
 				j++;
-			dna->lst_ants[j].pos = dna->start_node->lnk[i];
-			dna->lst_ants[j].active = 1;
-			// printf("YOUHOU\n");
+			}
 		}
-
+		// printf("BORDEL DE MERDE\n");
 		i++;
 	}
-
+	// printf("Mais vraiment !\n");
 
 }
 

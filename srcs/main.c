@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 01:41:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/22 19:11:40 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,22 @@ void	create_lst_ants(t_dna *dna)
 	// }
 }
 
+void	start_to_end(t_dna *dna)
+{
+	int		i;
+	char	*itoa;
+
+	i = 0;
+	while (i < dna->nb_ants)
+	{
+		ft_putchar('L');
+		itoa = ft_itoa(i);
+		ft_putstr(itoa);
+		i++;
+	}
+
+}
+
 int		main(int argc, char **argv)
 {
 	t_dna dna;
@@ -93,50 +109,15 @@ int		main(int argc, char **argv)
 			error("error : create tree failed\n");
 
 		create_tree(&dna);
-
-
-		cnt_lnk(&dna, "end");
-
-		printf("end parsing\n");
-
 		create_node_score_2(&dna);
-		// debug_display_all(&dna);
-
-		// int ret = 0;
-
-		// ret = pathfinding(&dna, 0);
-		// printf("      RET = %d\n", ret);
-		// ret = pathfinding(&dna, 1);
-		// printf("      RET = %d\n", ret);
-		// ret = pathfinding(&dna, 2);
-		// printf("      RET = %d\n", ret);
-		// ret = pathfinding(&dna, 3);
-		// printf("      RET = %d\n", ret);
-
-		//IF START-END or END-START move all in end
 
 		if (start_with_end(&dna))
 		{
+			start_to_end(&dna);
 			printf("Soon\n");
 			return (0);
 		}
 
-		debug_display_all(&dna);
-
-
-		printf("                               nb_path == %d\n", dna.nb_path);
-
-		// while (i < dna.start_node->nb_lnk)
-		// {
-		// 	printf("\nCALL PATHFINDING\n");
-		// 	if (pathfinding(&dna, dna.nb_path))
-		// 		dna.nb_path++;
-		// 	// printf("HAAAAAAAAAAAAAAAAAAAAAAA\n");
-		// 	i++;
-		// }
-		//
-
-		int retamere = 0;
 		while (i < dna.start_node->nb_lnk)
 		{
 			if (pathfinding(&dna, i))
@@ -146,46 +127,7 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
-
-		// debug_display_path(&dna, 0);
-		// debug_display_path(&dna, 1);
-		// debug_display_path(&dna, 2);
-		// debug_display_path(&dna, 3);
-		// debug_display_path(&dna, 4);
-
-		i = 0;
-		while (i < dna.start_node->nb_lnk)
-		{
-			// printf("ta mere\n");
-			if (dna.start_node->lnk[i]->active)
-				debug_display_path(&dna, i);
-			i++;
-		}
-
 		move_ants(&dna);
-
-
-		// printf("Mais !  >>> %d\n", dna.lst_ants[5].id);
-
-		// t_node *monky = best_node(dna.start_node);
-
-		// printf("nb_lnk %d\n", dna.start_node->nb_lnk);
-
-		// printf("best test %s\n", best_node(dna.start_node)->name);
-
-		// pathfinding(&dna, 1);
-		// while (pathfinding(&dna, i))
-		// {
-		// 	i++;
-		// 	printf("FIND path\n");
-		// }
-		// debug_display_all(&dna);
-		//
-		// printf("\n\n    fichtre \n\n");
-		//
-		// debug_display_path_2(&dna, 1);
-
-
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);
 
