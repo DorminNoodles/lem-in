@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 19:30:47 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/23 17:34:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,22 +115,35 @@ int			parsing(t_dna *dna, char *filename)
 	tmp_data = tmp_data->next;
 	if (!(tmp_data = room(dna, tmp_data)))
 		error("error : room\n");
-	if(!(tmp_data = pars_link(dna, tmp_data)))
-		error("error : link\n");
+	tmp_data = pars_link(dna, tmp_data);
+
 	// printf("HERE >>>>>  %s\n", *tmp_data);
 
 	tmp_display = data;
 
-	printf("SEGV\n");
 	// printf(">>>>>>>>>>>>>>>>>%s\n", (char*)tmp_data->content);
-	while (tmp_display && tmp_display->content != tmp_data->content)
+
+	if (tmp_data)
 	{
-		printf("%s\n", (char*)tmp_display->content);
-		tmp_display = tmp_display->next;
+		while (tmp_display && tmp_display->content != tmp_data->content)
+		{
+			printf("%s\n", (char*)tmp_display->content);
+			tmp_display = tmp_display->next;
+		}
+	}
+	else
+	{
+		while (tmp_display)
+		{
+			printf("%s\n", (char*)tmp_display->content);
+			tmp_display = tmp_display->next;
+		}
 	}
 	ft_putchar('\n');
 	free_data(data);
 	if (dna->link_lst)
+	{
 		return (1);
+	}
 	return (0);
 }

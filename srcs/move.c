@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 18:08:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/23 14:23:26 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,8 +125,11 @@ void	move_ants(t_dna *dna)
 
 	while (!all_in_end(dna))
 	{
+		// printf("HERE > %s\n", dna->lst_ants[0].pos->name);
 		push_ants(dna, stk);
+		display(dna);
 
+		// printf("HERE > %s\n", dna->lst_ants[0].pos->name);
 		i = 0;
 		while (i < dna->nb_ants)
 		{
@@ -146,8 +149,7 @@ void	move_ants(t_dna *dna)
 			}
 			i++;
 		}
-
-		display(dna);
+		// display(dna);
 		// sleep(1);
 	}
 

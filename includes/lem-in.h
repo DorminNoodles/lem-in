@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 19:06:19 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/23 17:48:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct s_dna
 	t_list	*path_done;
 	t_node	*tree;
 	t_ants	*lst_ants;
+	char	*data;
+	char	*data_end;
 }t_dna;
 
 int			parsing(t_dna *dna, char *filename);

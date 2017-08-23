@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 19:11:40 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/23 17:45:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,21 @@ void	start_to_end(t_dna *dna)
 		ft_putchar('L');
 		itoa = ft_itoa(i);
 		ft_putstr(itoa);
+		ft_putchar('-');
+		ft_putstr(dna->start_node->name);
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putchar('\n');
+	i = 0;
+	while (i < dna->nb_ants)
+	{
+		ft_putchar('L');
+		itoa = ft_itoa(i);
+		ft_putstr(itoa);
+		ft_putchar('-');
+		ft_putstr(dna->end_node->name);
+		ft_putchar(' ');
 		i++;
 	}
 
@@ -111,12 +126,13 @@ int		main(int argc, char **argv)
 		create_tree(&dna);
 		create_node_score_2(&dna);
 
+
 		if (start_with_end(&dna))
 		{
 			start_to_end(&dna);
-			printf("Soon\n");
 			return (0);
 		}
+		// sleep(1);
 
 		while (i < dna.start_node->nb_lnk)
 		{
@@ -127,13 +143,20 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
-		move_ants(&dna);
+
+		// printf("path found %d\n", dna.nb_path);
+		// sleep(100);
+
+		if (dna.nb_path)
+			move_ants(&dna);
+		else
+			ft_putstr("error : no path\n");
+		// while (1)
+		// 	printf("BOUCLE\n");
 		// printf("Start_node : %p\n", dna.start_node);
 		// printf("Start_node(path) : %p\n", dna.path);
-
 		// move_ants(&dna);
 		// dna_free(&dna);
-
 	}
 	else
 		ft_putstr("ERROR\n");
