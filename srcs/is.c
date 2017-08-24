@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:39:03 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 09:41:06 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 16:52:24 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,13 @@ int		is_name(t_dna *dna, char *str)
 {
 	t_room	*tmp;
 
-
 	tmp = dna->room_lst;
 	if (str[ft_strlen(str) - 1] == 13)
 		str[ft_strlen(str) - 1] = 0;
-
-
-
-
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->name, str))
 		return (1);
-
 		tmp = tmp->next;
 	}
 	if (dna->start->name && !ft_strcmp(dna->start->name, str))

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/23 14:44:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 16:16:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,47 +30,6 @@ void		set_score(t_dna *dna, t_node *cp)
 	}
 }
 
-// t_node		*set_cur_path(t_dna *dna, char *name, t_node *parent)
-// {
-// 	t_node *cp;
-//
-// 	if (!(cp = (t_node*)ft_memalloc(sizeof(t_node))))
-// 		error("error : malloc\n");
-// 	cp_init(cp, parent);
-// 	if (name)
-// 	{
-// 		if (!(cp->name = ft_strnew(ft_strlen(name))))
-// 			error("error : strnew\n");
-// 		ft_strcpy(cp->name, name);
-// 	}
-// 	else
-// 	{
-// 		if (!(cp->name = ft_strnew(ft_strlen(dna->start->name))))
-// 			error("error : ft_strnew\n");
-// 		ft_strcpy(cp->name, dna->start->name);
-// 	}
-// 	cp->nb_lnk = cnt_lnk(dna, cp->name);
-// 	if (is_end(dna, cp))
-// 		cp->nb_lnk = 0;
-// 	else
-// 		cp->next = set_child(cp);
-// 	return (cp);
-// }
-
-// t_node		*set_cur_path(t_dna *dna, char *name, t_node *parent)
-// {
-// 	t_node *cp;
-//
-// 	if (!(cp = (t_node*)ft_memalloc(sizeof(t_node))))
-// 		error("error : malloc\n");
-// 	cp->name = name;
-// 	cp->nb_lnk = cnt_lnk(dna, cp->name);
-//
-//
-//
-// 	return (cp);
-// }
-
 int			path_length(t_dna *dna, t_node *cp)
 {
 	int i;
@@ -82,18 +41,6 @@ int			path_length(t_dna *dna, t_node *cp)
 		i++;
 	}
 	return (i);
-}
-
-int			raw_path_check_end(t_dna *dna, t_node *cp)
-{
-	if (is_end(dna, cp))
-	{
-		dna->nb_path++;
-		set_score(dna, cp);
-		add_node_lst(dna, cp);
-		return (1);
-	}
-	return (0);
 }
 
 void	get_start_node(t_dna *dna, t_node *cp)

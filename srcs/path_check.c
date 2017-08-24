@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:36:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/07 09:33:07 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 17:28:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ int		check_path(t_dna *dna, t_node *node)
 	return (1);
 }
 
-int		cost_of_path(t_dna *dna, int *stk, int nb)
-{
-	int cost;
-
-	cost = 0;
-	if (!stk[nb])
-		return (dna->path->lnk[nb]->score);
-	else
-		return (dna->path->lnk[nb]->score + stk[nb]);
-	return (1);
-}
+// int		cost_of_path(t_dna *dna, int *stk, int nb)
+// {
+// 	int cost;
+//
+// 	cost = 0;
+// 	if (!stk[nb])
+// 		return (dna->path->lnk[nb]->score);
+// 	else
+// 		return (dna->path->lnk[nb]->score + stk[nb]);
+// 	return (1);
+// }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 14:32:28 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 18:09:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 15:20:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,7 @@ void	debug_display_path_reverse(t_dna *dna, int num)
 	int		find;
 
 	fichtre = dna->end_node;
-
-	// while (fichtre)
-	// {
-	// 	printf("Reverse name > %s\n", fichtre->name);
-	// 	i = 0;
-	// 	find = 0;
-	// 	while (i < fichtre->nb_lnk)
-	// 	{
-	// 		if (fichtre->lnk[i]->num_path == num)
-	// 		{
-	// 			fichtre = fichtre->lnk[i];
-	// 			find = 1;
-	// 		}
-	// 		i++;
-	// 	}
-	// 	if (!find)
-	// 		fichtre = NULL;
-	// 	// fichtre = NULL;
-	// }
-
 	printf("DEPART\n");
-
 	while (fichtre)
 	{
 		i = 0;

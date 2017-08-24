@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/23 17:45:24 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 16:13:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,6 @@ int		stk_is_empty(int *stk, int nb)
 	return (1);
 }
 
-// void	drop_in_best(t_dna *dna, int *stk)
-// {
-// 	int	i;
-// 	int	score;
-// 	int best;
-//
-// 	score = -1;
-// 	best = 0;
-// 	i = 0;
-// 	while (i < dna->path->nb_lnk)
-// 	{
-// 		// printf("ECTO child[%d]  :  %p\n", i, dna->path->next[i]);
-// 		if (dna->path->next[i])
-// 			printf("ACTIVE child[%d]  :  %d\n", i, dna->path->next[i]->active);
-// 		if (dna->path->next[i] && dna->path->next[i]->active)
-// 		{
-// 			if (cost_of_path(dna, stk, i) < score || score == -1)
-// 			{
-// 				score = cost_of_path(dna, stk, i);
-// 				best = i;
-// 			}
-// 		}
-// 		i++;
-// 	}
-// 	stk[best]++;
-// }
-
 void	create_lst_ants(t_dna *dna)
 {
 	int i;
@@ -61,14 +34,6 @@ void	create_lst_ants(t_dna *dna)
 	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
 		error("error : Malloc failed\n");
 	init_lst_ants(dna);
-
-
-
-	// while (i < dna->nb_ants)
-	// {
-	// 	if(!(dna->lst_ants[i] = ft_memalloc(sizeof(t_ants))))
-	// 		error("error : Malloc failed\n");
-	// }
 }
 
 void	start_to_end(t_dna *dna)
@@ -111,8 +76,6 @@ int		main(int argc, char **argv)
 	i = 0;
 	ret = 0;
 
-	// sleep(10);
-
 	dna_init(&dna);
 	if (argc != 2)
 		error("usage: ./lem-in input_file\n");
@@ -125,15 +88,11 @@ int		main(int argc, char **argv)
 
 		create_tree(&dna);
 		create_node_score_2(&dna);
-
-
 		if (start_with_end(&dna))
 		{
 			start_to_end(&dna);
 			return (0);
 		}
-		// sleep(1);
-
 		while (i < dna.start_node->nb_lnk)
 		{
 			if (pathfinding(&dna, i))
@@ -143,20 +102,10 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
-
-		// printf("path found %d\n", dna.nb_path);
-		// sleep(100);
-
 		if (dna.nb_path)
 			move_ants(&dna);
 		else
 			ft_putstr("error : no path\n");
-		// while (1)
-		// 	printf("BOUCLE\n");
-		// printf("Start_node : %p\n", dna.start_node);
-		// printf("Start_node(path) : %p\n", dna.path);
-		// move_ants(&dna);
-		// dna_free(&dna);
 	}
 	else
 		ft_putstr("ERROR\n");

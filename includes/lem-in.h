@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/23 17:48:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/24 21:03:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ typedef struct s_dna
 
 int			parsing(t_dna *dna, char *filename);
 void		error(char *str);
-int			is_com(char *str);
 t_list		*open_file(char *filename);
+int			is_com(char *str);
 int			is_end(t_dna *dna, t_node *cp);
 int			repeat_room (t_node *cp);
 int			cnt_lnk(t_dna *dna, const char *name);
-char		**get_chlds_name(t_dna *dna, const t_node *p);
-t_node		**set_child(t_node *cp);
-int			chld_exist(t_dna *dna, t_node *path);
+// char		**get_chlds_name(t_dna *dna, const t_node *p);
+// t_node		**set_child(t_node *cp);
+// int			chld_exist(t_dna *dna, t_node *path);
 void		dna_init(t_dna *dna);
 t_list		*room(t_dna *dna, t_list *data);
 void		free_split(char **tab, int nb);
@@ -115,29 +115,23 @@ int			only_blank(char *str);
 void		free_room_lst(t_room **lst);
 void		free_link_lst(t_link *lst);
 t_list		*pars_link(t_dna *dna, t_list *data);
-void		clean_useless_path(t_dna *dna);
-t_node		*best_chld(t_dna *dna, t_node *node);
 t_node		*next_node_path(t_node *node);
-t_node		*create_raw_path(t_dna *dna, char *name, t_node *parent);
 t_list		*check_order(t_dna *dna, t_list *data, char *tmp);
 t_list		*start(t_dna *dna, t_list *data);
 t_list		*end(t_dna *dna, t_list *data);
-void		clean_null_path(t_dna *dna);
-void		sort_node_by_score(t_dna *dna);
+// void		clean_null_path(t_dna *dna);
+// void		sort_node_by_score(t_dna *dna);
 int			compare_room(t_dna *dna, t_node *node);
 int			check_path(t_dna *dna, t_node *node);
 void		cp_init(t_node *cp, t_node *parent);
 void		dna_free(t_dna *dna);
-int			cost_of_path(t_dna *dna, int *stk, int nb);
+// int			cost_of_path(t_dna *dna, int *stk, int nb);
 void		display(t_dna *dna);
-void		dispatch_ants(t_dna *dna, int *stk);
 void		push_ants(t_dna *dna, int *stk);
-// void		drop_in_best(t_dna *dna, int *stk);
 void		move_ants(t_dna *dna);
-void		free_one_node(t_node **n);
+// void		free_one_node(t_node **n);
 void		free_lst_ants(t_ants *lst_ants);
-int			ants_in_path(t_dna *dna, t_ants *lst);
-// void		ants_displace(t_dna *dna, t_ants *lst);
+// int			ants_in_path(t_dna *dna, t_ants *lst);
 int			is_name(t_dna *dna, char *str);
 int			redundancy_link(t_dna *dna, char *str);
 int			check_coord(char *str);
@@ -150,7 +144,7 @@ void		node_init(t_node *node, t_node *parent);
 t_node		*get_next_node(t_dna *dna, t_node *node, int nb);
 char		*get_next_lnk(t_dna *dna, char *name, int nb);
 void		create_node_score(t_dna *dna, t_node *node, int score);
-t_node		*best_node(t_node *node);
+// t_node		*best_node(t_node *node);
 int			pathfinding(t_dna *dna, int num);
 t_node		*next_node_path_new(t_node *node, int num_path);
 void		debug_display_path(t_dna *dna, int num);
