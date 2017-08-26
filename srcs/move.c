@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 21:01:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/26 22:29:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,29 @@ int		all_in_end(t_dna *dna)
 	return (1);
 }
 
+int		all_desactive(t_dna *dna)
+{
+	int i;
+
+	i = 0;
+	while (i < dna->nb_ants)
+	{
+		if (dna->lst_ants[i].active)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	move_ants(t_dna *dna)
 {
 	int		move;
 	int		i;
 	int		stk[100];
 	t_node	*tmp;
+	int		once;
 
+	once = 1;
 	i = 0;
 
 	while (i < dna->nb_ants)
@@ -83,11 +99,12 @@ void	move_ants(t_dna *dna)
 	ft_bzero(stk, 100);
 	dispatch_ants(dna, stk);
 
-	while (!all_in_end(dna))
+	while (once || !all_desactive(dna))
 	{
 		push_ants(dna, stk);
 		display(dna);
 		i = 0;
+		once = 0;
 		while (i < dna->nb_ants)
 		{
 			if (!is_start(dna, dna->lst_ants[i].pos))
@@ -106,5 +123,6 @@ void	move_ants(t_dna *dna)
 			}
 			i++;
 		}
+		// printf("FUCK %d  >  %s  > active %d\n", dna->lst_ants[1].id +1, dna->lst_ants[1].pos->name, dna->lst_ants[1].active);
 	}
 }

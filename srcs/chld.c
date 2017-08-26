@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 17:44:12 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/26 22:00:32 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,32 @@ int			chld_exist(t_dna *dna, t_node *path)
 // 	return (next);
 // }
 
-int			already_use(t_dna *dna)
-{
-	int i;
+// int			already_use(t_dna *dna)
+// {
+// 	int i;
+//
+// 	i = 0;
+// 	while (i < dna->nb_path)
+// 		i++;
+// 	return (0);
+// }
 
-	i = 0;
-	while (i < dna->nb_path)
-		i++;
-	return (0);
-}
-
-t_node		*best_node(t_node *node)
-{
-	int		i;
-	t_node	*tmp;
-
-	i = 0;
-	tmp = NULL;
-
-	while (i < node->nb_lnk)
-	{
-		if (!tmp || tmp->score > node->lnk[i]->score)
-			tmp = node->lnk[i];
-		i++;
-	}
-	return (tmp);
-}
+// t_node		*best_node(t_node *node)
+// {
+// 	int		i;
+// 	t_node	*tmp;
+//
+// 	i = 0;
+// 	tmp = NULL;
+//
+// 	while (i < node->nb_lnk)
+// 	{
+// 		if (!tmp || tmp->score > node->lnk[i]->score)
+// 			tmp = node->lnk[i];
+// 		i++;
+// 	}
+// 	return (tmp);
+// }
 
 //OBSOLETE
 // t_node		*best_chld(t_dna *dna, t_node *node)

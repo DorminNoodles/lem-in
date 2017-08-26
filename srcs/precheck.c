@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 19:06:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/08 12:22:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/26 21:55:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_list	*precheck(t_list *data)
 	if (is_com(str))
 		error("error : commentary in cmd\n");
 	if (is_order(str))
-		error("error : command in command\n");
+		error("ERROR\n");
 	if (!(check_coord(str)))
-		error("error : bad coordinates\n");
+		error("ERROR\n");
 	return (data);
 }
 
