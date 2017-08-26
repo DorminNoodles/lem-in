@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/26 22:29:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/26 22:43:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,18 @@ void	move_ants(t_dna *dna)
 	}
 	ft_bzero(stk, 100);
 	dispatch_ants(dna, stk);
+
+	// printf("STK > %d\n", stk[0]);
+	// printf("STK > %d\n", stk[1]);
+	// printf("STK > %d\n", stk[2]);
+	// printf("STK > %d\n", stk[3]);
+	// printf("STK > %d\n", stk[4]);
+	// printf("STK > %d\n", stk[5]);
+	// printf("STK > %d\n", stk[6]);
+	// printf("STK > %d\n", stk[7]);
+	// printf("STK > %d\n", stk[8]);
+	// printf("STK > %d\n", stk[9]);
+	// printf("STK > %d\n", stk[10]);
 
 	while (once || !all_desactive(dna))
 	{
