@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 13:18:58 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 13:20:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,29 @@ int		all_in_end(t_dna *dna)
 	return (1);
 }
 
+int		all_desactive(t_dna *dna)
+{
+	int i;
+
+	i = 0;
+	while (i < dna->nb_ants)
+	{
+		if (dna->lst_ants[i].active)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 void	move_ants(t_dna *dna)
 {
 	int		move;
 	int		i;
 	int		stk[100];
 	t_node	*tmp;
+	int		once;
 
+	once = 1;
 	i = 0;
 
 	while (i < dna->nb_ants)
@@ -83,11 +99,24 @@ void	move_ants(t_dna *dna)
 	ft_bzero(stk, 100);
 	dispatch_ants(dna, stk);
 
-	while (!all_in_end(dna))
+	// printf("STK > %d\n", stk[0]);
+	// printf("STK > %d\n", stk[1]);
+	// printf("STK > %d\n", stk[2]);
+	// printf("STK > %d\n", stk[3]);
+	// printf("STK > %d\n", stk[4]);
+	// printf("STK > %d\n", stk[5]);
+	// printf("STK > %d\n", stk[6]);
+	// printf("STK > %d\n", stk[7]);
+	// printf("STK > %d\n", stk[8]);
+	// printf("STK > %d\n", stk[9]);
+	// printf("STK > %d\n", stk[10]);
+
+	while (once || !all_desactive(dna))
 	{
 		push_ants(dna, stk);
 		display(dna);
 		i = 0;
+		once = 0;
 		while (i < dna->nb_ants)
 		{
 			if (!is_start(dna, dna->lst_ants[i].pos))
@@ -106,5 +135,6 @@ void	move_ants(t_dna *dna)
 			}
 			i++;
 		}
+		// printf("FUCK %d  >  %s  > active %d\n", dna->lst_ants[1].id +1, dna->lst_ants[1].pos->name, dna->lst_ants[1].active);
 	}
 }

@@ -6,27 +6,27 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/22 16:13:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/26 21:59:01 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-int		ants_in_path(t_dna *dna, t_ants *lst)
-{
-	t_node *tmp;
-	int i;
-
-	i = 0;
-	while (i < dna->nb_ants)
-	{
-		if (!lst->pos)
-			return (1);
-		lst = lst->next;
-		i++;
-	}
-	return (0);
-}
+// int		ants_in_path(t_dna *dna, t_ants *lst)
+// {
+// 	t_node *tmp;
+// 	int i;
+//
+// 	i = 0;
+// 	while (i < dna->nb_ants)
+// 	{
+// 		if (!lst->pos)
+// 			return (1);
+// 		lst = lst->next;
+// 		i++;
+// 	}
+// 	return (0);
+// }
 
 void	push_ants(t_dna *dna, int *stk)
 {
