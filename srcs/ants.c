@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/26 21:59:01 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 13:44:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ void	push_ants(t_dna *dna, int *stk)
 	j = 0;
 	while (i < dna->start_node->nb_lnk)
 	{
-		// printf("HA !\n");
-		if (dna->start_node->lnk[i]->active)
+		if (dna->start_node->lnk[i]->active && stk[i] > 0)
 		{
-			// printf("nb_lnk == %d\n", dna->start_node->nb_lnk);
 			j = 0;
 			stk[i]--;
 			while (j < dna->nb_ants)
@@ -55,11 +53,15 @@ void	push_ants(t_dna *dna, int *stk)
 				j++;
 			}
 		}
-		// printf("BORDEL DE MERDE\n");
 		i++;
 	}
-	// printf("Mais vraiment !\n");
 
+	// int f = 0;
+	// while (f < 10)
+	// {
+	// 	printf(">> %d\n", stk[f]);
+	// 	f++;
+	// }
 }
 
 // t_ants	*create_lst_ants(t_dna *dna, int nb)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 16:50:35 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 14:42:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,31 +39,31 @@
 // 			i = 0;
 // 	}
 // }
+//
+// int			cnt_node_length(t_node *cp)
+// {
+// 	int i;
+//
+// 	i = 0;
+// 	while (cp)
+// 	{
+// 		i++;
+// 		cp = cp->parent;
+// 	}
+// 	return (i);
+// }
 
-int			cnt_node_length(t_node *cp)
-{
-	int i;
-
-	i = 0;
-	while (cp)
-	{
-		i++;
-		cp = cp->parent;
-	}
-	return (i);
-}
-
-void		add_node_lst(t_dna *dna, t_node *node)
-{
-	if (!dna->node_lst)
-	{
-		dna->node_lst = node;
-		dna->tmp_node_lst = node;
-	}
-	else
-	{
-		while (dna->tmp_node_lst->next)
-			dna->tmp_node_lst = dna->tmp_node_lst->next;
-		dna->tmp_node_lst->next = node;
-	}
-}
+// void		add_node_lst(t_dna *dna, t_node *node)
+// {
+// 	if (!dna->node_lst)
+// 	{
+// 		dna->node_lst = node;
+// 		dna->tmp_node_lst = node;
+// 	}
+// 	else
+// 	{
+// 		while (dna->tmp_node_lst->next)
+// 			dna->tmp_node_lst = dna->tmp_node_lst->next;
+// 		dna->tmp_node_lst->next = node;
+// 	}
+// }

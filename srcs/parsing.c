@@ -6,38 +6,38 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 16:55:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 14:43:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-int			redundancy_link(t_dna *dna, char *str)
-{
-	char	*s1;
-	char	*s2;
-	t_link	*lst_link;
-
-	lst_link = dna->link_lst;
-	s1 = get_name(str, FROM);
-	s2 = get_name(str, TO);
-	while (lst_link)
-	{
-		if (!ft_strcmp(lst_link->from, s1) || !ft_strcmp(lst_link->from, s2))
-		{
-			if (!ft_strcmp(lst_link->to, s1) || !ft_strcmp(lst_link->to, s2))
-			{
-				ft_memdel((void**)&s1);
-				ft_memdel((void**)&s2);
-				return (1);
-			}
-		}
-		lst_link = lst_link->next;
-	}
-	ft_memdel((void**)&s1);
-	ft_memdel((void**)&s2);
-	return (0);
-}
+// int			redundancy_link(t_dna *dna, char *str)
+// {
+// 	char	*s1;
+// 	char	*s2;
+// 	t_link	*lst_link;
+//
+// 	lst_link = dna->link_lst;
+// 	s1 = get_name(str, FROM);
+// 	s2 = get_name(str, TO);
+// 	while (lst_link)
+// 	{
+// 		if (!ft_strcmp(lst_link->from, s1) || !ft_strcmp(lst_link->from, s2))
+// 		{
+// 			if (!ft_strcmp(lst_link->to, s1) || !ft_strcmp(lst_link->to, s2))
+// 			{
+// 				ft_memdel((void**)&s1);
+// 				ft_memdel((void**)&s2);
+// 				return (1);
+// 			}
+// 		}
+// 		lst_link = lst_link->next;
+// 	}
+// 	ft_memdel((void**)&s1);
+// 	ft_memdel((void**)&s2);
+// 	return (0);
+// }
 
 int			redundancy_link_2(t_dna *dna, char *from, char *to)
 {

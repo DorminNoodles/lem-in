@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 16:13:02 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 15:48:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	start_to_end(t_dna *dna)
 	while (i < dna->nb_ants)
 	{
 		ft_putchar('L');
-		itoa = ft_itoa(i);
+		itoa = ft_itoa(i + 1);
 		ft_putstr(itoa);
 		ft_putchar('-');
 		ft_putstr(dna->start_node->name);
@@ -57,7 +57,7 @@ void	start_to_end(t_dna *dna)
 	while (i < dna->nb_ants)
 	{
 		ft_putchar('L');
-		itoa = ft_itoa(i);
+		itoa = ft_itoa(i + 1);
 		ft_putstr(itoa);
 		ft_putchar('-');
 		ft_putstr(dna->end_node->name);
@@ -77,15 +77,13 @@ int		main(int argc, char **argv)
 	ret = 0;
 
 	dna_init(&dna);
-	if (argc != 2)
-		error("usage: ./lem-in input_file\n");
-	if (parsing(&dna, argv[1]))
+	if (argc != 1)
+		error("usage: ./lem-in < file.txt\n");
+	if (parsing(&dna, argv[0]))
 	{
 		create_lst_ants(&dna);
-
 		if (!(dna.node_lst = create_node_lst(&dna)))
 			error("error : create tree failed\n");
-
 		create_tree(&dna);
 		create_node_score_2(&dna);
 		if (start_with_end(&dna))
@@ -102,6 +100,7 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
+		// printf("NB PATH %d\n", dna.nb_path);
 		if (dna.nb_path)
 			move_ants(&dna);
 		else
