@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 15:48:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 17:03:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ void	start_to_end(t_dna *dna)
 	int		i;
 	char	*itoa;
 
-	i = 0;
-	while (i < dna->nb_ants)
-	{
-		ft_putchar('L');
-		itoa = ft_itoa(i + 1);
-		ft_putstr(itoa);
-		ft_putchar('-');
-		ft_putstr(dna->start_node->name);
-		ft_putchar(' ');
-		i++;
-	}
-	ft_putchar('\n');
+	// i = 0;
+	// while (i < dna->nb_ants)
+	// {
+	// 	ft_putchar('L');
+	// 	itoa = ft_itoa(i + 1);
+	// 	ft_putstr(itoa);
+	// 	ft_putchar('-');
+	// 	ft_putstr(dna->start_node->name);
+	// 	ft_putchar(' ');
+	// 	i++;
+	// }
+	// ft_putchar('\n');
 	i = 0;
 	while (i < dna->nb_ants)
 	{
@@ -100,11 +100,14 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
-		// printf("NB PATH %d\n", dna.nb_path);
+
 		if (dna.nb_path)
+		{
 			move_ants(&dna);
+		}
 		else
 			ft_putstr("error : no path\n");
+		main_free(&dna);
 	}
 	else
 		ft_putstr("ERROR\n");

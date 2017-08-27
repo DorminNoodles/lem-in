@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 19:06:21 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/26 21:55:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 15:53:08 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_list	*precheck(t_list *data)
 		return (NULL);
 	str = (char*)data->content;
 	if (is_link(str))
-		error("error : precheck link in room\n");
+		error("ERROR\n");
 	if (is_com(str))
-		error("error : commentary in cmd\n");
+		error("ERROR\n");
 	if (is_order(str))
 		error("ERROR\n");
 	if (!(check_coord(str)))

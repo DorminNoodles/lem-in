@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:17:32 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 17:34:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 16:59:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	free_room_lst(t_room **lst)
 	ft_memdel((void**)lst);
 }
 
-void	free_link_lst(t_link *lst)
+void	free_link_lst(t_link **lst)
 {
-	if (lst->next)
-		free_link_lst(lst->next);
-	ft_memdel((void**)&lst->from);
-	ft_memdel((void**)&lst->to);
-	ft_memdel((void**)&lst);
+	if ((*lst)->next)
+		free_link_lst(&(*lst)->next);
+	ft_memdel((void**)&(*lst)->from);
+	ft_memdel((void**)&(*lst)->to);
+	ft_memdel((void**)lst);
 }

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 14:43:29 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 17:12:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ int			parsing(t_dna *dna, char *filename)
 	if (!(tmp_data = room(dna, tmp_data)))
 		error("error : room\n");
 	tmp_data = pars_link(dna, tmp_data);
-
 	tmp_display = data;
+	//si je m arrete avant ou pas j affiche la map en fonction
 	if (tmp_data)
 	{
 		while (tmp_display && tmp_display->content != tmp_data->content)

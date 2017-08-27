@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 21:03:12 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 16:59:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char		*get_name(char *str, int flag);
 void		add_roomlst(t_dna *dna, t_room *room);
 int			only_blank(char *str);
 void		free_room_lst(t_room **lst);
-void		free_link_lst(t_link *lst);
+void		free_link_lst(t_link **lst);
 t_list		*pars_link(t_dna *dna, t_list *data);
 t_node		*next_node_path(t_node *node);
 t_list		*check_order(t_dna *dna, t_list *data, char *tmp);
@@ -130,7 +130,7 @@ void		display(t_dna *dna);
 void		push_ants(t_dna *dna, int *stk);
 void		move_ants(t_dna *dna);
 // void		free_one_node(t_node **n);
-void		free_lst_ants(t_ants *lst_ants);
+void		free_lst_ants(t_ants **lst_ants);
 // int			ants_in_path(t_dna *dna, t_ants *lst);
 int			is_name(t_dna *dna, char *str);
 int			redundancy_link(t_dna *dna, char *str);
@@ -158,4 +158,5 @@ void		create_lst_ants(t_dna *dna);
 void		debug_display_path_reverse(t_dna *dna, int num);
 void		init_lst_ants(t_dna *dna);
 void		start_to_end(t_dna *dna);
+void		main_free(t_dna *dna);
 #endif
