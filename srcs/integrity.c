@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 17:01:40 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/13 17:17:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 22:33:39 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		check_link_str(t_dna *dna, char *str)
 		free_split(split, 0);
 		return (0);
 	}
-	// printf("CRASH %s \n", str);
 	free_split(split, 2);
 	return (1);
 }
@@ -46,16 +45,10 @@ int		link_integrity(t_dna *dna, char *str)
 		ft_memdel((void**)&s2);
 		return (0);
 	}
-	//-------- v2
 	if (dna->link_lst && redundancy_link_2(dna, s1, s2))
 		return (0);
-	//-------- v2
 	ft_memdel((void**)&s1);
 	ft_memdel((void**)&s2);
-	//------- v1
-	// if (dna->link_lst && redundancy_link(dna, str))
-	// 	return (0);
-	//------ v1
 	return (1);
 }
 

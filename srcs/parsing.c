@@ -6,38 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 17:12:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 20:51:27 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
-
-// int			redundancy_link(t_dna *dna, char *str)
-// {
-// 	char	*s1;
-// 	char	*s2;
-// 	t_link	*lst_link;
-//
-// 	lst_link = dna->link_lst;
-// 	s1 = get_name(str, FROM);
-// 	s2 = get_name(str, TO);
-// 	while (lst_link)
-// 	{
-// 		if (!ft_strcmp(lst_link->from, s1) || !ft_strcmp(lst_link->from, s2))
-// 		{
-// 			if (!ft_strcmp(lst_link->to, s1) || !ft_strcmp(lst_link->to, s2))
-// 			{
-// 				ft_memdel((void**)&s1);
-// 				ft_memdel((void**)&s2);
-// 				return (1);
-// 			}
-// 		}
-// 		lst_link = lst_link->next;
-// 	}
-// 	ft_memdel((void**)&s1);
-// 	ft_memdel((void**)&s2);
-// 	return (0);
-// }
 
 int			redundancy_link_2(t_dna *dna, char *from, char *to)
 {
@@ -115,28 +88,7 @@ int			parsing(t_dna *dna, char *filename)
 	tmp_data = tmp_data->next;
 	if (!(tmp_data = room(dna, tmp_data)))
 		error("error : room\n");
-	tmp_data = pars_link(dna, tmp_data);
-	tmp_display = data;
-	//si je m arrete avant ou pas j affiche la map en fonction
-	if (tmp_data)
-	{
-		while (tmp_display && tmp_display->content != tmp_data->content)
-		{
-			ft_putstr((char*)tmp_display->content);
-			ft_putchar('\n');
-			tmp_display = tmp_display->next;
-		}
-	}
-	else
-	{
-		while (tmp_display)
-		{
-			ft_putstr((char*)tmp_display->content);
-			ft_putchar('\n');
-			tmp_display = tmp_display->next;
-		}
-	}
-	ft_putchar('\n');
+	display_map(data, pars_link(dna, tmp_data));
 	free_data(data);
 	if (dna->link_lst)
 	{

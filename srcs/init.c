@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 15:52:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 23:55:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,18 @@ void	dna_init(t_dna *dna)
 	dna->start_node = NULL;
 }
 
-void	node_init(t_node *node, t_node *parent)
+void	node_init(t_dna *dna, t_node *node, t_node *parent, char *name)
 {
 	node->next = NULL;
 	node->score = 0;
 	node->num_path = -1;
 	node->active = 0;
+	node->name = name;
+	if (is_end(dna, node))
+		dna->end_node = node;
+	if (is_start(dna, node))
+		dna->start_node = node;
+	node->nb_lnk = cnt_lnk(dna, name);
 }
 
 void	init_lst_ants(t_dna *dna)
@@ -43,7 +49,8 @@ void	init_lst_ants(t_dna *dna)
 	while (i < dna->nb_ants)
 	{
 		dna->lst_ants[i].id = i;
-		dna->lst_ants[i].pos = NULL;
+		// dna->lst_ants[i].pos = NULL;
+		dna->lst_ants[i].pos = dna->start_node;
 		i++;
 	}
 }

@@ -6,27 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 13:44:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 18:34:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
-
-// int		ants_in_path(t_dna *dna, t_ants *lst)
-// {
-// 	t_node *tmp;
-// 	int i;
-//
-// 	i = 0;
-// 	while (i < dna->nb_ants)
-// 	{
-// 		if (!lst->pos)
-// 			return (1);
-// 		lst = lst->next;
-// 		i++;
-// 	}
-// 	return (0);
-// }
 
 void	push_ants(t_dna *dna, int *stk)
 {
@@ -55,56 +39,14 @@ void	push_ants(t_dna *dna, int *stk)
 		}
 		i++;
 	}
-
-	// int f = 0;
-	// while (f < 10)
-	// {
-	// 	printf(">> %d\n", stk[f]);
-	// 	f++;
-	// }
 }
 
-// t_ants	*create_lst_ants(t_dna *dna, int nb)
-// {
-// 	int			i;
-// 	t_ants		*lst;
-// 	t_ants		*tmp;
-//
-// 	i = 1;
-// 	if (!(lst = (t_ants*)ft_memalloc(sizeof(t_ants))))
-// 		error("error : malloc\n");
-// 	lst->next = NULL;
-// 	lst->pos = dna->start_node;
-// 	lst->id = 0;
-// 	lst->active = 1;
-//
-// 	tmp = lst;
-// 	while (i < nb)
-// 	{
-// 		if (!(tmp->next = (t_ants*)ft_memalloc(sizeof(t_ants))))
-// 			error("error : malloc\n");
-// 		tmp = tmp->next;
-// 		tmp->next = NULL;
-// 		tmp->id = i;
-// 		tmp->pos = dna->start_node;
-// 		tmp->active = 1;
-// 		// tmp->pos = dna->path;
-// 		i++;
-// 	}
-// 	return (lst);
-// }
+void	create_lst_ants(t_dna *dna)
+{
+	int i;
 
-// void	ants_displace(t_dna *dna, t_ants *lst)
-// {
-// 	while (lst)
-// 	{
-// 		if ((t_node*)lst->pos)
-// 		{
-// 			if (!is_end(dna, (t_node*)lst->pos))
-// 				lst->pos = next_node_path((t_node*)lst->pos);
-// 			else
-// 				lst->active = 0;
-// 		}
-// 		lst = lst->next;
-// 	}
-// }
+	i = 0;
+	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
+		error("error : Malloc failed\n");
+	init_lst_ants(dna);
+}

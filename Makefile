@@ -21,7 +21,9 @@ SRC =	main.c					\
 		path_check.c			\
 		path_clean.c			\
 		path_create.c			\
+		pathfinding.c			\
 		node.c					\
+		tree.c					\
 		debug.c
 
 INC = -I includes -I libft/includes

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 17:03:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 23:47:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,11 @@ int		stk_is_empty(int *stk, int nb)
 	return (1);
 }
 
-void	create_lst_ants(t_dna *dna)
-{
-	int i;
-
-	i = 0;
-	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
-		error("error : Malloc failed\n");
-	init_lst_ants(dna);
-}
-
 void	start_to_end(t_dna *dna)
 {
 	int		i;
 	char	*itoa;
 
-	// i = 0;
-	// while (i < dna->nb_ants)
-	// {
-	// 	ft_putchar('L');
-	// 	itoa = ft_itoa(i + 1);
-	// 	ft_putstr(itoa);
-	// 	ft_putchar('-');
-	// 	ft_putstr(dna->start_node->name);
-	// 	ft_putchar(' ');
-	// 	i++;
-	// }
-	// ft_putchar('\n');
 	i = 0;
 	while (i < dna->nb_ants)
 	{
@@ -64,7 +42,6 @@ void	start_to_end(t_dna *dna)
 		ft_putchar(' ');
 		i++;
 	}
-
 }
 
 int		main(int argc, char **argv)
@@ -75,13 +52,11 @@ int		main(int argc, char **argv)
 
 	i = 0;
 	ret = 0;
-
 	dna_init(&dna);
 	if (argc != 1)
 		error("usage: ./lem-in < file.txt\n");
 	if (parsing(&dna, argv[0]))
 	{
-		create_lst_ants(&dna);
 		if (!(dna.node_lst = create_node_lst(&dna)))
 			error("error : create tree failed\n");
 		create_tree(&dna);
@@ -100,10 +75,10 @@ int		main(int argc, char **argv)
 			}
 			i++;
 		}
-
 		if (dna.nb_path)
 		{
-			move_ants(&dna);
+			create_lst_ants(&dna);
+			move(&dna);
 		}
 		else
 			ft_putstr("error : no path\n");

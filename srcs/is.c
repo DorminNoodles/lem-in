@@ -6,25 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:39:03 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 14:40:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 22:32:36 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
-//
-// int		is_name_link(t_dna *dna, char *str)
-// {
-// 	t_link	*lst_link;
-//
-// 	lst_link = dna->link_lst;
-// 	while (lst_link)
-// 	{
-// 		if (!ft_strcmp(lst_link->from, str) || !ft_strcmp(lst_link->to, str))
-// 			return (1);
-// 		lst_link = lst_link->next;
-// 	}
-// 	return (0);
-// }
 
 int		is_name(t_dna *dna, char *str)
 {
@@ -45,17 +31,6 @@ int		is_name(t_dna *dna, char *str)
 		return (1);
 	return (0);
 }
-//
-// int		is_empty(char *str)
-// {
-// 	while (*str)
-// 	{
-// 		if (*str != ' ')
-// 			return (0);
-// 		str++;
-// 	}
-// 	return (1);
-// }
 
 int		is_order(char *str)
 {

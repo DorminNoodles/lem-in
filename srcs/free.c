@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:30:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 17:01:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/27 23:08:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	main_free(t_dna *dna)
 {
 	free_room_lst(&dna->room_lst);
 	free_link_lst(&dna->link_lst);
-	free_lst_ants(&dna->lst_ants);
+	if (dna->lst_ants)
+		free_lst_ants(&dna->lst_ants);
 	// printf("%p\n",dna->room_lst);
-
 }
