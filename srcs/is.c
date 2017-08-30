@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:39:03 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 22:32:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 09:45:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		is_name(t_dna *dna, char *str)
 	while (tmp)
 	{
 		if (!ft_strcmp(tmp->name, str))
-		return (1);
+			return (1);
 		tmp = tmp->next;
 	}
 	if (dna->start->name && !ft_strcmp(dna->start->name, str))

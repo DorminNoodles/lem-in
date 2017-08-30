@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 22:31:14 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:42:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,20 +52,6 @@ void	dispatch_ants(t_dna *dna, int *stk)
 	}
 }
 
-int		all_in_end(t_dna *dna)
-{
-	int i;
-
-	i = 0;
-	while (i < dna->nb_ants)
-	{
-		if (!is_end(dna, dna->lst_ants[i].pos))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 int		all_desactive(t_dna *dna)
 {
 	int i;
@@ -91,13 +77,14 @@ void	move_ants(t_dna *dna)
 		{
 			if (!is_end(dna, dna->lst_ants[i].pos))
 			{
-				dna->lst_ants[i].pos = next_node_path_new(dna->lst_ants[i].pos, dna->lst_ants[i].pos->num_path);
+				dna->lst_ants[i].pos = next_node_path(dna->lst_ants[i].pos,
+				dna->lst_ants[i].pos->num_path);
 				if (!dna->lst_ants[i].pos)
 				{
 					dna->lst_ants[i].pos = dna->end_node;
 				}
 			}
-				else
+			else
 				dna->lst_ants[i].active = 0;
 		}
 		i++;

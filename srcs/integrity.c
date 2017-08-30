@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 17:01:40 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 22:33:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 09:47:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ int		check_link_str(t_dna *dna, char *str)
 
 	if (!ft_strchr(str, '-') || !(split = ft_strsplit(str, '-')))
 		return (0);
-
 	if (!split[0] || !split[1] || !is_name(dna, split[0]) ||
 	!is_name(dna, split[1]))
 	{
-
 		free_split(split, 0);
 		return (0);
 	}

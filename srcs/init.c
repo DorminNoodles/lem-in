@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:55:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 09:48:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	init_lst_ants(t_dna *dna)
 	while (i < dna->nb_ants)
 	{
 		dna->lst_ants[i].id = i;
-		// dna->lst_ants[i].pos = NULL;
 		dna->lst_ants[i].pos = dna->start_node;
 		i++;
 	}

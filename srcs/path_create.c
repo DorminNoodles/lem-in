@@ -6,31 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:26:17 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:51:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
-
-t_node		*get_next_node(t_dna *dna, t_node *node, int nb)
-{
-	int		i;
-	char	*name;
-	t_node	*lst;
-
-	i = 0;
-	name = get_next_lnk(dna, node->name, nb);
-	if (!name)
-		return (NULL);
-	lst = dna->node_lst;
-	while (lst)
-	{
-		if (!ft_strcmp(name, lst->name))
-			return (lst);
-		lst = lst->next;
-	}
-	return (NULL);
-}
 
 char		*get_next_lnk(t_dna *dna, char *name, int nb)
 {
@@ -60,8 +40,8 @@ char		*get_next_lnk(t_dna *dna, char *name, int nb)
 
 void		get_lnk_in_lnk(t_dna *dna, t_node *node, t_node **tab, int *cnt_tab)
 {
-	int i;
-	t_node *tmp;
+	int		i;
+	t_node	*tmp;
 
 	i = 0;
 	tmp = NULL;
@@ -76,11 +56,11 @@ void		get_lnk_in_lnk(t_dna *dna, t_node *node, t_node **tab, int *cnt_tab)
 	}
 }
 
-int			get_all_lnk_2(t_dna *dna, t_node **next_lnk)
+int			get_all_lnk(t_dna *dna, t_node **next_lnk)
 {
-	int i;
-	int j;
-	int cnt_tab;
+	int		i;
+	int		j;
+	int		cnt_tab;
 	t_node	*tmp;
 	t_node	*tab[32000];
 
@@ -103,69 +83,6 @@ int			get_all_lnk_2(t_dna *dna, t_node **next_lnk)
 	return (cnt_tab);
 }
 
-void		create_node_score_2(t_dna *dna)
-{
-	t_node	*next_lnk[32000];
-	int i;
-	int j;
-	int ret;
-
-	ret = 1;
-	i = 2;
-	ft_bzero(next_lnk, 32000);
-	next_lnk[0] = dna->end_node;
-	next_lnk[0]->score = 1;
-
-	while (ret)
-	{
-		ret = get_all_lnk_2(dna, next_lnk);
-		j = 0;
-		while (j < ret)
-		{
-			if (next_lnk[j])
-				next_lnk[j]->score = i;
-			j++;
-		}
-		i++;
-	}
-	dna->start_node->score = 0;
-}
-
-t_node		*next_node_path_new(t_node *node, int num_path)
-{
-	int i;
-
-	i = 0;
-	while (i < node->nb_lnk)
-	{
-		if (node->lnk[i]->num_path == num_path && node->lnk[i]->score < node->score)
-		{
-			return (node->lnk[i]);
-		}
-		i++;
-	}
-	return (NULL);
-}
-
-t_node		*next_shortest_node(t_node *node)
-{
-	int i;
-	t_node	*tmp;
-
-	i = 0;
-	tmp = NULL;
-	while (i < node->nb_lnk)
-	{
-		if (node->lnk[i]->num_path == -1 &&
-			node->lnk[i]->score == node->score - 1)
-		{
-			return (node->lnk[i]);
-		}
-		i++;
-	}
-	return (tmp);
-}
-
 int			start_with_end(t_dna *dna)
 {
 	int i;
@@ -174,8 +91,32 @@ int			start_with_end(t_dna *dna)
 	while (i < dna->start_node->nb_lnk)
 	{
 		if (is_end(dna, dna->start_node->lnk[i]))
+		{
+			start_to_end(dna);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
+}
+
+int			create_path(t_dna *dna)
+{
+	int i;
+
+	i = 0;
+	if (!(dna->node_lst = create_node_lst(dna)))
+		error("error : create tree failed\n");
+	create_tree(dna);
+	create_node_score(dna);
+	while (i < dna->start_node->nb_lnk)
+	{
+		if (pathfinding(dna, i))
+		{
+			dna->nb_path++;
+			dna->start_node->lnk[i]->active = 1;
+		}
+		i++;
+	}
+	return (1);
 }

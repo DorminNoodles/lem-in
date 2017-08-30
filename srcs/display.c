@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:37:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:17:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 09:47:30 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ void	display_map(t_list *data, t_list *limit)
 	ft_putchar('\n');
 }
 
-void		display(t_dna *dna)
+void	display(t_dna *dna)
 {
 	t_node	*tmp;
 	char	*itoa;
-	int i;
+	int		i;
 
 	i = 0;
-
 	while (i < dna->nb_ants)
 	{
 		if (dna->lst_ants[i].active)
@@ -59,21 +58,3 @@ void		display(t_dna *dna)
 	}
 	ft_putstr("\n");
 }
-//
-// void	display_path_debug(t_dna *dna)
-// {
-// 	int i;
-// 	t_node *tmp;
-//
-// 	i = 0;
-// 	tmp = &dna->path->next[0];
-// 	while (tmp)
-// 	{
-// 		tmp = next_node_path(tmp);
-// 	}
-// 	tmp = &dna->path->next[1];
-// 	while (tmp)
-// 	{
-// 		tmp = next_node_path(tmp);
-// 	}
-// }

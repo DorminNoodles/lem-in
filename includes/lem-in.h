@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:53:12 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:45:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,16 +133,15 @@ t_node		*create_node_lst(t_dna *dna);
 void		node_init(t_dna *dna, t_node *node, t_node *parent, char *name);
 t_node		*get_next_node(t_dna *dna, t_node *node, int nb);
 char		*get_next_lnk(t_dna *dna, char *name, int nb);
-void		create_node_score(t_dna *dna, t_node *node, int score);
 int			pathfinding(t_dna *dna, int num);
-t_node		*next_node_path_new(t_node *node, int num_path);
+t_node		*next_node_path(t_node *node, int num_path);
 void		debug_display_path(t_dna *dna, int num);
 void		debug_display_all(t_dna *dna);
 int			start_with_end(t_dna *dna);
 void		debug_display_path_2(t_dna *dna, int num);
-void		create_node_score_2(t_dna *dna);
+void		create_node_score(t_dna *dna);
 int			redundancy_link_2(t_dna *dna, char *from, char *to);
-int			get_all_lnk_2(t_dna *dna, t_node **next_lnk);
+int			get_all_lnk(t_dna *dna, t_node **next_lnk);
 void		create_lst_ants(t_dna *dna);
 void		debug_display_path_reverse(t_dna *dna, int num);
 void		init_lst_ants(t_dna *dna);
@@ -152,4 +151,5 @@ void		display_map(t_list *data, t_list *tmp_data);
 void		move(t_dna *dna);
 void		create_tree(t_dna *dna);
 t_node		*next_shortest_node(t_node *node);
+int			create_path(t_dna *dna);
 #endif

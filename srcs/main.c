@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:47:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:38:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,42 +39,27 @@ void	start_to_end(t_dna *dna)
 		ft_putstr(itoa);
 		ft_putchar('-');
 		ft_putstr(dna->end_node->name);
-		ft_putchar(' ');
+		if (i + 1 < dna->nb_ants)
+			ft_putchar(' ');
 		i++;
 	}
+	ft_putchar('\n');
 }
 
 int		main(int argc, char **argv)
 {
-	t_dna dna;
-	int ret;
-	int i;
+	t_dna	dna;
+	int		ret;
 
-	i = 0;
 	ret = 0;
 	dna_init(&dna);
 	if (argc != 1)
 		error("usage: ./lem-in < file.txt\n");
 	if (parsing(&dna, argv[0]))
 	{
-		if (!(dna.node_lst = create_node_lst(&dna)))
-			error("error : create tree failed\n");
-		create_tree(&dna);
-		create_node_score_2(&dna);
+		create_path(&dna);
 		if (start_with_end(&dna))
-		{
-			start_to_end(&dna);
 			return (0);
-		}
-		while (i < dna.start_node->nb_lnk)
-		{
-			if (pathfinding(&dna, i))
-			{
-				dna.nb_path++;
-				dna.start_node->lnk[i]->active = 1;
-			}
-			i++;
-		}
 		if (dna.nb_path)
 		{
 			create_lst_ants(&dna);

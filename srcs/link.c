@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/24 15:50:58 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:34:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	add_link(t_dna *dna, char *str)
 		dna->link_lst = new;
 }
 
-t_list		*pars_link(t_dna *dna, t_list *data)
+t_list	*pars_link(t_dna *dna, t_list *data)
 {
 	char *tmp;
 

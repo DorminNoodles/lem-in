@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 23:03:45 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 23:04:11 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 11:33:16 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			pathfinding(t_dna *dna, int num)
 	{
 		node = next_shortest_node(node);
 		if (!node)
-			return  (0);
+			return (0);
 		is_end(dna, node) ? 0 : (node->num_path = num);
 		is_end(dna, node) ? 0 : (node->active = 0);
 	}
