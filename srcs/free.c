@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:30:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 09:44:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/30 17:44:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	free_node(t_node *node)
 {
 	if (node->next)
 		free_node(node->next);
-	free(node->name);
+	node->name = NULL;
+	ft_memdel((void**)&node->lnk);
 	free(node);
 }
 
@@ -53,4 +54,9 @@ void	main_free(t_dna *dna)
 	free_link_lst(&dna->link_lst);
 	if (dna->lst_ants)
 		free_lst_ants(&dna->lst_ants);
+	free_node(dna->node_lst);
+	ft_memdel((void**)&dna->start->name);
+	ft_memdel((void**)&dna->start);
+	ft_memdel((void**)&dna->end->name);
+	ft_memdel((void**)&dna->end);
 }
