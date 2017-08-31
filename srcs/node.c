@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 11:50:25 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/31 09:57:41 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_node		*create_node_lst(t_dna *dna)
 				error("error : malloc\n");
 			tmp = node_lst;
 		}
-		node_init(dna, tmp, NULL, lst->name);
+		node_init(dna, tmp, lst->name);
 		lst = lst->next;
 	}
 	return (node_lst);

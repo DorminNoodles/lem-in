@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 11:42:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/31 09:57:04 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,8 @@ void	move_ants(t_dna *dna)
 
 void	move(t_dna *dna)
 {
-	int		move;
 	int		i;
 	int		stk[100];
-	t_node	*tmp;
 
 	i = 0;
 	ft_bzero(stk, 100);

@@ -14,7 +14,6 @@ SRC =	main.c					\
 		precheck.c				\
 		link.c					\
 		integrity.c				\
-		chld.c					\
 		init.c					\
 		free_pars.c				\
 		move.c					\
@@ -23,13 +22,12 @@ SRC =	main.c					\
 		path_create.c			\
 		pathfinding.c			\
 		node.c					\
-		tree.c					\
-		debug.c
+		tree.c
 
 INC = -I includes -I libft/includes
 SRCS = $(addprefix srcs/, $(SRC))
 OBJ = $(SRC:.c=.o)
-FLAGS = #-Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 

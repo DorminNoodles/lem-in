@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 12:04:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 17:48:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/31 09:57:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	create_tree(t_dna *dna)
 {
-	t_node	*tree;
 	t_node	*lst;
 	int		i;
 

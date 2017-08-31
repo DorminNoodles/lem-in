@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 09:48:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/31 09:55:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	dna_init(t_dna *dna)
 	dna->start_node = NULL;
 }
 
-void	node_init(t_dna *dna, t_node *node, t_node *parent, char *name)
+void	node_init(t_dna *dna, t_node *node, char *name)
 {
 	node->next = NULL;
 	node->score = 0;

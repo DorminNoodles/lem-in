@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 16:04:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/08/31 09:57:12 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void		get_lnk_in_lnk(t_dna *dna, t_node *node, t_node **tab, int *cnt_tab)
 int			get_all_lnk(t_dna *dna, t_node **next_lnk)
 {
 	int		i;
-	int		j;
 	int		cnt_tab;
 	t_node	*tmp;
 	t_node	*tab[32000];
