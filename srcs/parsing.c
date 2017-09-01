@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:53:36 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 11:52:53 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			parsing(t_dna *dna, char *filename)
 	t_list	*tmp_data;
 
 	if (!(data = open_file(filename)))
-		error("error : echec open file\n");
+		error_2(dna, "error : echec open file\n");
 	if (!(tmp_data = nb_ants(dna, data)))
 		error("error : nb_ants\n");
 	tmp_data = tmp_data->next;

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:56:05 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 11:52:37 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,4 +152,5 @@ void		move(t_dna *dna);
 void		create_tree(t_dna *dna);
 t_node		*next_shortest_node(t_node *node);
 int			create_path(t_dna *dna);
+void		error_2(t_dna *dna, char *str);
 #endif

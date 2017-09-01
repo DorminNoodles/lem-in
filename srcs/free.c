@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:30:14 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 17:44:00 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 13:19:11 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,23 @@ void	free_split(char **tab, int nb)
 
 void	main_free(t_dna *dna)
 {
-	free_room_lst(&dna->room_lst);
-	free_link_lst(&dna->link_lst);
+	if (dna->room_lst)
+		free_room_lst(&dna->room_lst);
+	if (dna->link_lst)
+		free_link_lst(&dna->link_lst);
 	if (dna->lst_ants)
 		free_lst_ants(&dna->lst_ants);
-	free_node(dna->node_lst);
-	ft_memdel((void**)&dna->start->name);
-	ft_memdel((void**)&dna->start);
-	ft_memdel((void**)&dna->end->name);
-	ft_memdel((void**)&dna->end);
+	if (dna->node_lst)
+		free_node(dna->node_lst);
+	if (dna->start)
+	{
+		ft_memdel((void**)&dna->start->name);
+		ft_memdel((void**)&dna->start);
+	}
+	if (dna->end)
+	{
+		ft_memdel((void**)&dna->end->name);
+		ft_memdel((void**)&dna->end);
+	}
+	// printf("FUUUUUUCK\n");
 }
