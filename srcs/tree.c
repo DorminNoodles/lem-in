@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/28 12:04:38 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 11:34:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:17:51 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	create_tree(t_dna *dna)
 	{
 		i = 0;
 		if (!(lst->lnk = (t_node**)ft_memalloc(sizeof(t_node*) * lst->nb_lnk)))
-			error("error : malloc\n");
+			error(dna, "error : malloc\n");
 		while (i < lst->nb_lnk)
 		{
 			lst->lnk[i] = get_next_node(dna, lst, i);

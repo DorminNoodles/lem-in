@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 11:52:37 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:16:21 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ typedef struct s_dna
 }t_dna;
 
 int			parsing(t_dna *dna, char *filename);
-void		error(char *str);
-t_list		*open_file(char *filename);
+void		error(t_dna *dna, char *str);
+t_list		*open_file(t_dna *dna, char *filename);
 int			is_com(char *str);
 int			is_end(t_dna *dna, t_node *cp);
 int			repeat_room (t_node *cp);
@@ -104,9 +104,9 @@ int			is_order(char *str);
 int			link_integrity(t_dna *dna, char *str);
 int			check_edge_integrity(t_dna *dna);
 int			is_link(char *str);
-t_list		*precheck(t_list *data);
+t_list		*precheck(t_dna *dna, t_list *data);
 char		*check_name(t_list *data);
-char		*get_name(char *str, int flag);
+char		*get_name(t_dna *dna, char *str, int flag);
 void		add_roomlst(t_dna *dna, t_room *room);
 int			only_blank(char *str);
 void		free_room_lst(t_room **lst);
@@ -125,7 +125,7 @@ void		move_ants(t_dna *dna);
 void		free_lst_ants(t_ants **lst_ants);
 int			is_name(t_dna *dna, char *str);
 int			redundancy_link(t_dna *dna, char *str);
-int			check_coord(char *str);
+int			check_coord(t_dna *dna, char *str);
 void		add_node_lst(t_dna *dna, t_node *node);
 int			is_start(t_dna *dna, t_node *cp);
 void		display_path_debug(t_dna *dna);
@@ -152,5 +152,4 @@ void		move(t_dna *dna);
 void		create_tree(t_dna *dna);
 t_node		*next_shortest_node(t_node *node);
 int			create_path(t_dna *dna);
-void		error_2(t_dna *dna, char *str);
 #endif

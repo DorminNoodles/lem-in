@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 11:52:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:07:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ t_list		*nb_ants(t_dna *dna, t_list *data)
 	while (tmp[i] && tmp[i] != 13)
 	{
 		if (!ft_isdigit(tmp[i]))
-			error("Bad ants number\n");
+			error(dna, "Bad ants number\n");
 		i++;
 	}
 	dna->nb_ants = ft_atoi(tmp);
 	if (!dna->nb_ants || dna->nb_ants < 0)
-		error("error : ants bad number\n");
+		error(dna, "error : ants bad number\n");
 	return (tmp_data);
 }
 
@@ -80,13 +80,13 @@ int			parsing(t_dna *dna, char *filename)
 	t_list	*data;
 	t_list	*tmp_data;
 
-	if (!(data = open_file(filename)))
-		error_2(dna, "error : echec open file\n");
+	if (!(data = open_file(dna, filename)))
+		error(dna, "error : echec open file\n");
 	if (!(tmp_data = nb_ants(dna, data)))
-		error("error : nb_ants\n");
+		error(dna, "error : nb_ants\n");
 	tmp_data = tmp_data->next;
 	if (!(tmp_data = room(dna, tmp_data)))
-		error("error : room\n");
+		error(dna, "error : room\n");
 	display_map(data, pars_link(dna, tmp_data));
 	free_data(data);
 	if (dna->link_lst)

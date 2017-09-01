@@ -6,44 +6,44 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 11:34:38 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:15:58 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-t_link	*new_link(void)
+t_link	*new_link(t_dna *dna)
 {
 	t_link	*lk;
 
 	lk = (t_link*)malloc(sizeof(t_link));
 	if (!lk)
-		error("error : malloc\n");
+		error(dna, "error : malloc\n");
 	lk->next = NULL;
 	lk->from = NULL;
 	lk->to = NULL;
 	return (lk);
 }
 
-char	*get_name(char *str, int flag)
+char	*get_name(t_dna *dna, char *str, int flag)
 {
 	char **split;
 	char *tmp;
 
 	split = ft_strsplit(str, '-');
 	if (!split)
-		error("error : split error\n");
+		error(dna, "error : split error\n");
 	if (flag == FROM)
 	{
 		if (!(tmp = ft_strnew(ft_strlen(split[0]))))
-			error("error : malloc\n");
+			error(dna, "error : malloc\n");
 		ft_strcpy(tmp, split[0]);
 		free_split(split, 2);
 	}
 	else
 	{
 		if (!(tmp = ft_strnew(ft_strlen(split[1]))))
-			error("error : malloc\n");
+			error(dna, "error : malloc\n");
 		ft_strcpy(tmp, split[1]);
 		free_split(split, 2);
 	}
@@ -55,9 +55,9 @@ void	add_link(t_dna *dna, char *str)
 	t_link *new;
 	t_link *tmp;
 
-	new = new_link();
-	new->from = get_name(str, FROM);
-	new->to = get_name(str, TO);
+	new = new_link(dna);
+	new->from = get_name(dna, str, FROM);
+	new->to = get_name(dna, str, TO);
 	if (new->to[ft_strlen(new->to) - 1] == 13)
 		new->to[ft_strlen(new->to) - 1] = 0;
 	if (dna->link_lst)

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:55:46 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:21:13 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	dna_init(t_dna *dna)
 	dna->end = NULL;
 	dna->room_lst = NULL;
 	dna->link_lst = NULL;
+	dna->lst_ants = NULL;
 	dna->nb_ants = 0;
 	dna->nb_path = 0;
 	dna->path = NULL;

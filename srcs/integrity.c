@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 17:01:40 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 09:47:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:16:45 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int		link_integrity(t_dna *dna, char *str)
 
 	if (!check_link_str(dna, str))
 		return (0);
-	s1 = get_name(str, FROM);
-	s2 = get_name(str, TO);
+	s1 = get_name(dna, str, FROM);
+	s2 = get_name(dna, str, TO);
 	if (!ft_strcmp(s1, s2))
 	{
 		ft_memdel((void**)&s1);

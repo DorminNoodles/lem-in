@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:53:13 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 13:38:26 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	create_lst_ants(t_dna *dna)
 
 	i = 0;
 	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
-		error("error : Malloc failed\n");
+		error(dna, "error : Malloc failed\n");
 	init_lst_ants(dna);
 }

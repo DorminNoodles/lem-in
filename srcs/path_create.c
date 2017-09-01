@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:57:12 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:17:02 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int			create_path(t_dna *dna)
 
 	i = 0;
 	if (!(dna->node_lst = create_node_lst(dna)))
-		error("error : create tree failed\n");
+		error(dna, "error : create tree failed\n");
 	create_tree(dna);
 	create_node_score(dna);
 	while (i < dna->start_node->nb_lnk)

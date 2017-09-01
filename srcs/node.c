@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:57:41 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 14:17:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ t_node		*create_node_lst(t_dna *dna)
 		if (node_lst)
 		{
 			if (!(tmp->next = (t_node*)ft_memalloc(sizeof(t_node))))
-				error("error : malloc\n");
+				error(dna, "error : malloc\n");
 			tmp = tmp->next;
 		}
 		else
 		{
 			if (!(node_lst = (t_node*)ft_memalloc(sizeof(t_node))))
-				error("error : malloc\n");
+				error(dna, "error : malloc\n");
 			tmp = node_lst;
 		}
 		node_init(dna, tmp, lst->name);

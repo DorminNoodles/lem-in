@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:15:53 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/08 12:22:23 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 13:43:47 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem-in.h"
 
-int		check_coord_digit(char *str)
+int		check_coord_digit(t_dna *dna, char *str)
 {
 	char **split;
 
@@ -20,7 +20,7 @@ int		check_coord_digit(char *str)
 		str[ft_strlen(str) - 1] = 0;
 	split = ft_strsplit(str, ' ');
 	if (!split)
-		error("error : malloc beuargh\n");
+		error(dna, "error : malloc beuargh\n");
 	if (!ft_str_isdigit(split[0]) || !ft_str_isdigit(split[1]))
 	{
 		free_split(split, 2);
@@ -30,7 +30,7 @@ int		check_coord_digit(char *str)
 	return (1);
 }
 
-int		check_coord(char *str)
+int		check_coord(t_dna *dna, char *str)
 {
 	int		i;
 	char	*start;
@@ -53,7 +53,7 @@ int		check_coord(char *str)
 		return (0);
 	if (coord != 2)
 		return (0);
-	if (!check_coord_digit(str))
+	if (!check_coord_digit(dna, str))
 		return (0);
 	return (coord);
 }
