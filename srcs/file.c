@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:42:03 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 14:04:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/01 16:19:23 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ static void		addtolst(t_list **data, t_list *new)
 		*data = new;
 }
 
-t_list			*open_file(t_dna *dna, char *filename)
+t_list			*open_file(t_dna *dna)
 {
-	int		fd;
 	int		ret;
 	char	*tmp;
 	t_list	*lst;
@@ -38,7 +37,6 @@ t_list			*open_file(t_dna *dna, char *filename)
 	ret = 0;
 	data = NULL;
 	tmp = NULL;
-	fd = open(filename, O_RDONLY);
 	while ((ret = get_next_line(0, &tmp)) > 0)
 	{
 		if (!(lst = (t_list*)ft_memalloc(sizeof(t_list))))
@@ -46,6 +44,5 @@ t_list			*open_file(t_dna *dna, char *filename)
 		lst->content = tmp;
 		addtolst(&data, lst);
 	}
-	close(fd);
 	return (data);
 }
