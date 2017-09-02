@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 23:03:45 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/30 11:33:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 int			pathfinding(t_dna *dna, int num)
 {

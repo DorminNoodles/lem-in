@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:33:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/27 20:07:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 int		compare_room(t_dna *dna, t_node *node)
 {

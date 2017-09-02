@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 13:38:26 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 void	push_ants(t_dna *dna, int *stk)
 {

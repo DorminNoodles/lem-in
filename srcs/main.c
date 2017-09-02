@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 13:38:07 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:27:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 int		stk_is_empty(int *stk, int nb)
 {
@@ -52,10 +52,11 @@ int		main(int argc, char **argv)
 	int		ret;
 
 	ret = 0;
+	argv[0] = argv[0];
 	dna_init(&dna);
 	if (argc != 1)
 		error(&dna, "usage: ./lem-in < file.txt\n");
-	if (parsing(&dna, argv[0]))
+	if (parsing(&dna))
 	{
 		create_path(&dna);
 		if (start_with_end(&dna))

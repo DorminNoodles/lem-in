@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 14:17:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 t_node		*create_node_lst(t_dna *dna)
 {

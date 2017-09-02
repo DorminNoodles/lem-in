@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:37:37 by lchety            #+#    #+#             */
-/*   Updated: 2017/08/31 09:53:49 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 void	display_map(t_list *data, t_list *limit)
 {

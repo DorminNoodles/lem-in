@@ -6,11 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/01 14:07:34 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/02 11:28:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem-in.h"
+#include "lemin.h"
 
 int			redundancy_link_2(t_dna *dna, char *from, char *to)
 {
@@ -75,12 +75,12 @@ void		free_data(t_list *data)
 	ft_memdel((void**)&data);
 }
 
-int			parsing(t_dna *dna, char *filename)
+int			parsing(t_dna *dna)
 {
 	t_list	*data;
 	t_list	*tmp_data;
 
-	if (!(data = open_file(dna, filename)))
+	if (!(data = open_file(dna)))
 		error(dna, "error : echec open file\n");
 	if (!(tmp_data = nb_ants(dna, data)))
 		error(dna, "error : nb_ants\n");
