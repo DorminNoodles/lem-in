@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:31:39 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/14 17:10:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ int			parsing(t_dna *dna)
 	display_map(data, pars_link(dna, tmp_data));
 	free_data(data);
 	if (dna->link_lst)
-	{
 		return (1);
-	}
 	return (0);
 }
