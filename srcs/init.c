@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:16:52 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/15 15:09:17 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	node_init(t_dna *dna, t_node *node, char *name)
 	if (is_start(dna, node))
 		dna->start_node = node;
 	node->nb_lnk = cnt_lnk(dna, name);
+	printf("Name %s lnk : %d\n", node->name, node->nb_lnk);
 }
 
 void	init_lst_ants(t_dna *dna)

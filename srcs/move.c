@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/15 15:38:00 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,18 @@ void	move_ants(t_dna *dna)
 		{
 			if (!is_end(dna, dna->lst_ants[i].pos))
 			{
+
 				dna->lst_ants[i].pos = next_node_path(dna->lst_ants[i].pos,
 				dna->lst_ants[i].pos->num_path);
+
+
 				if (!dna->lst_ants[i].pos)
 				{
 					dna->lst_ants[i].pos = dna->end_node;
 				}
+
+				// 12 == end next_node_path plante et renvoi null je pense.. alors on envoi dans end....
+				//pourquoi next_node_path renvoi null ?
 			}
 			else
 				dna->lst_ants[i].active = 0;
