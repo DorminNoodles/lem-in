@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/19 14:40:54 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 01:02:50 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,33 +58,19 @@ int		main(int argc, char **argv)
 		error(&dna, "usage: ./lem-in < file.txt\n");
 	if (parsing(&dna))
 	{
-		t_link	*tmp = dna.link_lst;
 
 		// while (tmp)
 		// {
 		// 	printf(">> %s\n", tmp->name);
 		// 	tmp = tmp->next;
 		// }
-		while (tmp)
-		{
-			printf(">> %s-%s\n", tmp->from, tmp->to);
-			tmp = tmp->next;
-		}
-		printf("\n");
+
 
 
 
 		create_path(&dna);
 
-		t_node *fck;
 
-		fck = dna.node_lst;
-		while (fck)
-		{
-			printf("$$ name => %s  num_path = %d   score = %d  active %d\n", fck->name, fck->num_path , fck->score, fck->active);
-
-			fck = fck->next;
-		}
 
 		if (start_with_end(&dna))
 			return (0);

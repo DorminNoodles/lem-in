@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/27 23:03:45 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/19 16:25:53 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 01:03:49 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ t_node	*first_unused_node(t_dna *dna)
 	return (NULL);
 }
 
-int			pathfinding(t_dna *dna, int num)
+int			pathfinding(t_dna *dna, int num, t_node *node)
 {
-	t_node	*node;
 	int		length;
 
-	printf("num %d\n", num);
 	length = 0;
 
 //-------------------debug
@@ -56,11 +54,10 @@ int			pathfinding(t_dna *dna, int num)
 	// t_node *fck = NULL;
 
 	// fck = first_unused_node(dna);
-	node = first_unused_node(dna);
+	// node = first_unused_node(dna);
 
 	// printf("name first node => %s\n", fck->name);
 
-	printf("ta mere\n");
 
 //-------------------debug
 
@@ -77,7 +74,6 @@ int			pathfinding(t_dna *dna, int num)
 		node = next_shortest_node(node);
 		if (!node)
 			return (0);
-		printf("*node -> %s\n", node->name);
 		is_end(dna, node) ? 0 : (node->num_path = num);
 		is_end(dna, node) ? 0 : (node->active = 0);
 	}

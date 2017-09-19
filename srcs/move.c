@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/19 16:15:01 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 01:04:38 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,6 @@ void	move(t_dna *dna)
 	i = 0;
 	ft_bzero(stk, 100);
 	dispatch_ants(dna, stk);
-
-	int y = 0;
-	while (y < dna->start_node->nb_lnk)
-	{
-		printf("name of chld %s\n", dna->start_node->lnk[y]->name);
-		printf("nb in stk %d\n", stk[y]);
-		y++;
-	}
 	push_ants(dna, stk);
 	while (!all_desactive(dna))
 	{

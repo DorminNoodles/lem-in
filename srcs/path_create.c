@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/19 18:42:07 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 00:51:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int			create_path(t_dna *dna)
 {
 	int i;
 	int ret;
+	t_node *cur;
 
 	ret = -1;
 	i = 0;
@@ -112,10 +113,12 @@ int			create_path(t_dna *dna)
 	create_node_score(dna);
 	while (i < dna->start_node->nb_lnk)
 	{
-		if (pathfinding(dna, i) )
+		cur = first_unused_node(dna);
+		if (pathfinding(dna, i, cur))
 		{
 			dna->nb_path++;
-			dna->start_node->lnk[i]->active = 1;
+			cur->active = 1;
+			// dna->start_node->lnk[i]->active = 1;
 		}
 		i++;
 	}
