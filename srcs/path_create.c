@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/19 18:42:07 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ int			start_with_end(t_dna *dna)
 int			create_path(t_dna *dna)
 {
 	int i;
+	int ret;
 
+	ret = -1;
 	i = 0;
 	if (!(dna->node_lst = create_node_lst(dna)))
 		error(dna, "error : create tree failed\n");
@@ -110,7 +112,7 @@ int			create_path(t_dna *dna)
 	create_node_score(dna);
 	while (i < dna->start_node->nb_lnk)
 	{
-		if (pathfinding(dna, i))
+		if (pathfinding(dna, i) )
 		{
 			dna->nb_path++;
 			dna->start_node->lnk[i]->active = 1;
