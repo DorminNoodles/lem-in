@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/20 01:02:50 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 11:23:10 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,7 @@ int		main(int argc, char **argv)
 		error(&dna, "usage: ./lem-in < file.txt\n");
 	if (parsing(&dna))
 	{
-
-		// while (tmp)
-		// {
-		// 	printf(">> %s\n", tmp->name);
-		// 	tmp = tmp->next;
-		// }
-
-
-
-
 		create_path(&dna);
-
-
-
 		if (start_with_end(&dna))
 			return (0);
 		if (dna.nb_path)

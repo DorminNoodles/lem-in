@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/20 00:52:16 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 11:22:57 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ typedef struct	s_link
 	char			*to;
 	struct s_link	*next;
 }				t_link;
-
-typedef struct	s_line
-{
-	int		nb;
-	char	*data;
-}				t_line;
 
 typedef struct	s_node
 {

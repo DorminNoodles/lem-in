@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/20 00:51:43 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/20 11:27:06 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,9 @@ int			start_with_end(t_dna *dna)
 
 int			create_path(t_dna *dna)
 {
-	int i;
-	int ret;
-	t_node *cur;
+	int		i;
+	int		ret;
+	t_node	*cur;
 
 	ret = -1;
 	i = 0;
@@ -118,7 +118,6 @@ int			create_path(t_dna *dna)
 		{
 			dna->nb_path++;
 			cur->active = 1;
-			// dna->start_node->lnk[i]->active = 1;
 		}
 		i++;
 	}
