@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/20 11:23:10 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/29 14:31:31 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,13 @@ void	start_to_end(t_dna *dna)
 	ft_putchar('\n');
 }
 
-int		main(int argc, char **argv)
+int		main(void)
 {
 	t_dna	dna;
 	int		ret;
 
 	ret = 0;
-	argv[0] = argv[0];
 	dna_init(&dna);
-	if (argc != 1)
-		error(&dna, "usage: ./lem-in < file.txt\n");
 	if (parsing(&dna))
 	{
 		create_path(&dna);

@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:30:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/29 14:25:33 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_list		*end(t_dna *dna, t_list *data)
 	room = newroom(dna);
 	if (!precheck(dna, data))
 		return (NULL);
-	if (!(room->name = check_name(data)))
+	if (!(room->name = check_name(dna, data)))
 		error(dna, "error : check_name failed\n");
 	dna->end = room;
 	return (data);
@@ -45,7 +45,7 @@ t_list		*start(t_dna *dna, t_list *data)
 	room = newroom(dna);
 	if (!(data = precheck(dna, data)))
 		return (NULL);
-	if (!(room->name = check_name(data)))
+	if (!(room->name = check_name(dna, data)))
 		error(dna, "error : start check_name failed\n");
 	if (only_blank(room->name))
 		error(dna, "error : start bad name\n");
@@ -62,7 +62,7 @@ t_list		*std_room(t_dna *dna, t_list *data)
 	room = newroom(dna);
 	if (!precheck(dna, data))
 		return (NULL);
-	if (!(room->name = check_name(data)))
+	if (!(room->name = check_name(dna, data)))
 		return (NULL);
 	if (only_blank(room->name))
 		error(dna, "error : empty name\n");

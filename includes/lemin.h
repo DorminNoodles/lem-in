@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/20 11:22:57 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/29 14:22:19 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int				link_integrity(t_dna *dna, char *str);
 int				check_edge_integrity(t_dna *dna);
 int				is_link(char *str);
 t_list			*precheck(t_dna *dna, t_list *data);
-char			*check_name(t_list *data);
+char			*check_name(t_dna *dna, t_list *data);
 char			*get_name(t_dna *dna, char *str, int flag);
 void			add_roomlst(t_dna *dna, t_room *room);
 int				only_blank(char *str);
