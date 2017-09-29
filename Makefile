@@ -27,24 +27,26 @@ SRC =	main.c					\
 INC = -I includes -I libft/includes
 SRCS = $(addprefix srcs/, $(SRC))
 OBJ = $(SRC:.c=.o)
+OBJS = $(addprefix obj/, $(OBJ))
 FLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJS)
 	make -C libft/
-	$(CC) -g $(OBJ) $(INC) libft/libft.a -o build/$(NAME)
+	$(CC) -g $(OBJS) $(INC) libft/libft.a -o $(NAME)
 
-%.o : srcs/%.c
+obj/%.o : srcs/%.c
+	mkdir -p obj
 	$(CC) -g -c $< $(FLAGS) $(INC) -o $@
 
 clean :
 	make -C libft/ clean
-	rm -f $(OBJ)
+	rm -f $(OBJS)
 
 fclean : clean
 	make -C libft/ fclean
-	rm -f build/$(NAME)
+	rm -f $(NAME)
 
 re : fclean all
 
