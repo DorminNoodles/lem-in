@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:15:53 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/09/29 14:25:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ int		check_coord(t_dna *dna, char *str)
 	return (coord);
 }
 
-char	*check_name(t_list *data)
+char	*check_name(t_dna *dna, t_list *data)
 {
 	int		coord;
 	int		size;
 	char	*tmp;
 	char	*str;
+	char	*new;
 
 	coord = 0;
 	size = 0;
@@ -78,7 +79,9 @@ char	*check_name(t_list *data)
 		tmp--;
 	}
 	size = tmp - str;
-	return (ft_strncpy(ft_strnew(size), str, size));
+	if (!(new = ft_strnew(size)))
+		error(dna, "error : malloc\n");
+	return (ft_strncpy(new, str, size));
 }
 
 t_list	*check_order(t_dna *dna, t_list *data, char *tmp)

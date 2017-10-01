@@ -33,7 +33,7 @@ all : $(NAME)
 
 $(NAME) : $(OBJ)
 	make -C libft/
-	$(CC) -g $(OBJ) $(INC) libft/libft.a -o build/$(NAME)
+	$(CC) -g $(OBJ) $(INC) libft/libft.a -o $(NAME)
 
 %.o : srcs/%.c
 	$(CC) -g -c $< $(FLAGS) $(INC) -o $@
@@ -44,7 +44,7 @@ clean :
 
 fclean : clean
 	make -C libft/ fclean
-	rm -f build/$(NAME)
+	rm -f $(NAME)
 
 re : fclean all
 
