@@ -6,7 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2017/09/29 14:22:19 by lchety           ###   ########.fr       */
+=======
+/*   Updated: 2017/09/29 15:33:38 by lchety           ###   ########.fr       */
+>>>>>>> e47db194e080ab97b20162be8ecf6c74daeacc4b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <limits.h>
 # include "libft.h"
 # include "get_next_line.h"
 
