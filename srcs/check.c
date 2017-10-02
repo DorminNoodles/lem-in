@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:15:53 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/02 11:19:21 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/02 11:37:56 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ char	*check_name(t_dna *dna, t_list *data)
 
 t_list	*check_order(t_dna *dna, t_list *data, char *tmp)
 {
-	if (ft_strstr(tmp, "##start") && ft_strlen(tmp) == 7)
+	if (!ft_strcmp(tmp, "##start"))
 	{
 		data = start(dna, data->next);
 		if (!data)
 			return (NULL);
 	}
-	else if (ft_strstr(tmp, "##end") && ft_strlen(tmp) == 5)
+	else if (!ft_strcmp(tmp, "##end"))
 	{
 		data = end(dna, data->next);
 		if (!data)
