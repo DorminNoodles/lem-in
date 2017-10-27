@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:42:03 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/27 13:37:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 17:13:46 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_list			*open_file(t_dna *dna)
 	limit = 0;
 	data = NULL;
 	tmp = NULL;
-	while ((ret = get_next_line(0, &tmp)) > 0)
+	while ((ret = get_next_line(0, &tmp)) > 0 && *tmp != 0)
 	{
 		if (!(lst = (t_list*)ft_memalloc(sizeof(t_list))))
 			error(dna, "error : malloc\n");
