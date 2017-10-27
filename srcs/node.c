@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/26 13:51:10 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/20 13:35:28 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:44:43 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_node		*create_node_lst(t_dna *dna)
 	t_node	*tmp;
 
 	lst = dna->room_lst;
+	tmp = NULL;
 	node_lst = NULL;
 	while (lst)
 	{

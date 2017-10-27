@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/27 11:01:22 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:30:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		add_roomlst(t_dna *dna, t_room *room)
 		dna->room_lst = room;
 }
 
-t_list		*nb_ants(t_dna *dna, t_list *data)
+static t_list		*nb_ants(t_dna *dna, t_list *data)
 {
 	int		i;
 	char	*tmp;
@@ -67,7 +67,7 @@ t_list		*nb_ants(t_dna *dna, t_list *data)
 	return (tmp_data);
 }
 
-void		free_data(t_list *data)
+static void		free_data(t_list *data)
 {
 	if (data->next)
 		free_data(data->next);

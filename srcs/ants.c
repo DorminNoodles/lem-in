@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/06 16:42:15 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:28:53 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void	push_ants(t_dna *dna, int *stk)
 void	create_lst_ants(t_dna *dna)
 {
 	int i;
+	unsigned long nb;
 
 	i = 0;
-	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * dna->nb_ants)))
+	nb = (unsigned long)dna->nb_ants;
+	if (!(dna->lst_ants = ft_memalloc(sizeof(t_ants) * nb)))
 		error(dna, "error : Malloc failed\n");
 	init_lst_ants(dna);
 }

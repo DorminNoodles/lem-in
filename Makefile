@@ -28,7 +28,7 @@ INC = -I includes -I libft/includes
 SRCS = $(addprefix srcs/, $(SRC))
 OBJ = $(SRC:.c=.o)
 OBJS = $(addprefix obj/, $(OBJ))
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -Weverything
 
 all : $(NAME)
 

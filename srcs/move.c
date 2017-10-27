@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/26 18:32:04 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/29 14:02:45 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:38:28 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-void	stk_drop(t_dna *dna, int *stk)
+static void	stk_drop(t_dna *dna, int *stk)
 {
 	int	score;
 	int tmp;
@@ -40,7 +40,7 @@ void	stk_drop(t_dna *dna, int *stk)
 	stk[best]++;
 }
 
-void	dispatch_ants(t_dna *dna, int *stk)
+static void	dispatch_ants(t_dna *dna, int *stk)
 {
 	int	ants;
 
@@ -52,7 +52,7 @@ void	dispatch_ants(t_dna *dna, int *stk)
 	}
 }
 
-int		all_desactive(t_dna *dna)
+static int		all_desactive(t_dna *dna)
 {
 	int i;
 

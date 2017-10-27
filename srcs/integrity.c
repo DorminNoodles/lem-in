@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 17:01:40 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:37:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		check_link_str(t_dna *dna, char *str)
+static int		check_link_str(t_dna *dna, char *str)
 {
 	char **split;
 
@@ -47,13 +47,6 @@ int		link_integrity(t_dna *dna, char *str)
 		return (0);
 	ft_memdel((void**)&s1);
 	ft_memdel((void**)&s2);
-	return (1);
-}
-
-int		coord_integrity(char *a, char *b)
-{
-	if (!ft_str_isdigit(a) || !ft_str_isdigit(b))
-		return (0);
 	return (1);
 }
 

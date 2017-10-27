@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:15:53 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/19 15:17:52 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:32:29 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		check_coord_digit(t_dna *dna, char *str)
+static int		check_coord_digit(t_dna *dna, char *str)
 {
 	char **split;
 
@@ -42,7 +42,7 @@ int		check_coord(t_dna *dna, char *str)
 	start = str;
 	while (*str)
 		str++;
-	size = str - start;
+	size = (int)(str - start);
 	while (str >= start && nb_coord < 2)
 	{
 		if (ft_isdigit(*str) && str - 1 >= start && *(str - 1) == ' ')
@@ -78,10 +78,10 @@ char	*check_name(t_dna *dna, t_list *data)
 			coord++;
 		tmp--;
 	}
-	size = tmp - str;
-	if (!(new = ft_strnew(size)))
+	size = (int)(tmp - str);
+	if (!(new = ft_strnew((size_t)size)))
 		error(dna, "error : malloc\n");
-	return (ft_strncpy(new, str, size));
+	return (ft_strncpy(new, str, (size_t)size));
 }
 
 t_list	*check_order(t_dna *dna, t_list *data, char *tmp)

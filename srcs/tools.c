@@ -6,21 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:27:18 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:33:03 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-int		split_length(char **split)
-{
-	int i;
-
-	i = 0;
-	while (split[i])
-		i++;
-	return (i);
-}
 
 int		only_blank(char *str)
 {

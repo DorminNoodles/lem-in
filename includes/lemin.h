@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/27 11:08:59 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:35:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct	s_dna
 	int		nb_ants;
 	int		nb_path;
 	int		node_limits;
+	int		padding;
 	t_room	*start;
 	t_room	*end;
 	t_node	*start_node;
@@ -82,7 +83,7 @@ typedef struct	s_dna
 }				t_dna;
 
 int				parsing(t_dna *dna);
-void			error(t_dna *dna, char *str);
+int				error(t_dna *dna, char *str);
 t_list			*open_file(t_dna *dna);
 int				is_com(char *str);
 int				is_end(t_dna *dna, t_node *cp);

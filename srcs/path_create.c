@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/25 10:20:49 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/20 14:02:32 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:38:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char		*get_next_lnk(t_dna *dna, char *name, int nb)
 	return (NULL);
 }
 
-void		get_lnk_in_lnk(t_dna *dna, t_node *node, t_node **tab, int *cnt_tab)
+static void		get_lnk_in_lnk(t_dna *dna, t_node *node, t_node **tab, int *cnt_tab)
 {
 	int		i;
 	t_node	*tmp;

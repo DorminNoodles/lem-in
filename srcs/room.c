@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:30:05 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/19 15:27:08 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:33:34 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-t_room		*newroom(t_dna *dna)
+static t_room		*newroom(t_dna *dna)
 {
 	t_room	*room;
 
@@ -53,7 +53,7 @@ t_list		*start(t_dna *dna, t_list *data)
 	return (data);
 }
 
-t_list		*std_room(t_dna *dna, t_list *data)
+static t_list		*std_room(t_dna *dna, t_list *data)
 {
 	t_room	*room;
 

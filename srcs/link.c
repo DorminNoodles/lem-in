@@ -6,13 +6,13 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 18:50:26 by lchety            #+#    #+#             */
-/*   Updated: 2017/09/02 11:21:55 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 16:37:18 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-t_link	*new_link(t_dna *dna)
+static t_link	*new_link(t_dna *dna)
 {
 	t_link	*lk;
 
@@ -50,7 +50,7 @@ char	*get_name(t_dna *dna, char *str, int flag)
 	return (tmp);
 }
 
-void	add_link(t_dna *dna, char *str)
+static void	add_link(t_dna *dna, char *str)
 {
 	t_link *new;
 	t_link *tmp;
