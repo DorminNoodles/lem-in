@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 13:23:39 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/02 11:37:20 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 11:08:59 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct	s_node
 	int				nb_lnk;
 	int				num_path;
 	int				active;
-	int				ant;
 	char			*name;
 	struct s_node	*parent;
 	struct s_node	**lnk;

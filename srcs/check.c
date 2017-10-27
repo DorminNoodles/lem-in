@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/12 11:15:53 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/02 11:37:56 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/19 15:17:52 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,27 @@ int		check_coord(t_dna *dna, char *str)
 	int		i;
 	char	*start;
 	int		size;
-	int		coord;
+	int		nb_coord;
 
-	coord = 0;
+	nb_coord = 0;
 	i = 0;
 	start = str;
 	while (*str)
 		str++;
 	size = str - start;
-	while (str >= start && coord < 2)
+	while (str >= start && nb_coord < 2)
 	{
 		if (ft_isdigit(*str) && str - 1 >= start && *(str - 1) == ' ')
-			coord++;
+			nb_coord++;
 		str--;
 	}
 	if (str == start)
 		return (0);
-	if (coord != 2)
+	if (nb_coord != 2)
 		return (0);
 	if (!check_coord_digit(dna, str))
 		return (0);
-	return (coord);
+	return (nb_coord);
 }
 
 char	*check_name(t_dna *dna, t_list *data)

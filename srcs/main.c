@@ -6,25 +6,11 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:44 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/02 11:37:04 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 10:59:48 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
-
-int		stk_is_empty(int *stk, int nb)
-{
-	int		i;
-
-	i = 0;
-	while (i < nb)
-	{
-		if (stk[i] > 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
 
 void	start_to_end(t_dna *dna)
 {

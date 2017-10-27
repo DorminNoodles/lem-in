@@ -6,7 +6,7 @@
 /*   By: lchety <lchety@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/30 10:58:56 by lchety            #+#    #+#             */
-/*   Updated: 2017/10/02 11:37:33 by lchety           ###   ########.fr       */
+/*   Updated: 2017/10/27 11:01:22 by lchety           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_list		*nb_ants(t_dna *dna, t_list *data)
 		i++;
 	}
 	dna->nb_ants = ft_atoi(tmp);
-	if (!dna->nb_ants || dna->nb_ants < 0)
+	if (dna->nb_ants < 1)
 		error(dna, "error : ants bad number\n");
 	return (tmp_data);
 }
